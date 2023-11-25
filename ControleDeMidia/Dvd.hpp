@@ -1,13 +1,13 @@
 #ifndef DVD_H
 #define DVD_H
 
-#include "Filme.hpp"
+#include "Midia.hpp"
 #include <iostream>
 #include <string>
 
 using namespace std;
 
-class Dvd : public Filme {
+class Dvd : public Midia {
     public:
         virtual int calcular_locacao(int dias) = 0;
         Dvd(int codigo_numerico, string titulo, int unidades_disponiveis);

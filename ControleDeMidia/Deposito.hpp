@@ -1,7 +1,7 @@
-#ifndef CADASTROFILME_H
-#define CADATROFILME_H
+#ifndef DEPOSITO_H
+#define DEPOSITO_H
 
-#include "Filme.hpp"
+#include "Midia.hpp"
 #include "Dvd.hpp"
 #include "Fita.hpp"
 #include <iostream>
@@ -10,16 +10,16 @@
 
 using namespace std;
 
-class Cadastro_Filme {
+class Deposito {
     private:
-        map<int, Filme*> _filmes;
+        map<int, Midia*> _midias;
         string tipo;
         string _categoria;
     
     public:
         void cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria);
         void cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
-        void remover_filme(int codigo_numerico);
+        void remover_midia(int codigo_numerico);
         void ler_estoque(string nome_arquivo);
         void ordenar_codigo();
         void ordenar_nome();
