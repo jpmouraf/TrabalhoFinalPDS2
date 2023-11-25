@@ -8,11 +8,9 @@
 using namespace std;
 
 class Fita : public Filme {
-    private:
-        bool _isRebobinada;
-    
     public:
-        Fita(int codigo_numerico, string titulo, int unidades_disponiveis , bool isRebobinada);
+        bool _isRebobinada;
+        Fita(int codigo_numerico, string titulo, int unidades_disponiveis);
         virtual int calcular_locacao();
 };
 

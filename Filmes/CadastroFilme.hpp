@@ -6,21 +6,23 @@
 #include "Fita.hpp"
 #include <iostream>
 #include <string>
-#include <list>
+#include <map>
 
 using namespace std;
 
 class Cadastro_Filme {
     private:
-        list<Filme*> _filmes;
+        map<int, Filme*> _filmes;
         string tipo;
         string _categoria;
-
+    
     public:
         void cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria);
         void cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
-        void ler_estoque();
-
+        void remover_filme(int codigo_numerico);
+        void ler_estoque(string nome_arquivo);
+        void ordenar_codigo();
+        void ordenar_nome();
 };
 
 #endif
