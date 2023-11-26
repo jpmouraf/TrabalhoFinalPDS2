@@ -1,5 +1,5 @@
-#include "CadastroFilme.hpp"
-#include "Filme.hpp"
+#include "Deposito.hpp"
+#include "Midia.hpp"
 #include "Dvd.hpp"
 #include "Fita.hpp"
 #include <iostream>
@@ -9,9 +9,9 @@
 
 using namespace std;
 
-void Cadastro_Filme::cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria) {
-   auto it = _filmes.find(codigo_numerico);
-    if (it != _filmes.end()) {
+void Deposito::cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria) {
+   auto it = _midias.find(codigo_numerico);
+    if (it != _midias.end()) {
         cout << "ERRO: codigo repetido" << endl;
         return; 
     }
@@ -28,41 +28,41 @@ void Cadastro_Filme::cadastrar_dvd(string tipo, int unidades_disponiveis, int co
         }
     }
     if (novo_dvd != nullptr) {
-        _filmes[codigo_numerico] = novo_dvd;
-        cout << "Filme " << codigo_numerico << " cadastrado com sucesso" << endl;
+        _midias[codigo_numerico] = novo_dvd;
+        cout << "Midia " << codigo_numerico << " cadastrado com sucesso" << endl;
     }
     else {
         cout << "ERRO: dados incorretos" << endl;
     }
 }
 
-void Cadastro_Filme::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo) {
-    auto it = _filmes.find(codigo_numerico);
-    if (it != _filmes.end()) {
+void Deposito::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo) {
+    auto it = _midias.find(codigo_numerico);
+    if (it != _midias.end()) {
         cout << "ERRO: codigo repetido" << endl;
         return; 
     }
     if(tipo == "FITA") {
         Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
-        _filmes[codigo_numerico] = nova_fita;
-        cout << "Filme " << codigo_numerico << " cadastrado com sucesso" << endl;
+        _midias[codigo_numerico] = nova_fita;
+        cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
     }
     else {
         cout << "ERRO: dados incorretos" << endl;
     }
 }
 
-void Cadastro_Filme::remover_filme(int codigo_numerico) {
-    auto it = _filmes.find(codigo_numerico);
-    if(it != _filmes.end()) {
-        _filmes.erase(it);
-        cout << "Filme " << codigo_numerico << " removido com sucesso" << endl;
+void Deposito::remover_midia(int codigo_numerico) {
+    auto it = _midias.find(codigo_numerico);
+    if(it != _midias.end()) {
+        _midias.erase(it);
+        cout << "Mídia " << codigo_numerico << " removida com sucesso" << endl;
     } else {
         cout << "ERRO: codigo inexistente" << endl;
     }
 }
 
-void Cadastro_Filme::ler_estoque(string nome_arquivo) {
+void Deposito::ler_estoque(string nome_arquivo) {
     ifstream arquivo(nome_arquivo);
     if (arquivo.is_open()) {
         string tipo, titulo, categoria;
@@ -80,20 +80,20 @@ void Cadastro_Filme::ler_estoque(string nome_arquivo) {
             contador++;
         }
         arquivo.close();
-        cout << contador << " Filmes cadastrados com sucesso" << endl;
+        cout << contador << " Mídias cadastradas com sucesso" << endl;
     } else {
         cout << "ERRO: arquivo inexistente" << endl;
     }
 }    
 
-void Cadastro_Filme::ordenar_codigo() {
-    map<int, Filme*>::iterator it;
-    for(it = _filmes.begin(); it != _filmes.end(); it++) {
+void Deposito::ordenar_codigo() {
+    map<int, Midia*>::iterator it;
+    for(it = _midias.begin(); it != _midias.end(); it++) {
         cout << it ->first << ": " << it->second << endl;
     }
 }
 
 
-void Cadastro_Filme::ordenar_nome() {
+void Deposito::ordenar_nome() {
     
 }

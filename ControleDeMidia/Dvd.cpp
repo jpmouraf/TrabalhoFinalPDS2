@@ -1,8 +1,8 @@
-#include "Filme.hpp"
+#include "Midia.hpp"
 #include "Dvd.hpp"
 
 Dvd::Dvd(int codigo_numerico, string titulo, int unidades_disponiveis)
-    :Filme(codigo_numerico, titulo, unidades_disponiveis) {}
+    :Midia(codigo_numerico, titulo, unidades_disponiveis) {}
 
 Lancamento::Lancamento(int codigo_numerico, string titulo, int unidades_disponiveis)
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}
