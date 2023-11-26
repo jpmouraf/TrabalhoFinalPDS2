@@ -11,7 +11,7 @@ class Fita : public Midia {
     public:
         bool _isRebobinada;
         Fita(int codigo_numerico, string titulo, int unidades_disponiveis);
-        virtual int calcular_locacao();
+        int calcular_locacao(int dias) override;
 };
 
 #endif

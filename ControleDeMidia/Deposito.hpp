@@ -23,8 +23,9 @@ class Deposito {
         void ler_estoque(string nome_arquivo);
         void ordenar_codigo();
         void ordenar_nome();
-        void inserir_midia_no_estoque(int codigo, int quantidade); // se alguem pensar em nomes melhores para essas
-        void remover_midia_no_estoque(int codigo, int quantidade); // funções por favor sinta-se livre para mudar
+        Midia* get_midia(int codigo_numerico);
+        void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
+        void devolver_midia(int codigo_numerico, int quantidade); // funções por favor sinta-se livre para mudar
 };
 
 #endif

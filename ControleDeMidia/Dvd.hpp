@@ -9,7 +9,6 @@ using namespace std;
 
 class Dvd : public Midia {
     public:
-        virtual int calcular_locacao(int dias) = 0;
         Dvd(int codigo_numerico, string titulo, int unidades_disponiveis);
 };
 

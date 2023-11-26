@@ -10,8 +10,9 @@ class Locador {
     private:
         Deposito armazenamento;
     public:
-        void alugar_midias(long int cpf_cliente, ControleCliente clientes);
-        void devolver_midias(long int cpf_cliente);
+        void alugar_midias(long int cpf_cliente, map<int, int> locacoes, ControleCliente clientes);
+        void devolver_midias(long int cpf_cliente, int dias, ControleCliente clientes);
+        void gerar_relatorio();
 };
 
 

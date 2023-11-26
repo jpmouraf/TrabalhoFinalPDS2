@@ -31,6 +31,7 @@ class ControleCliente {
         void listar_codigo();
         void listar_nome();
         map<int, int> ler_locacoes_cliente(long int cpf_cliente);
+        void escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes);
 };
 
 

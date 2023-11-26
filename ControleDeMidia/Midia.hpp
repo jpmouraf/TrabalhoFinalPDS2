@@ -17,6 +17,7 @@ class Midia {
         int getCodigoNumerico();
         string getTitulo();
         int getUnidadesDisponiveis();
+        virtual int calcular_locacao(int dias) = 0;
 };
 
 

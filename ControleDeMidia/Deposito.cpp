@@ -45,7 +45,7 @@ void Deposito::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_
     if(tipo == "FITA") {
         Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
         _midias[codigo_numerico] = nova_fita;
-        cout << "Midia " << codigo_numerico << " cadastrado com sucesso" << endl;
+        cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
     }
     else {
         cout << "ERRO: dados incorretos" << endl;
@@ -56,7 +56,7 @@ void Deposito::remover_midia(int codigo_numerico) {
     auto it = _midias.find(codigo_numerico);
     if(it != _midias.end()) {
         _midias.erase(it);
-        cout << "Midia " << codigo_numerico << " removido com sucesso" << endl;
+        cout << "Mídia " << codigo_numerico << " removida com sucesso" << endl;
     } else {
         cout << "ERRO: codigo inexistente" << endl;
     }
@@ -80,7 +80,7 @@ void Deposito::ler_estoque(string nome_arquivo) {
             contador++;
         }
         arquivo.close();
-        cout << contador << " Midias cadastrados com sucesso" << endl;
+        cout << contador << " Mídias cadastradas com sucesso" << endl;
     } else {
         cout << "ERRO: arquivo inexistente" << endl;
     }
