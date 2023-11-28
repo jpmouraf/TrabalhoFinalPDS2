@@ -94,6 +94,21 @@ void Deposito::ordenar_codigo() {
 }
 
 
-void Deposito::ordenar_nome() {
-    
+void Deposito::ordenar_titulo() {
+    auto comparador = [](pair<int, Midia*>& a, pair<int, Midia*>& b) {
+        return a.second->getTitulo() < b.second->getTitulo();
+    };
+
+    map<int, Midia*, decltype(comparador)> filmesOrdenadosPorTitulo(_midias.begin(), _midias.end(), comparador);
+
+    _midias.clear();
+
+    for (const auto& par : filmesOrdenadosPorTitulo) {
+        _midias[par.first] = par.second;
+    }
+
+    for (const auto& par : _midias) {
+        cout << par.first << ": " << par.second->getTitulo() << endl;
+    }
 }
+

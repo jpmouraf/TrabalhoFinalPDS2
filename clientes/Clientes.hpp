@@ -16,7 +16,7 @@ class Cliente {
     public:
         Cliente(string nome, long int cpf);
 
-        int getCPF();
+        long int getCPF();
         string getNome();
 };
 

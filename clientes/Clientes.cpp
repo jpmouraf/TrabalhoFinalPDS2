@@ -1,13 +1,14 @@
 #include <iostream>
 #include <set>
 #include <string>
+#include <algorithm>
 #include "Clientes.hpp"
 
 using namespace std;
 
 Cliente::Cliente(string nome, long int cpf) : _nome(nome) , _cpf(cpf) {}
 
-int Cliente::getCPF() {
+long int Cliente::getCPF() {
     return _cpf;
 }
 
@@ -55,8 +56,11 @@ void ControleCliente::listar_codigo() {
 }
 
 void ControleCliente::listar_nome() {
-//Nao esta listando os nomes em ordem alfabetica, apenas pela ordem do codigo
+    _clientes.sort([](Cliente& a, Cliente& b) {
+        return a.getNome() < b.getNome();
+    });
+
     for (auto& cliente : _clientes) {
-        cout << cliente.getNome() << ": " << cliente.getCPF() << endl;
+        std::cout << cliente.getNome() << ": " << cliente.getCPF() << std::endl;
     }
 }
