@@ -1,13 +1,10 @@
 #include <string>
 #include <sstream>
 #include <iostream>
-#include "../include/Clientes/Clientes.hpp"
-#include "../include/ControleDeLocacao/Locador.hpp"
+#include "../include/Locadora/Locadora.hpp"
 
 int main(){
-    Locador controle_de_locacoes;
-    ControleCliente controle_de_clientes;
-
+    Locadora cinerama;
 
     while(true){
         std::string entrada;
@@ -21,7 +18,7 @@ int main(){
 
         // Ler Arquivo de Cadastro
         if (comando == "LA") {
-            controle_de_locacoes.ler_estoque(entrada.substr(2));
+            cinerama.ler_estoque(entrada.substr(2));
         }
         
         // Cadastrar Midia
@@ -35,7 +32,7 @@ int main(){
             std::istringstream stream(entrada.substr(2));
             stream >> tipo >> quantidade >> codigo >> titulo >> categoria;
 
-            controle_de_locacoes.cadastrar_midia(tipo, quantidade, codigo, titulo, categoria);
+            cinerama.cadastrar_midia(tipo, quantidade, codigo, titulo, categoria);
         }
 
         // Remover Midia
@@ -44,7 +41,7 @@ int main(){
             std::istringstream stream(entrada.substr(2));
             stream >> codigo;
 
-            controle_de_locacoes.remover_midia(codigo);
+            cinerama.remover_midia(codigo);
         }
 
         // Listar Midia ordenadas por Código ou Título
@@ -53,14 +50,12 @@ int main(){
             
             //Ordenar por Código
             if (tipo == "C"){
-                controle_de_locacoes.ordenar_codigo();
-                controle_de_locacoes.imprimir_todas_midias();
+                cinerama.ordenar_midias_por_codigo();
             }
 
             //Ordenar por Titulo
             else if (tipo == "T"){
-                controle_de_locacoes.ordenar_titulo();
-                controle_de_locacoes.imprimir_todas_midias();
+                cinerama.ordenar_midias_por_titulo();
             }
 
             else {
@@ -76,7 +71,7 @@ int main(){
             std::istringstream stream(entrada.substr(2));
             stream >> cpf >> nome;
 
-            controle_de_clientes.cadastrar_cliente(cpf, nome);
+            cinerama.cadastrar_cliente(cpf, nome);
 
         }
 
@@ -87,7 +82,7 @@ int main(){
             std::istringstream stream(entrada.substr(2));
             stream >> cpf;
 
-            controle_de_clientes.remover_cliente(cpf);
+            cinerama.remover_cliente(cpf);
         }
 
         // Listar Clientes ordenados por Código ou Nome
@@ -98,11 +93,11 @@ int main(){
             stream >> tipo;
 
             if (tipo == "C"){
-                controle_de_clientes.listar_codigo();
+                cinerama.listar_clientes_por_cpf();
             }            
 
             else if (tipo == "N"){
-                controle_de_clientes.listar_nome();
+                cinerama.listar_clientes_por_nome();
             }
 
             else {
@@ -114,7 +109,7 @@ int main(){
         else if (comando == "AL") {
             map<int, int> locacoes;
             //VETOR DE ENTRADA PARA N MIDIAS
-            controle_de_clientes.escrever_locacoes_cliente()
+            //cinerama.escrever_locacoes_cliente()
         }
 
         // Devolução Midia
@@ -123,7 +118,7 @@ int main(){
             std::istringstream stream(entrada.substr(2));
             stream >> cpf;
 
-            controle_de_locacoes.devolver_midias();
+            //cinerama.devolver_midias();
             //cinerama.devolver_midias(cpf);
         }
 
@@ -132,21 +127,27 @@ int main(){
             return 0;
         }
 
-        else if (comando == "CM") {
-            std::cout << "LA - Ler arquivo de cadastro" << std::endl;
-            std::cout << "CF - Cadastrar Mídia" << std::endl;
-            std::cout << "RF - Remover Mídia" << std::endl;
-            std::cout << "LF - Listar Midia ordenadas por Código ou Título" << std::endl;
-            std::cout << "CC - Cadastrar Cliente" << std::endl;
-            std::cout << "RC - Remover Cliente" << std::endl;
-            std::cout << "AL - Listar Midia ordenadas por Código ou Título" << std::endl;
-            std::cout << "DV - Listar Midia ordenadas por Código ou Título" << std::endl;
-            std::cout << "PR - Criar Promoção de uma categoria ou genero" << std::endl;
-            std::cout << "RL - Relatorio das receitas do ultimo mês" << std::endl;       
+        else if (comando == "HP") {
+            std::cout << "LA <nome_do_arquivo.txt> - Ler arquivo de cadastro" << std::endl;
+            std::cout << "CF F <quantidade> <id> <titulo> - Cadastrar Mídia do tipo Fita" << std::endl;
+            std::cout << "CF D <quantidade> <id> <titulo> <categoria> - Cadastrar Mídia do tipo DVD" << std::endl;
+            std::cout << "RF <id> - Remover Mídia" << std::endl;
+            std::cout << "LF C - Listar Midia ordenadas por Código" << std::endl;
+            std::cout << "LF T - Listar Midia ordenadas por Título" << std::endl;
+            std::cout << "CC <cpf> <nome> - Cadastrar Cliente" << std::endl;
+            std::cout << "RC <cpf> - Remover Cliente" << std::endl;
+            std::cout << "LC C - Listar Clientes ordenados por CPF" << std::endl;
+            std::cout << "LC N - Listar Clientes ordenados por Nome" << std::endl;
+            std::cout << "AL - Alugar Mídias" << std::endl;
+            std::cout << "DV - Devolver Mídia" << std::endl;
+            std::cout << "PG <genero> - Criar Promoção de genero (APENAS DVD'S)" << std::endl;
+            std::cout << "PI <id> - Criar Promoção por id (APENAS DVD'S)" << std::endl;
+            std::cout << "RL - Relatorio das receitas do ultimo mês" << std::endl;
+            std::cout << "FS - Encerrar o sistema" << std::endl;
         }
 
         else {
-            std::cout << "ERRO: comando não reconhecido! Insira CM para listar os comandos" << std::endl;
+            std::cout << "ERRO: comando não reconhecido! Insira HP para listar os comandos" << std::endl;
         }
     }
 }
@@ -168,20 +169,28 @@ ERRO: CPF inexistente*/
 /*
 PROBLEMAS SEM SOLUCAO
 
-- Não temos uma classe Locadora
+- Aluguel e Devolução de filmes
 - No método devolver_midias do Locador é esperado um parametro dias, porém este deve ser calculado pelo própio método
 - Não temos Exceções e Programação Defensiva
-- Tem como transformar um DVD Estoque em DVD Promoção?
+- Tem como transformar um DVD Estoque em DVD Promoção? SIM, APENAS DESCADASTRAR E CADASTRAR COM NOVA CATEGORIA
 
 PROBLEMAS SOLUCIONADOS
 
-- Metodos faltando para a comunicacao entre Locador - Deposito;
+- Metodos faltando para a comunicacao entre Locador - Deposito
+- Metodo para cadastrar mídia
+- Controle de Adição/Edição de Locações por meio de CSV e CTIME (banco de locações)
+- Escrever locação no banco de locações
+- Classe Locadora
+- Banco de Midias/Estoque
+- Leitura do Banco de Midias ao construir um Deposito
+- Salvar midias no Banco de Midias ao destruir um Deposito
+- Comando HELP, para listar todos comandos existentes no main
 
 FUNCOES QUE ESTAO/SERAO IMPLEMENTADAS
 
-- Comando HELP, para listar todos comandos existentes no main
 - Função genero, para classificar e colocar em promoção generos especificos, como terror. (DEVE SER VOTADO PELOS MEMBROS) ps: é uma função crucial para uma locadora
 - Imprimir filmes mais alugados
 - Imprimir filmes menos alugados - ignorando os lançamentos
+- Imprimir receitas do ultimo mes
 
 */

@@ -17,8 +17,8 @@ class Midia {
         int getCodigoNumerico();
         string getTitulo();
         int getUnidadesDisponiveis();
-        virtual int calcular_locacao(int dias) = 0;
         virtual void imprimir_info();
+        virtual int calcular_locacao(int dias) = 0;
 };
 
 

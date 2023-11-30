@@ -2,6 +2,8 @@
 #include <set>
 #include <string>
 #include <algorithm>
+#include <fstream>
+#include <ctime>
 #include "Clientes.hpp"
 
 using namespace std;
@@ -62,5 +64,14 @@ void ControleCliente::listar_nome() {
 
     for (auto& cliente : _clientes) {
         std::cout << cliente.getNome() << ": " << cliente.getCPF() << std::endl;
+    }
+}
+
+void ControleCliente::escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes){
+    fstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
+    time_t agora = time(0);
+
+    for (auto& info_midia : locacoes){
+        banco_de_locacoes << cpf_cliente << ";" << info_midia.first << ";" << info_midia.second << ";" << ctime(&agora) << ";;\n";
     }
 }
