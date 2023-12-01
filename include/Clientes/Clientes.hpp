@@ -34,5 +34,17 @@ class ControleCliente {
         void escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes);
 };
 
+class ExcecaoCliente : public exception {
+    private:
+        char* _mensagem;
+    
+    public:
+        ExcecaoCliente(char* mensagem) : _mensagem(mensagem) {}
+        char* what() const throw() {
+            return _mensagem;
+        }
+
+};
+
 
 #endif

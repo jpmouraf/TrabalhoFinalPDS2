@@ -24,13 +24,12 @@ bool ControleCliente::validarCPF(long int cpf) {
 
 void ControleCliente::cadastrar_cliente(long int cpf, string nome) {
     if(!validarCPF(cpf)) {
-        cout << "ERRO: dados incorretos" << endl;
+        throw ExcecaoCliente("ERRO: dados incorretos");
     }
     else {
         for (auto& cliente : _clientes) {
             if (cliente.getCPF() == cpf) {
-                cout << "Erro: CPF repetido." << endl;
-                return;
+                throw ExcecaoCliente("ERRO: CPF repetido");
             }
         }
         Cliente novoCliente(nome, cpf);
@@ -47,7 +46,7 @@ void ControleCliente::remover_cliente(long int cpf) {
             return;
         }
     }
-    cout << "ERRO: CPF inexistente" << endl;
+    throw ExcecaoCliente("ERRO: CPF inexistente");
 }
 
 
