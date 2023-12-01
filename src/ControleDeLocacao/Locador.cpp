@@ -30,17 +30,22 @@ void Locador::devolver_midias(long int cpf_cliente, int dias, ControleCliente cl
     for (auto it : locacoes){
         int codigo_midia = it.first;
         int quantidade_midia = it.second;
-        Midia* devolvida = armazenamento.get_midia(codigo_midia);
-        
-        cout << "Mídia: " << devolvida->getTitulo() << "Quantidade: x" << quantidade_midia << " ";
-        int total_midia;
-        for(int i = 0; i<quantidade_midia; i++){
-            total_midia += devolvida->calcular_locacao(dias);
-        }
-        cout << "Total: " << total_midia << " reais" << endl;
-        total_locacao += total_midia;
+        try{
+            armazenamento.devolver_midia(codigo_midia, quantidade_midia);
 
-        armazenamento.devolver_midia(codigo_midia, quantidade_midia);
+            Midia* devolvida = armazenamento.get_midia(codigo_midia);
+            
+            cout << "Mídia: " << devolvida->getTitulo() << "Quantidade: x" << quantidade_midia << " ";
+            int total_midia;
+            for(int i = 0; i<quantidade_midia; i++){
+                total_midia += devolvida->calcular_locacao(dias);
+            }
+            cout << "Total: " << total_midia << " reais" << endl;
+            total_locacao += total_midia;
+        }catch(std::exception){ //mudar para exceção de código de filme não existente
+            cout << "[LOCADOR] Atenção: código de filme '" << codigo_midia <<"' inexistente, verifique se o filme não foi retirado do sistema durante a locação." << endl;
+            continue;
+        }
     }
     cout << endl;
     cout << "Total a ser pago: " << total_locacao << " reais" << endl;
