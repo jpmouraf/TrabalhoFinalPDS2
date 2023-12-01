@@ -27,7 +27,7 @@ class ControleCliente {
     public:
         bool validarCPF(long int cpf);
         void cadastrar_cliente(long int cpf, string nome);
-        void remover_cliente(long int cpf, string nome);
+        void remover_cliente(long int cpf);
         void listar_codigo();
         void listar_nome();
         map<int, int> ler_locacoes_cliente(long int cpf_cliente);

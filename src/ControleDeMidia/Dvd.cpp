@@ -1,8 +1,13 @@
-#include "Midia.hpp"
-#include "Dvd.hpp"
+#include "../../include/ControleDeMidia/Dvd.hpp"
+#include "../../include/ControleDeMidia/Midia.hpp"
 
 Dvd::Dvd(int codigo_numerico, string titulo, int unidades_disponiveis)
     :Midia(codigo_numerico, titulo, unidades_disponiveis) {}
+
+void Dvd::imprimir_info(){
+    Midia::imprimir_info();
+    cout << "DVD" << endl;
+}
 
 Lancamento::Lancamento(int codigo_numerico, string titulo, int unidades_disponiveis)
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}

@@ -1,6 +1,8 @@
-#include "Locador.hpp"
-#include <iostream>
 #include <map>
+#include <iostream>
+#include <fstream>
+#include "../../include/ControleDeLocacao/ControleDeLocacao.hpp"
+
 using namespace std;
 
 //este módulo ainda não possui capacidades de armazenamento/edição das locações de um cliente.
@@ -45,4 +47,43 @@ void Locador::devolver_midias(long int cpf_cliente, int dias, ControleCliente cl
     cout << endl;
     cout << "Total a ser pago: " << total_locacao << " reais" << endl;
     cout << "######### Fim  do  Recibo ###########" << endl;
+}
+
+void Locador::ler_estoque(string nome_do_arquivo){
+    this->armazenamento.ler_estoque(nome_do_arquivo);
+}
+
+void Locador::salvar_estoque(std::string nome_do_arquivo){
+    this->armazenamento.salvar_estoque(nome_do_arquivo);
+}
+
+
+void Locador::cadastrar_midia(string tipo, int quantidade, int codigo, string titulo, string categoria){
+    if (tipo == "F"){
+        this->armazenamento.cadastrar_fita("FITA", quantidade, codigo, titulo);
+    }
+
+    else if (tipo == "D"){
+        this->armazenamento.cadastrar_dvd("DVD", quantidade, codigo, titulo, categoria);
+    }
+
+    else {
+        cout << "ERRO: não foi posível identificar o tipo de midia escolhida" << endl;
+    }
+}
+
+void Locador::remover_midia(int codigo_numerico){
+    this->armazenamento.remover_midia(codigo_numerico);
+}
+
+void Locador::ordenar_codigo(){
+    this->armazenamento.ordenar_codigo();
+}
+
+void Locador::ordenar_titulo(){
+    this->armazenamento.ordenar_titulo();
+}
+
+void Locador::imprimir_todas_midias(){
+    this->armazenamento.imprimir_todas_midias();
 }

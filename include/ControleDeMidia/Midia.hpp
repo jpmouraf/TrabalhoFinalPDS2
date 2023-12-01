@@ -1,8 +1,8 @@
 #ifndef MIDIA_H
 #define MIDIA_H
 
-#include <iostream>
 #include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -17,6 +17,7 @@ class Midia {
         int getCodigoNumerico();
         string getTitulo();
         int getUnidadesDisponiveis();
+        virtual void imprimir_info();
         virtual int calcular_locacao(int dias) = 0;
 };
 

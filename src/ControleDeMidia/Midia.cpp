@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "Midia.hpp"
+#include "../../include/ControleDeMidia/Midia.hpp"
 
 using namespace std;
 
@@ -17,4 +17,8 @@ string Midia::getTitulo() {
 
 int Midia::getUnidadesDisponiveis() {
     return this->_unidades_disponiveis;
+}
+
+void Midia::imprimir_info(){
+    cout << this->getCodigoNumerico() << this->getTitulo() << this->getUnidadesDisponiveis();
 }

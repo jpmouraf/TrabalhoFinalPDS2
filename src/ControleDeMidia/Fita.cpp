@@ -1,7 +1,7 @@
-#include "Midia.hpp"
-#include "Fita.hpp"
-#include <iostream>
 #include <string>
+#include <iostream>
+#include "../../include/ControleDeMidia/Fita.hpp"
+#include "../../include/ControleDeMidia/Midia.hpp"
 
 using namespace std;
 
@@ -16,4 +16,9 @@ int Fita::calcular_locacao(int dias) {
     else {
         return valor_fita = 5;
     }
-}           
+}
+
+void Fita::imprimir_info() {
+    Midia::imprimir_info();
+    cout << "FITA" << endl;
+}
