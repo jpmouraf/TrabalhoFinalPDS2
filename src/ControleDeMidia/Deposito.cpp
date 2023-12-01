@@ -2,10 +2,8 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-#include "../../include/ControleDeMidia/Dvd.hpp"
-#include "../../include/ControleDeMidia/Fita.hpp"
-#include "../../include/ControleDeMidia/Midia.hpp"
 #include "../../include/ControleDeMidia/Deposito.hpp"
+
 
 using namespace std;
 
@@ -50,6 +48,21 @@ void Deposito::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_
     }
     if(tipo == "FITA") {
         Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
+        _midias[codigo_numerico] = nova_fita;
+        cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
+    }
+    else {
+        throw DadosInexistente ("ERRO: dados incorretos");
+    }
+}
+
+void Deposito::cadastrar_jogo(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo) {
+    auto it = _midias.find(codigo_numerico);
+    if (it != _midias.end()) {
+        throw DadosRepetidos ("ERRO: codigo repetido");
+    }
+    if(tipo == "FITA") {
+        Jogo* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
         _midias[codigo_numerico] = nova_fita;
         cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
     }

@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 #include "../../include/ControleDeMidia/Fita.hpp"
-#include "../../include/ControleDeMidia/Midia.hpp"
+#include "cstdlib"
 
 using namespace std;
 
@@ -10,6 +10,7 @@ Fita::Fita(int codigo_numerico, string titulo, int unidades_disponiveis) :
 
 int Fita::calcular_locacao(int dias) {
     int valor_fita = 0;
+    bool _isRebobinada = rand() % 2;
     if(_isRebobinada) {
         return valor_fita = 7;
     }

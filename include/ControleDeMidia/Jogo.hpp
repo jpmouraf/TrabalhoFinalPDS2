@@ -1,5 +1,5 @@
-#ifndef FITA_H
-#define FITA_H
+#ifndef JOGO_H
+#define JOGO_H
 
 #include <string>
 #include <iostream>
@@ -7,9 +7,9 @@
 
 using namespace std;
 
-class Fita : public Midia {
+class Jogo : public Midia {
     public:
-        Fita(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Jogo(int codigo_numerico, string titulo, int unidades_disponiveis);
         int calcular_locacao(int dias) override;
         void imprimir_info() override;
 };

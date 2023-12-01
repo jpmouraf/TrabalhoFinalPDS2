@@ -4,6 +4,7 @@
 #include "Midia.hpp"
 #include "Dvd.hpp"
 #include "Fita.hpp"
+#include "Jogo.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -22,6 +23,7 @@ class Deposito {
         ~Deposito();
 
         void cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria);
+        void cadastrar_jogo(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
         void cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
         void remover_midia(int codigo_numerico);
         void ler_estoque(string nome_arquivo);
