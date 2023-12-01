@@ -8,6 +8,11 @@
 
 using namespace std;
 
+struct InformacoesLocacao{
+    map<int, int> locacoes;
+    int dias;
+};
+
 class Cliente {
     private:
         string _nome;
@@ -37,11 +42,6 @@ class ControleCliente {
         void listar_nome();
         void escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes);
         InformacoesLocacao informacoes_locacao(long cpf);
-};
-
-struct InformacoesLocacao{
-    map<int, int> locacoes;
-    int dias;
 };
 
 class ExcecaoCliente : public std::exception {
