@@ -12,9 +12,13 @@ void Locador::alugar_midias(long int cpf_cliente, map<int, int> locacoes, Contro
     for (auto it : locacoes){
         int codigo_midia = it.first;
         int quantidade_midia = it.second;
+        try{
+            Midia* locada = armazenamento.get_midia(codigo_midia);
+            cout << "Mídia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << endl;
+        }catch(std::exception){//exceção: filme n encontrado.
+            throw;
+        }
         
-        Midia* locada = armazenamento.get_midia(codigo_midia);
-        cout << "Mídia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << endl;
 
         armazenamento.retirar_midia(codigo_midia, quantidade_midia);
     }
