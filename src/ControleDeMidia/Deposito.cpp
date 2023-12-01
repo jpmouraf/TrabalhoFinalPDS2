@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "../../include/ControleDeMidia/Deposito.hpp"
+#include "Deposito.hpp"
 
 
 using namespace std;
@@ -78,6 +79,22 @@ void Deposito::remover_midia(int codigo_numerico) {
         cout << "Mídia " << codigo_numerico << " removida com sucesso" << endl;
     } else {
         throw DadosInexistente ("ERRO: código inexistente");
+    }
+}
+
+void Deposito::devolver_midia(int codigo_numerico, int quantidade){ //talvez tenhamos que revisar isso
+    try {
+        _midias[codigo_numerico] += quantidade;
+    } catch(out_of_range e){
+        throw DadosInexistente(("[DPST] ERRO: Mídia não existe na base de dados. Verifique se a mídia não foi descadastrada durante o período de locação."));
+    }
+}
+
+void Deposito::retirar_midia(int codigo_numerico, int quantidade){
+    try {
+        _midias[codigo_numerico] += quantidade;
+    } catch(out_of_range e){
+        throw DadosInexistente("ERRO: Mídia não existente na base de dados.");
     }
 }
 
@@ -182,6 +199,8 @@ void Deposito::ordenar_titulo() {
 }
 
 void Deposito::imprimir_todas_midias(){
+
+    
     for (auto& midia : this->_midias) {
         midia.second->imprimir_info();
     }
