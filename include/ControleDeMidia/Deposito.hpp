@@ -39,11 +39,11 @@ class Deposito {
 
 class ExcecaoDeposito : public exception {
     private:
-        char* _mensagem;
+        const char* _mensagem;
     
     public:
         ExcecaoDeposito(char* mensagem) : _mensagem(mensagem) {}
-        char* what() const throw() {
+        virtual const char* what() const noexcept {
             return _mensagem;
         }
 

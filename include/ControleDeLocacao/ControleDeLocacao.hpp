@@ -27,11 +27,12 @@ class Locador {
 
 class LocaErro : public exception {
     private:
-        char* _mensagem;
+        const char* _mensagem;
     
     public:
-        LocaErro(char* mensagem) : _mensagem(mensagem) {}
-        char* what() const throw() {
+        LocaErro(const char* mensagem) : _mensagem(mensagem) {}
+        
+        virtual const char* what() const noexcept {
             return _mensagem;
         }
 };

@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <iostream>
 #include <algorithm>
+#include <stdexcept>
 #include "Clientes.hpp"
 
 using namespace std;
@@ -83,8 +84,7 @@ time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
     ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
 
     if (!banco_de_locacoes.is_open()) {
-        cerr << "Erro ao abrir o arquivo." << endl;
-        // throw exception
+        throw ErroAbrirArquivo();
     }
 
     string linha;
@@ -116,8 +116,7 @@ time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
 void ControleCliente::escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes){
     ofstream banco_de_locacoes("../../data/banco_de_locacoes.csv", ios::app);
     if (!banco_de_locacoes.is_open()) {
-        cerr << "Erro ao abrir o arquivo." << endl; // throw exception
-        return;
+        throw ErroAbrirArquivo();
     }
 
     time_t agora = time(0);
@@ -134,8 +133,7 @@ map<int, int> ControleCliente::locacoes_cliente(long cpf){
     ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
 
     if (!banco_de_locacoes.is_open()) {
-        cerr << "Erro ao abrir o arquivo." << endl;
-        // throw exception
+        throw ErroAbrirArquivo();
     }
 
     string linha;

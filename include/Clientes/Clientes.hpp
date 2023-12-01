@@ -44,17 +44,23 @@ struct InformacoesLocacao{
     int dias;
 };
 
-class ExcecaoCliente : public exception {
-    private:
-        char* _mensagem;
+class ExcecaoCliente : public std::exception {
+private:
+    const char* _mensagem;
     
-    public:
-        ExcecaoCliente(char* mensagem) : _mensagem(mensagem) {}
-        char* what() const throw() {
-            return _mensagem;
-        }
-
+public:
+    ExcecaoCliente(const char* mensagem) : _mensagem(mensagem) {}
+    
+    virtual const  char* what() const noexcept {
+        return _mensagem;
+    }
 };
+
+class ErroAbrirArquivo : public runtime_error {
+    public:
+         ErroAbrirArquivo() : std::runtime_error("Erro ao abrir o arquivo.") {}
+};
+
 
 
 #endif
