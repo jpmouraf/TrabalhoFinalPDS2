@@ -12,10 +12,6 @@ class Locador {
     private:
         Deposito armazenamento;
 
-        time_t encontrar_data_alocacao(long cpf, int codigo);
-        int calcula_dias(time_t data_locacao);
-        void gravar_locacoes_csv(long int cpf_cliente, map<int, int> locacoes);
-
     public:
         void alugar_midias(long int cpf_cliente, map<int, int> locacoes, ControleCliente clientes);
         void devolver_midias(long int cpf_cliente, int dias, ControleCliente clientes);
