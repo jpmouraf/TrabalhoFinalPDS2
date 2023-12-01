@@ -35,4 +35,27 @@ class Deposito {
         void imprimir_todas_midias();
 };
 
+class ExcecaoDeposito : public exception {
+    private:
+        char* _mensagem;
+    
+    public:
+        ExcecaoDeposito(char* mensagem) : _mensagem(mensagem) {}
+        char* what() const throw() {
+            return _mensagem;
+        }
+
+};
+
+
+class DadosRepetidos : public ExcecaoDeposito {
+    public:
+        DadosRepetidos(char* mensagem) : ExcecaoDeposito(mensagem) {}
+};
+
+class DadosInexistente : public ExcecaoDeposito {
+    public:
+        DadosInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
+};
+
 #endif

@@ -20,8 +20,7 @@ Deposito::~Deposito(){
 void Deposito::cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria) {
    auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
-        cout << "ERRO: codigo repetido" << endl;
-        return; 
+        throw DadosRepetidos ("ERRO: codigo repetido");
     }
    Dvd* novo_dvd = nullptr;
     if (tipo == "DVD") {
@@ -40,15 +39,14 @@ void Deposito::cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_n
         cout << "Midia " << codigo_numerico << " cadastrado com sucesso" << endl;
     }
     else {
-        cout << "ERRO: dados incorretos" << endl;
+        throw DadosInexistente ("ERRO: dados incorretos");
     }
 }
 
 void Deposito::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo) {
     auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
-        cout << "ERRO: codigo repetido" << endl;
-        return; 
+        throw DadosRepetidos ("ERRO: codigo repetido");
     }
     if(tipo == "FITA") {
         Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
@@ -56,7 +54,7 @@ void Deposito::cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_
         cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
     }
     else {
-        cout << "ERRO: dados incorretos" << endl;
+        throw DadosInexistente ("ERRO: dados incorretos");
     }
 }
 
@@ -66,7 +64,7 @@ void Deposito::remover_midia(int codigo_numerico) {
         _midias.erase(it);
         cout << "Mídia " << codigo_numerico << " removida com sucesso" << endl;
     } else {
-        cout << "ERRO: codigo inexistente" << endl;
+        throw DadosInexistente ("ERRO: código inexistente");
     }
 }
 
@@ -90,9 +88,10 @@ void Deposito::ler_estoque(string nome_arquivo) {
         arquivo.close();
         cout << contador << " Mídias cadastradas com sucesso" << endl;
     } else {
-        cout << "ERRO: arquivo inexistente" << endl;
+        throw ExcecaoDeposito ("ERRO: arquivo inexistente");
     }
 }
+
 
 void Deposito::salvar_estoque(string nome_do_arquivo){
     ofstream estoque_saida(nome_do_arquivo);
