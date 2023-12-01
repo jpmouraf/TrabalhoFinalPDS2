@@ -29,4 +29,21 @@ class Locador {
         void imprimir_todas_midias();
 };
 
+class LocaErro : public exception {
+    private:
+        char* _mensagem;
+    
+    public:
+        LocaErro(char* mensagem) : _mensagem(mensagem) {}
+        char* what() const throw() {
+            return _mensagem;
+        }
+};
+
+class ErroArquivo : public LocaErro {
+    public:
+        ErroArquivo(char* mensagem) : LocaErro(mensagem) {}
+};
+
+
 #endif

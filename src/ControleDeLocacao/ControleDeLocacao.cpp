@@ -13,8 +13,7 @@ time_t encontrar_data_alocacao(long cpf, int codigo) {
     ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
 
     if (!banco_de_locacoes.is_open()) {
-        cerr << "Erro ao abrir o arquivo." << endl;
-        return -1;  // Retorna um valor inválido para indicar erro
+        throw ErroArquivo ("Erro ao abrir o arquivo");
     }
 
     string linha;
@@ -47,8 +46,7 @@ time_t encontrar_data_alocacao(long cpf, int codigo) {
 void gravar_locacoes_csv(long int cpf_cliente, map<int, int> locacoes){
     ofstream banco_de_locacoes("../../data/banco_de_locacoes.csv", ios::app);
     if (!banco_de_locacoes.is_open()) {
-        cerr << "Erro ao abrir o arquivo." << endl; // throw exception
-        return;
+        throw ErroArquivo ("Erro ao abrir o arquivo");
     }
 
     time_t agora = time(0);
@@ -133,7 +131,7 @@ void Locador::cadastrar_midia(string tipo, int quantidade, int codigo, string ti
     }
 
     else {
-        cout << "ERRO: não foi posível identificar o tipo de midia escolhida" << endl;
+        throw LocaErro("ERRO: não foi posível identificar o tipo de midia escolhida");
     }
 }
 
