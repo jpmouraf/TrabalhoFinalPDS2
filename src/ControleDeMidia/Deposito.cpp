@@ -1,6 +1,7 @@
 #include <vector>
 #include <filesystem>
 #include "../../include/ControleDeMidia/Deposito.hpp"
+using namespace std;
 
 Deposito::Deposito(){
     std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_midias.txt";
@@ -21,7 +22,7 @@ void Deposito::cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std
     std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
 };
 
-void Deposito::cadastrar_fita(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo) {
+void Deposito::cadastrar_fita(int unidades_disponiveis, int codigo_numerico, std::string titulo) {
     auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
         throw DadosRepetidos ("ERRO: codigo repetido");
@@ -36,7 +37,7 @@ void Deposito::cadastrar_fita(std::string tipo, int unidades_disponiveis, int co
     }
 };
 
-void Deposito::cadastrar_dvd(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria) {
+void Deposito::cadastrar_dvd(int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria) {
    auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
         throw DadosRepetidos ("ERRO: codigo repetido");
@@ -79,19 +80,20 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
 
     std::ifstream arquivo(nome_arquivo);
     if (arquivo.is_open()) {
-        std::string linha;
+        std::string titulo, linha, categoria;
         int contador = 0;
-        int 
+        int unidades_disponiveis, codigo_numerico;
 
-        while (arquivo >> tipo >> unidades_disponiveis >> codigo_numerico) {
+        while (arquivo >> tipo >> unidades_disponiveis >> codigo_numerico >> titulo) {
             getline(arquivo, titulo);
+            string tipo;
             if (tipo == "D") {
                 getline(arquivo, categoria);
-                cadastrar_dvd(tipo, unidades_disponiveis, codigo_numerico, titulo, categoria);
+                cadastrar_dvd(unidades_disponiveis, codigo_numerico, titulo, categoria);
             } else if (tipo == "F") {
-                cadastrar_fita(tipo, unidades_disponiveis, codigo_numerico, titulo);
+                cadastrar_fita(unidades_disponiveis, codigo_numerico, titulo);
             } else if (tipo == "J") {
-                cadastrar_jogo(tipo, unidades_disponiveis, codigo_numerico, titulo);
+                cadastrar_jogo(unidades_disponiveis, codigo_numerico, titulo);
             }
             contador++;
         }

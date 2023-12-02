@@ -20,9 +20,9 @@ class Deposito {
         Deposito();
         ~Deposito();
 
-        void cadastrar_jogo(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo);
-        void cadastrar_fita(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo);
-        void cadastrar_dvd(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria);
+        void cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        void cadastrar_fita(int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        void cadastrar_dvd(int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria);
 
         void remover_midia(int codigo_numerico);
         void ler_estoque(std::string nome_arquivo);
