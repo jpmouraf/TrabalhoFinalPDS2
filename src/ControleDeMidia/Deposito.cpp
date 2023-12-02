@@ -62,7 +62,7 @@ void Deposito::cadastrar_jogo(string tipo, int unidades_disponiveis, int codigo_
         throw DadosRepetidos ("ERRO: codigo repetido");
     }
     if(tipo == "FITA") {
-        Jogo* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
+        Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
         _midias[codigo_numerico] = nova_fita;
         cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << endl;
     }
