@@ -19,6 +19,7 @@ class Locador {
         void ler_estoque(std::string nome_do_arquivo);
         void salvar_estoque(std::string nome_do_arquivo);
 
+        Midia* get_midia(int codigo);
         void cadastrar_midia(std::string tipo, int quantidade, int codigo, std::string titulo, std::string categoria);
         void remover_midia(int codigo_numerico);
 

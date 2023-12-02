@@ -18,7 +18,14 @@ void Locadora::ordenar_midias_por_codigo(){
 }
 void Locadora::ordenar_midias_por_titulo(){
     this->central_midia_locacoes.ordenar_titulo();
-    //this->central_midia_locacoes.imprimir_todas_midias();
+}
+
+Midia* Locadora::get_midia(int codigo){
+    return this->central_midia_locacoes.get_midia(codigo);
+}
+
+bool Locadora::validar_CPF(long long int cpf){
+    return this->central_de_clientes.validar_CPF(cpf);
 }
 
 // Controle de Clientes
@@ -37,10 +44,10 @@ void Locadora::listar_clientes_por_cpf(){
 
 // Controle de Locacao
 void Locadora::alugar_midias(long cpf, std::map<int, int> locacoes){
-
+    this->central_midia_locacoes.alugar_midias(cpf, locacoes, this->central_de_clientes);
 }
 void Locadora::devolver_midias(long cpf){
-    
+    this->central_midia_locacoes.devolver_midias(cpf, this->central_de_clientes);
 }
 
 void Locadora::imprimir_catalogo(){

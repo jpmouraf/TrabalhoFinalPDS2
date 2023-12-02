@@ -126,19 +126,86 @@ int main(){
 
         // Aluguel Midia
         else if (comando == "AL") {
+            int quantidade_locada;
+            long long int cpf;
+            bool cpf_valido = false;
             std::map<int, int> locacoes;
-            //VETOR DE ENTRADA PARA N MIDIAS
-            //cinerama.escrever_locacoes_cliente()
+            std::cout << "digite o cpf do cliente, 0 para cancelar" << std::endl;
+            while (1){
+                std::cin >> cpf;
+                if(cpf == 0) break;
+                else if(!cinerama.validar_CPF(cpf)){
+                    std::cout << "Não há cliente com este CPF. Tente novamente, digite 0 para cancelar ou considere cadastrar o cliente." << std:: endl;
+                } else {
+                    cpf_valido = true;
+                    break;
+                }
+            }
+            if(!cpf_valido) continue;
+
+            std::cout << "Digite o código da mídia que deseja se alugar, seguido de um espaço e a quantidade que se deseja alugar" << std::endl;
+            std::cout << "Para encontrar códigos, utilize o catálogo. Para finalizar a locação, digite 0" << std::endl;
+            while (1){
+                int codigo, quantidade, disponiveis;
+                std::cin >> codigo;
+                if (codigo = 0){
+                    break;
+                }
+                std::cin >> quantidade;
+
+                try {
+                    disponiveis = cinerama.get_midia(codigo)->getUnidadesDisponiveis();
+                } catch (DadosInexistente &e){
+                    std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade." std::endl;
+                    continue;
+                }
+                
+                
+                if (quantidade < 1) {
+                    std::cout << "Quantidade inválida selecionada. Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis." << std::endl;
+                    continue;
+                }
+                else if (quantidade > disponiveis) {
+                    std::cout << "Quantidade inválida selecionada (maior do que as unidades em estoque). Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis." << std::endl;
+                    continue;
+                } 
+                else {
+                    quantidade_locada++;
+                    locacoes[codigo] = quantidade;
+                }
+            }
+            std::cout << "Locação fechada, inciando processo..." << std::endl;
+            try{
+                cinerama.alugar_midias(cpf, locacoes);
+            } catch(DadosInexistente &e){
+                std::cout << "Algo deu errado, tente novamente:" << e.what() << std::endl;
+            }
+            std::cout << "Locação finalizada com sucesso!" << std::endl;
         }
 
         // Devolucao Midia
         else if (comando == "DV") {
-            long cpf;
-            std::istringstream stream(entrada.substr(2));
-            stream >> cpf;
-
-            //cinerama.devolver_midias();
-            //cinerama.devolver_midias(cpf);
+            long long int cpf;
+            bool cpf_valido;
+            std::cout << "digite o cpf do cliente, 0 para cancelar" << std::endl;
+            while (1){
+                std::cin >> cpf;
+                if(cpf == 0) break;
+                else if(!cinerama.validar_CPF(cpf)){
+                    std::cout << "Não há cliente com este CPF. Tente novamente, digite 0 para cancelar ou considere cadastrar o cliente." << std:: endl;
+                } else {
+                    cpf_valido = true;
+                    break;
+                }
+            }
+            if(!cpf_valido) continue;
+            std::cout << "Cliente localizado, iniciando devolução....." << std::endl;
+            try{
+            cinerama.devolver_midias(cpf);
+            }catch(DadosInexistente &e){
+                std::cout<<"Algo deu errado, tente novamente: "<<e.what()<<std::endl;
+            }
+            std::cout << "Devolução finalizada com sucesso!" << std::endl;
         }
 
         // Finalizar Sistema

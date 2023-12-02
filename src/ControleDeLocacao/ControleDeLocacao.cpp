@@ -82,6 +82,10 @@ void Locador::cadastrar_midia(std::string tipo, int quantidade, int codigo, std:
     }
 }
 
+Midia* Locador::get_midia(int codigo){
+    return this->armazenamento.get_midia(codigo);
+}
+
 void Locador::remover_midia(int codigo_numerico){
     this->armazenamento.remover_midia(codigo_numerico);
 }
