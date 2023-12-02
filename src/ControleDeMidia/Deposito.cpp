@@ -107,19 +107,19 @@ void Deposito::salvar_estoque(std::string nome_do_arquivo){
 
     for (auto& midia : this->_midias){
         if (typeid(*midia.second) == typeid(Promocao)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "promocao\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "promocao\n";
         }
 
         else if (typeid(*midia.second) == typeid(Lancamento)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "lancamento\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "lancamento\n";
         }
 
         else if (typeid(*midia.second) == typeid(Estoque)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "estoque\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "estoque\n";
         }
         
         else if (typeid(*midia.second) == typeid(Fita)) {
-            estoque_saida << "F" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "\n";
+            estoque_saida << "F" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << "\n";
         }
     }
     
@@ -155,7 +155,7 @@ void Deposito::salvar_estoque(){
 void Deposito::ordenar_codigo() {
     std::map<int, Midia*>::iterator it;
     for(it = _midias.begin(); it != _midias.end(); it++) {
-        std::cout << it ->first << ": " << it->second->getTitulo() << std::endl;
+        std::cout << it ->first << ": " << it->second->getTitulo() /*<< ":" << it->second->getUnidadesDisponiveis() */<< std::endl;
     }
 };
 

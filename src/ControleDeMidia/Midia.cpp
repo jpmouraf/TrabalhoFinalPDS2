@@ -20,7 +20,7 @@ class RedefinirConstanteTipo : public MidiaErro {
 Midia::Midia(int codigo_numerico, std::string titulo, int unidades_disponiveis) : _codigo_numerico(codigo_numerico) , _titulo(titulo) , _unidades_disponiveis(unidades_disponiveis){}
 
 std::string Midia::getTipo() {
-    std::cout << _tipo << std::endl;
+    return this->_tipo;
 }
 
 std::string Midia::getTitulo() {
@@ -36,8 +36,7 @@ int Midia::getUnidadesDisponiveis() {
 }
 
 void Midia::imprimir_info(){
-    std::cout << "TESTE\n";
-    std::cout << this->getTipo()<< " " << this->getCodigoNumerico() << " " << this->getTitulo() << " " << this->getUnidadesDisponiveis() << "\n";
+    std::cout << this->getTipo() << " " << /*this->getCodigoNumerico()*/"A007" << " " << this->getTitulo() << " " << this->getUnidadesDisponiveis() << "\n";
 }
 
 void Midia::setTipo(std::string tipo){
