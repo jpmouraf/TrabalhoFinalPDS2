@@ -6,13 +6,23 @@
 #include "../Clientes/Clientes.hpp"
 #include "../ControleDeLocacao/ControleDeLocacao.hpp"
 
+/**
+ * Classe Locadora que cria objetos das classes Locador e Controle Cliente.
+ * Ela será responsável pelo controle das mídias
+*/
 class Locadora{
     private:
         Locador central_midia_locacoes;
         ControleCliente central_de_clientes;
 
     public:
-        // Controle de Midias
+/**
+ * Inicializa os métodos que já foram criados e explicados nas classes Locador e Controle Cliente
+*/
+
+/**
+* Controle de Midias
+*/
         void ler_estoque(std::string nome_do_arquivo);
         void salvar_estoque(std::string nome_do_arquivo);
         void cadastrar_midia(std::string tipo, int quantidade, int codigo, std::string titulo, std::string categoria);
@@ -20,13 +30,17 @@ class Locadora{
         void ordenar_midias_por_codigo();
         void ordenar_midias_por_titulo();
 
-        // Controle de Clientes
+/**
+ * Controle de Clientes
+*/
         void cadastrar_cliente(long cpf, std::string nome);
         void remover_cliente(long cpf);
         void listar_clientes_por_nome();
         void listar_clientes_por_cpf();
 
-        // Controle de Locação
+/**
+ * Controle de Locação
+*/
         void alugar_midias(long cpf, std::map<int, int> locacoes);
         void devolver_midias(long cpf);
 
