@@ -23,7 +23,12 @@ string Cliente::getNome() {
 }
 
 bool ControleCliente::validarCPF(long int cpf) {
-    return cpf >= 10000000000 && cpf <= 99999999999;
+    int contaDigito = 0;
+    while(cpf != 0) {
+        cpf /= 10;
+        contaDigito++;
+    }
+    return contaDigito = 11;
 }
 
 void ControleCliente::cadastrar_cliente(long int cpf, string nome) {
