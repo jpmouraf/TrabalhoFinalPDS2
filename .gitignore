@@ -9,3 +9,6 @@ build/ControleDeMidia/Dvd.o
 build/ControleDeMidia/Fita.o
 *.o
 build/program.exe
+makefile
+*.o
+build/program.exe
