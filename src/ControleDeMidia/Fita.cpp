@@ -6,7 +6,7 @@
 Fita::Fita(int codigo_numerico, std::string titulo, int unidades_disponiveis) : Midia(codigo_numerico, titulo, unidades_disponiveis) {
     try
     {
-        this->setTipo("Fita cassete");
+        this->setTipo("FITA");
     }
 
     catch(const std::exception& e)

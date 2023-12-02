@@ -4,7 +4,7 @@
 Dvd::Dvd(int codigo_numerico, std::string titulo, int unidades_disponiveis) : Midia(codigo_numerico, titulo, unidades_disponiveis) {
     try
     {
-        this->setTipo("Dvd");
+        this->setTipo("DVD");
     }
 
     catch(const std::exception& e)

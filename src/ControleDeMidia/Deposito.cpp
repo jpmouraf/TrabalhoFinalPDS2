@@ -133,19 +133,19 @@ void Deposito::salvar_estoque(){
 
     for (auto& midia : this->_midias){
         if (typeid(*midia.second) == typeid(Promocao)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "promocao\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "Promocao\n";
         }
 
         else if (typeid(*midia.second) == typeid(Lancamento)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "lancamento\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "Lancamento\n";
         }
 
         else if (typeid(*midia.second) == typeid(Estoque)) {
-            estoque_saida << "D" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "estoque\n";
+            estoque_saida << "D" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "Estoque\n";
         }
         
         else if (typeid(*midia.second) == typeid(Fita)) {
-            estoque_saida << "F" << midia.second->getUnidadesDisponiveis() << midia.first << midia.second->getTitulo() << "\n";
+            estoque_saida << "F" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "\n";
         }
     }
     
@@ -158,12 +158,9 @@ void Deposito::ordenar_titulo() {
         std::string nome = it.second->getTitulo();
         temp_map[nome] = it.second;
     }
-    std::cout << "## {RELAToRIO}: Titulo de todas as midias em estoque ##" << std::endl;
     for(auto it : temp_map){
-        std::cout << it.first << std::endl;
+        std::cout << it.second->getCodigoNumerico() << " " << it.second->getTitulo() << " " << it.second->getUnidadesDisponiveis() << " " << it.second->getTipo() << std::endl;
     }
-    std::cout << "################## FIM DO RELAToRIO ##################" << std::endl;
-    
 };
 
 void Deposito::imprimir_todas_midias(){

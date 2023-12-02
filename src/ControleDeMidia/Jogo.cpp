@@ -6,7 +6,7 @@
 Jogo::Jogo(int codigo_numerico, std::string titulo, int unidades_disponiveis) : Midia(codigo_numerico, titulo, unidades_disponiveis){
     try
     {
-        this->setTipo("Jogo");
+        this->setTipo("JOGO");
     }
 
     catch(const std::exception& e)
