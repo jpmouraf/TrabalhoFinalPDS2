@@ -45,8 +45,16 @@ int main(){
             std::string titulo;
             std::string categoria;
 
-            std::istringstream stream(entrada.substr(3));
-            stream >> tipo >> quantidade >> codigo >> titulo >> categoria;
+            try
+            {
+                std::istringstream stream(entrada.substr(3));
+                stream >> tipo >> quantidade >> codigo >> titulo >> categoria;
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cout << "ERRO: Voce provavelmente informou dados em brancos" << '\n';
+                continue;
+            }
 
             try
             {
@@ -115,7 +123,7 @@ int main(){
             }
 
             else {
-                std::cout << "ERRO: ainda nao e possivel ordenar por " << tipo << std::endl;
+                std::cout << "ERRO: ainda nao e possivel ordenar por " << tipo << ". Insira HP para visualizar os comandos." <<std::endl;
             }
         }
 
@@ -126,32 +134,77 @@ int main(){
         
         // Cadastrar Cliente
         else if (comando == "CC") {
-            long cpf;
+            long long cpf;
             std::string nome;
 
-            std::istringstream stream(entrada.substr(2));
-            stream >> cpf >> nome;
+            try
+            {
+                std::istringstream stream(entrada.substr(3));
+                stream >> cpf >> nome;
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cout << "ERRO: Voce provavelmente informou dados em brancos" << '\n';
+                continue;
+            }
 
-            cinerama.cadastrar_cliente(cpf, nome);
-
+            try
+            {
+                cinerama.cadastrar_cliente(cpf, nome);
+            }
+            catch(const ExcecaoCliente& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
         }
 
         // Remover Cliente
         else if (comando == "RC") {
-            long cpf;
+            long long cpf;
 
-            std::istringstream stream(entrada.substr(2));
-            stream >> cpf;
+            try
+            {
+                std::istringstream stream(entrada.substr(3));
+                stream >> cpf;
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cout << "ERRO: Voce provavelmente informou dados em brancos" << '\n';
+                continue;
+            }
 
-            cinerama.remover_cliente(cpf);
+            try
+            {
+                cinerama.remover_cliente(cpf);
+            }
+            catch(const ExcecaoCliente& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
         }
 
         // Listar Clientes ordenados por Codigo ou Nome
         else if (comando == "LC") {
             std::string tipo;
 
-            std::istringstream stream(entrada.substr(2));
-            stream >> tipo;
+            try
+            {
+                std::istringstream stream(entrada.substr(2));
+                stream >> tipo;
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cout << "ERRO: Voce provavelmente informou dados em brancos" << '\n';
+                continue;
+            }
 
             if (tipo == "C"){
                 cinerama.listar_clientes_por_cpf();
@@ -175,7 +228,7 @@ int main(){
 
         // Devolucao Midia
         else if (comando == "DV") {
-            long cpf;
+            long long cpf;
             std::istringstream stream(entrada.substr(2));
             stream >> cpf;
 
@@ -213,46 +266,3 @@ int main(){
         }
     }
 }
-// Aluguel Filme
-/*AL <CPF> <Codigo1> … <Codigo N>
-Cliente <CPF> <Nome> alugou os filmes:
-<codigo> <titulo> <FITA|DVD> (Lista com todos os itens, um por linha)
-ERRO: CPF inexistente
-ERRO: Filme <codigo> inexistente*/
-
-// Devolucao Filme
-/* NAO EXISTE UMA FUNCAO QUE RECEBE SOMENTE O CPF NO LOCADOR, FALTA METODO PARA LER O CLIENTE E CALCULAR
-DV <CPF>
-Cliente <CPF> <Nome> devolveu os filmes:
-<codigo> [Valor a Pagar] (Lista com todos os itens, um por linha)
-Total a pagar: [Total]
-ERRO: CPF inexistente*/
-
-/*
-PROBLEMAS SEM SOLUCAO
-
-- Aluguel e Devolucao de filmes
-- No metodo devolver_midias do Locador e esperado um parametro dias, porem este deve ser calculado pelo propio metodo
-- Nao temos Excecoes e Programacao Defensiva
-- Tem como transformar um DVD Estoque em DVD Promocao? SIM, APENAS DESCADASTRAR E CADASTRAR COM NOVA CATEGORIA
-
-PROBLEMAS SOLUCIONADOS
-
-- Metodos faltando para a comunicacao entre Locador - Deposito
-- Metodo para cadastrar midia
-- Controle de Adicao/Edicao de Locacoes por meio de CSV e CTIME (banco de locacoes)
-- Escrever locacao no banco de locacoes
-- Classe Locadora
-- Banco de Midias/Estoque
-- Leitura do Banco de Midias ao construir um Deposito
-- Salvar midias no Banco de Midias ao destruir um Deposito
-- Comando HELP, para listar todos comandos existentes no main
-
-FUNCOES QUE ESTAO/SERAO IMPLEMENTADAS
-
-- Funcao genero, para classificar e colocar em promocao generos especificos, como terror. (DEVE SER VOTADO PELOS MEMBROS) ps: e uma funcao crucial para uma locadora
-- Imprimir filmes mais alugados
-- Imprimir filmes menos alugados - ignorando os lancamentos
-- Imprimir receitas do ultimo mes
-
-*/

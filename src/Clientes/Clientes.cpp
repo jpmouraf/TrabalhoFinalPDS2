@@ -11,7 +11,7 @@
 #include "../../include/Clientes/Clientes.hpp"
 
 //METODOS PRIVADOS
-long int Cliente::getCPF(){
+long long Cliente::getCPF(){
     return this->_cpf;
 }
 
@@ -29,7 +29,7 @@ int ControleCliente::calcula_dias(time_t data_locacao){
     return diferencaDias;
 };
 
-time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
+time_t ControleCliente::encontrar_data_alocacao(long long cpf, int codigo) {
     std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
 
     if (!banco_de_locacoes.is_open()) {
@@ -48,7 +48,7 @@ time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
         celulas.push_back(campo);
     }
 
-    long cpf_csv = stol(celulas[0]);
+    long long cpf_csv = stol(celulas[0]);
     if (cpf_csv == cpf) {
         std::string datetime = celulas[4];
         tm tmStruct = {};
@@ -61,7 +61,7 @@ time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
     return datetime_alocacao;
 };
 
-std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long cpf){
+std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long long cpf){
     info_midia midia;
     std::map<int, info_midia> saida;
     std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
@@ -81,7 +81,7 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long cp
         celulas.push_back(campo);
     }
 
-    long cpf_csv = stol(celulas[0]);
+    long long cpf_csv = stol(celulas[0]);
     if (cpf_csv == cpf) {
         midia.cpf_cliente = cpf_csv;
         midia.titulo = celulas[1];
@@ -94,7 +94,7 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long cp
 };
 
 //METODOS PUBLICOS
-Cliente::Cliente(std::string nome, long int cpf) : _nome(nome) , _cpf(cpf) {}
+Cliente::Cliente(std::string nome, long long cpf) : _nome(nome) , _cpf(cpf) {}
 
 void ControleCliente::listar_nome() {
     _clientes.sort([](Cliente& a, Cliente& b) {
@@ -112,11 +112,11 @@ void ControleCliente::listar_codigo() {
     }
 };
 
-bool ControleCliente::validar_CPF(long int cpf) {
+bool ControleCliente::validar_CPF(long long cpf) {
     return cpf >= 10000000000 && cpf <= 99999999999;
 };
 
-void ControleCliente::remover_cliente(long int cpf) {
+void ControleCliente::remover_cliente(long long cpf) {
     for (auto it = _clientes.begin(); it != _clientes.end(); ++it) {
         if (it->getCPF() == cpf) {
             _clientes.erase(it);
@@ -127,7 +127,7 @@ void ControleCliente::remover_cliente(long int cpf) {
     throw ExcecaoCliente("ERRO: CPF inexistente");
 };
 
-void ControleCliente::cadastrar_cliente(long int cpf, std::string nome) {
+void ControleCliente::cadastrar_cliente(long long cpf, std::string nome) {
     if(!validar_CPF(cpf)) {
         throw ExcecaoCliente("ERRO: dados incorretos");
     }
@@ -193,7 +193,7 @@ void ControleCliente::midias_mais_alugadas() {
     }
 }
 
-void ControleCliente::ler_informacoes_locacao(long int cpf){
+void ControleCliente::ler_informacoes_locacao(long long cpf){
     InformacoesLocacoes saida;
     saida.locacoes = this->carregar_locacoes_csv_cliente(cpf);
     int id_teste = saida.locacoes.begin()->first;
@@ -201,7 +201,7 @@ void ControleCliente::ler_informacoes_locacao(long int cpf){
     this->informacoes_locacoes = saida;
 };
 
-void ControleCliente::escrever_locacoes_cliente(long int cpf, std::map<int, int> locacoes){
+void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, int> locacoes){
     std::ofstream banco_de_locacoes("../../data/banco_de_locacoes.csv", std::ios::app);
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();

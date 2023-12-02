@@ -22,10 +22,10 @@ void Locadora::ordenar_midias_por_titulo(){
 }
 
 // Controle de Clientes
-void Locadora::cadastrar_cliente(long cpf, std::string nome){
+void Locadora::cadastrar_cliente(long long cpf, std::string nome){
     this->central_de_clientes.cadastrar_cliente(cpf, nome);
 }
-void Locadora::remover_cliente(long cpf){
+void Locadora::remover_cliente(long long cpf){
     this->central_de_clientes.remover_cliente(cpf);
 }
 void Locadora::listar_clientes_por_nome(){
@@ -36,10 +36,10 @@ void Locadora::listar_clientes_por_cpf(){
 }
 
 // Controle de Locacao
-void Locadora::alugar_midias(long cpf, std::map<int, int> locacoes){
+void Locadora::alugar_midias(long long cpf, std::map<int, int> locacoes){
 
 }
-void Locadora::devolver_midias(long cpf){
+void Locadora::devolver_midias(long long cpf){
     
 }
 

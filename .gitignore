@@ -1,14 +1,4 @@
 
-build/Locadora/Locadora.o
-build/ControleDeMidia/Midia.o
-build/ControleDeMidia/Deposito.o
-build/ControleDeLocacao/ControleDeLocacao.o
-build/ControleDeMidia/Jogo.o
-build/ControleDeMidia/Deposito.o
-build/ControleDeMidia/Dvd.o
-build/ControleDeMidia/Fita.o
 *.o
-build/program.exe
 makefile
-*.o
 build/program.exe

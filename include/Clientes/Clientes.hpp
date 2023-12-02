@@ -8,19 +8,19 @@
 
 class Cliente {
     private:
-        long int _cpf; ///< CPF do cliente.
+        long long _cpf; ///< CPF do cliente.
         std::string _nome; ///< Nome do cliente.
  
     public:
         /**
          * Construtor da classe Cliente.
          */
-        Cliente(std::string nome, long int cpf);
+        Cliente(std::string nome, long long cpf);
 
         /**
          * retorna o CPF do cliente.
          */    
-        long int getCPF();
+        long long getCPF();
         /**
          * retorna o nome do cliente.
          */
@@ -29,7 +29,7 @@ class Cliente {
 
 struct info_midia{
     std::string titulo; ///< Titulo da Midia.
-    long int cpf_cliente;  ///< CPF do cliente que alocou a midia.
+    long long cpf_cliente;  ///< CPF do cliente que alocou a midia.
 };
 
 /**
@@ -51,11 +51,11 @@ class ControleCliente {
         /**
         * Encontra a data da alocacao feita pelo cliente baseado em seu cpf e pelo codigo do filme
         */ 
-        time_t encontrar_data_alocacao(long cpf, int codigo);
+        time_t encontrar_data_alocacao(long long cpf, int codigo);
         /**
         * Recebe o cpf e armazena todas as locacoes dele
         */
-        std::map<int, info_midia> carregar_locacoes_csv_cliente(long cpf);
+        std::map<int, info_midia> carregar_locacoes_csv_cliente(long long cpf);
 
     public:
         /**
@@ -69,15 +69,15 @@ class ControleCliente {
         /**
         * Valida o cpf de acordo com a sua entrada. Verdadeiro se o CPF for valido, falso caso contrario.
         */
-        bool validar_CPF(long int cpf);
+        bool validar_CPF(long long cpf);
         /**
         * Remove um cliente cadastrado de acordo com o seu cpf
         */
-        void remover_cliente(long int cpf);
+        void remover_cliente(long long cpf);
         /**
          * Cadastra um novo cliente a partir do seu cpf e nome
          */
-        void cadastrar_cliente(long int cpf, std::string nome);
+        void cadastrar_cliente(long long cpf, std::string nome);
 
         /**
          * Imprime um relatorio informando as 10 midias mais alugadas na nossa locadora.
@@ -90,11 +90,11 @@ class ControleCliente {
         /**
          * Obtem informacoes de locacao para um cliente.
          */
-        void ler_informacoes_locacao(long int cpf);
+        void ler_informacoes_locacao(long long cpf);
         /**
          * Escreve as locacoes de um cliente e a armazena no map criado
          */
-        void escrever_locacoes_cliente(long int cpf, std::map<int, int> locacoes);
+        void escrever_locacoes_cliente(long long cpf, std::map<int, int> locacoes);
         
 };
 
