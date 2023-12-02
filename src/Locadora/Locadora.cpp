@@ -36,10 +36,10 @@ void Locadora::remover_cliente(long long cpf){
     this->central_de_clientes.remover_cliente(cpf);
 }
 void Locadora::listar_clientes_por_nome(){
-    this->central_de_clientes.listar_codigo();
+    this->central_de_clientes.listar_nome();
 }
 void Locadora::listar_clientes_por_cpf(){
-    this->central_de_clientes.listar_nome();
+    this->central_de_clientes.listar_codigo();
 }
 
 // Controle de Locacao
