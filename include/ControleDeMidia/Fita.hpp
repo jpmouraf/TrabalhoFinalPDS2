@@ -5,16 +5,12 @@
 #include <iostream>
 #include "Midia.hpp"
 
-using namespace std;
-
 class Fita : public Midia {
-    private:
-        static const string _tipo;
     public:
-        Fita(int codigo_numerico, string titulo, int unidades_disponiveis);
-        int calcular_locacao(int dias) override;
+        Fita(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+
         void imprimir_info() override;
-        string gettipo() override;
+        int calcular_locacao(int dias) override;
 };
 
 #endif

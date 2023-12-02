@@ -5,34 +5,34 @@
 #include <iostream>
 #include "Midia.hpp"
 
-using namespace std;
-
-class Dvd : public Midia {
-    private:
-        static const string _tipo;
+class Dvd : public Midia { 
     public:
-        Dvd(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Dvd(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+        
         void imprimir_info() override;
-        string gettipo() override;
 };
 
 class Lancamento : public Dvd {
     public:
-        Lancamento(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Lancamento(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+        
+        int dias_locacao;
         virtual int calcular_locacao(int dias) override;
 };
 
 class Estoque : public Dvd {
     public:
-        int _dias_locacao;
-        Estoque(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Estoque(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+
+        int dias_locacao;
         virtual int calcular_locacao(int dias) override;
 };
 
 class Promocao : public Dvd {
     public:
-        int _dias_locacao;
-        Promocao(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Promocao(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+
+        int dias_locacao;
         virtual int calcular_locacao(int dias) override;
 };
 

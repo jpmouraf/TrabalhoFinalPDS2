@@ -1,44 +1,45 @@
 #ifndef DEPOSITO_H
 #define DEPOSITO_H
 
-#include "Midia.hpp"
+#include <map>
+#include <string>
+#include <fstream>
+#include <iostream>
 #include "Dvd.hpp"
 #include "Fita.hpp"
 #include "Jogo.hpp"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <map>
-
-using namespace std;
+#include "Midia.hpp"
 
 class Deposito {
     private:
-        map<int, Midia*> _midias;
-        string tipo;
-        string _categoria;
+        std::string tipo;
+        std::string _categoria;
+        std::map<int, Midia*> _midias;
     
     public:
         Deposito();
         ~Deposito();
 
-        void cadastrar_dvd(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo, string categoria);
-        void cadastrar_jogo(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
-        void cadastrar_fita(string tipo, int unidades_disponiveis, int codigo_numerico, string titulo);
+        void cadastrar_jogo(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        void cadastrar_fita(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        void cadastrar_dvd(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria);
+
         void remover_midia(int codigo_numerico);
-        void ler_estoque(string nome_arquivo);
-        void salvar_estoque(string nome_arquivo);
+        void ler_estoque(std::string nome_arquivo);
+        void salvar_estoque(std::string nome_arquivo);
+
         void salvar_estoque();
         void ordenar_codigo();
         void ordenar_titulo();
+
+        void imprimir_todas_midias();
         Midia* get_midia(int codigo_numerico);
+        void imprimir_todas_midias_agrupadas_nome();
         void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
         void devolver_midia(int codigo_numerico, int quantidade); // funções por favor sinta-se livre para mudar
-        void imprimir_todas_midias();
-        void imprimir_todas_midias_agrupadas_nome();
 };
 
-class ExcecaoDeposito : public exception {
+class ExcecaoDeposito : public std::exception {
     private:
         const char* _mensagem;
     

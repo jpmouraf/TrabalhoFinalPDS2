@@ -4,23 +4,24 @@
 #include <string>
 #include <iostream>
 
-using namespace std;
-
 class Midia {
     private:
+        bool _const_tipo = false;
+        std::string _tipo;
+        std::string _titulo;
         int _codigo_numerico;
-        string _titulo;
         int _unidades_disponiveis;
-        
+
     public:
-        Midia(int codigo_numerico, string titulo, int unidades_disponiveis);
+        Midia(int codigo_numerico, std::string titulo, int unidades_disponiveis);
+
+        std::string getTipo();
+        std::string getTitulo();
         int getCodigoNumerico();
-        string getTitulo();
         int getUnidadesDisponiveis();
         virtual void imprimir_info();
-        virtual string gettipo() = 0;
+        void setTipo(std::string tipo);
         virtual int calcular_locacao(int dias) = 0;
 };
-
 
 #endif
