@@ -78,6 +78,9 @@ int main(){
                 std::cout << "ERRO: ainda nao e possivel ordenar por " << tipo << std::endl;
             }
         }
+        else if (comando == "CL"){
+            cinerama.imprimir_catalogo();
+        }
         
         // Cadastrar Cliente
         else if (comando == "CC") {

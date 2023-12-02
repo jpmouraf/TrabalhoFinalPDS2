@@ -34,7 +34,7 @@ class Deposito {
 
         void imprimir_todas_midias();
         Midia* get_midia(int codigo_numerico);
-        void imprimir_todas_midias_agrupadas_nome();
+        void imprimir_catalogo();
         void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
         void devolver_midia(int codigo_numerico, int quantidade); // funcoes por favor sinta-se livre para mudar
 };

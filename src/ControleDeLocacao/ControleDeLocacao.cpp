@@ -93,3 +93,7 @@ void Locador::ordenar_titulo(){
 void Locador::imprimir_todas_midias(){
     this->armazenamento.imprimir_todas_midias();
 }
+
+void Locador::imprimir_catalogo(){
+    this->armazenamento.imprimir_catalogo();
+}

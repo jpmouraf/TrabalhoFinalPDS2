@@ -181,7 +181,7 @@ Midia* Deposito::get_midia(int codigo_numerico){
     }
 };
 
-void Deposito::imprimir_todas_midias_agrupadas_nome(){
+void Deposito::imprimir_catalogo(){
     std::map<std::string, std::vector<Midia*>> categorias;
     for(auto it : _midias){
         Midia* midia_atual = it.second;

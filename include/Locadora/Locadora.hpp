@@ -19,6 +19,7 @@ class Locadora{
         void remover_midia(int codigo_numerico);
         void ordenar_midias_por_codigo();
         void ordenar_midias_por_titulo();
+        void imprimir_catalogo();
 
         // Controle de Clientes
         void cadastrar_cliente(long cpf, std::string nome);

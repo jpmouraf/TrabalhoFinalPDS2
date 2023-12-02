@@ -24,6 +24,7 @@ class Locador {
 
         void ordenar_titulo();
         void imprimir_todas_midias();
+        void imprimir_catalogo();
 };
 
 class LocaErro : public std::exception {
