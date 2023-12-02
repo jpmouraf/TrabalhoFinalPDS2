@@ -180,21 +180,19 @@ void Deposito::ordenar_codigo() {
 
 
 void Deposito::ordenar_titulo() {
-    auto comparador = [](pair<int, Midia*>& a, pair<int, Midia*>& b) {
-        return a.second->getTitulo() < b.second->getTitulo();
-    };
-
-    map<int, Midia*, decltype(comparador)> filmesOrdenadosPorTitulo(_midias.begin(), _midias.end(), comparador);
-
-    _midias.clear();
-
-    for (const auto& par : filmesOrdenadosPorTitulo) {
-        _midias[par.first] = par.second;
+    map <string, Midia*> temp_map;
+    for(auto it : _midias){
+        string nome = it.second->getTitulo();
+        if(temp_map.find(nome) == temp_map.end()){
+            temp_map[nome] = it.second;
+        }
     }
-
-    for (const auto& par : _midias) {
-        cout << par.first << ": " << par.second->getTitulo() << endl;
+    cout << "## {RELATÓRIO}: Título de todas as mídias em estoque ##" << endl;
+    for(auto it : temp_map){
+        cout << it.first << endl;
     }
+    cout << "################## FIM DO RELATÓRIO ##################" << endl;
+    
 }
 
 void Deposito::imprimir_todas_midias(){
