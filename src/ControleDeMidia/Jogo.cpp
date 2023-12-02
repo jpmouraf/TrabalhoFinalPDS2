@@ -5,8 +5,10 @@
 
 using namespace std;
 
+const string Jogo::_tipo = "Jogo";
+
 Jogo::Jogo(int codigo_numerico, string titulo, int unidades_disponiveis) :
-    Midia(codigo_numerico, titulo, unidades_disponiveis) {}
+    Midia(codigo_numerico, titulo, unidades_disponiveis){}
 
 int Jogo::calcular_locacao(int dias) {
     int valor_jogo = 0;
@@ -17,4 +19,7 @@ int Jogo::calcular_locacao(int dias) {
 void Jogo::imprimir_info() {
     Midia::imprimir_info();
     cout << "Jogo" << endl;
+}
+string Jogo::gettipo() {
+    cout << _tipo << endl;
 }

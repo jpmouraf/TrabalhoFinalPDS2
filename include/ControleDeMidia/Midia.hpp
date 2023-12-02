@@ -11,13 +11,14 @@ class Midia {
         int _codigo_numerico;
         string _titulo;
         int _unidades_disponiveis;
-
+        
     public:
         Midia(int codigo_numerico, string titulo, int unidades_disponiveis);
         int getCodigoNumerico();
         string getTitulo();
         int getUnidadesDisponiveis();
         virtual void imprimir_info();
+        virtual string gettipo() = 0;
         virtual int calcular_locacao(int dias) = 0;
 };
 

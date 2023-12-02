@@ -22,3 +22,4 @@ int Midia::getUnidadesDisponiveis() {
 void Midia::imprimir_info(){
     cout << this->getCodigoNumerico() << this->getTitulo() << this->getUnidadesDisponiveis();
 }
+
