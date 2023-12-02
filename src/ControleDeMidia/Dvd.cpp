@@ -1,20 +1,24 @@
 #include "../../include/ControleDeMidia/Dvd.hpp"
 #include "../../include/ControleDeMidia/Midia.hpp"
 
-const string Dvd::_tipo = "Dvd";
+Dvd::Dvd(int codigo_numerico, std::string titulo, int unidades_disponiveis) : Midia(codigo_numerico, titulo, unidades_disponiveis) {
+    try
+    {
+        this->setTipo("Dvd");
+    }
 
-Dvd::Dvd(int codigo_numerico, string titulo, int unidades_disponiveis)
-    :Midia(codigo_numerico, titulo, unidades_disponiveis) {}
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+}
 
 void Dvd::imprimir_info(){
     Midia::imprimir_info();
-    cout << "DVD" << endl;
-}
-string Dvd::gettipo() {
-    cout << _tipo << endl;
+    std::cout << "DVD" << std::endl;
 }
 
-Lancamento::Lancamento(int codigo_numerico, string titulo, int unidades_disponiveis)
+Lancamento::Lancamento(int codigo_numerico, std::string titulo, int unidades_disponiveis)
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}
 
 int Lancamento::calcular_locacao(int dias) {
@@ -22,7 +26,7 @@ int Lancamento::calcular_locacao(int dias) {
     return valor_lancamento;
 }
 
-Estoque::Estoque(int codigo_numerico, string titulo, int unidades_disponiveis)
+Estoque::Estoque(int codigo_numerico, std::string titulo, int unidades_disponiveis)
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}
 
 int Estoque::calcular_locacao(int dias) {
@@ -30,7 +34,7 @@ int Estoque::calcular_locacao(int dias) {
     return valor_estoque;
 }
 
-Promocao::Promocao(int codigo_numerico, string titulo, int unidades_disponiveis)
+Promocao::Promocao(int codigo_numerico, std::string titulo, int unidades_disponiveis)
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}
 
 int Promocao::calcular_locacao(int dias) {
