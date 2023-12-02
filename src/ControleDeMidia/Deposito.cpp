@@ -4,12 +4,15 @@
 #include <iostream>
 #include <vector>
 #include "../../include/ControleDeMidia/Deposito.hpp"
+#include <filesystem>
 
 
 using namespace std;
 
 Deposito::Deposito(){
-    this->ler_estoque("../../data/banco_de_midias.txt");
+    
+    filesystem::path caminho = filesystem::current_path()/"../data/banco_de_midias.txt";
+    this->ler_estoque(caminho.string());
 }
 
 Deposito::~Deposito(){

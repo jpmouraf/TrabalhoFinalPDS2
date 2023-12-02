@@ -4,6 +4,7 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "algorithm": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "map": "cpp"
     }
 }
