@@ -1,0 +1,89 @@
+Bem-\/vindo ao Sistema de Locadora, um projeto de software em C++ desenvolvido por Denner, Vitor Gabriel e João Paulo!\hypertarget{md_README_autotoc_md1}{}\doxysection{Funcionalidades Principais}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{1. Ler Arquivo de Cadastro}\label{md_README_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LA <nome\_do\_arquivo.txt>}
+
+\end{DoxyCode}
+ Este comando permite a leitura de um arquivo de cadastro para inicializar a locadora.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{2. Cadastrar Mídia}\label{md_README_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CF F <quantidade> <\textcolor{keywordtype}{id}> <titulo>}
+\DoxyCodeLine{CF D <quantidade> <\textcolor{keywordtype}{id}> <titulo> <categoria>}
+
+\end{DoxyCode}
+ Cadastra uma nova mídia, seja ela do tipo Fita (F) ou DVD (D), com suas respectivas informações.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{3. Remover Mídia}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RF <id>}
+
+\end{DoxyCode}
+ Remove uma mídia com base no seu ID.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{4. Listar Mídias}\label{md_README_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LF C}
+\DoxyCodeLine{LF T}
+
+\end{DoxyCode}
+ Lista as mídias ordenadas por Código (C) ou Título (T).\hypertarget{md_README_autotoc_md6}{}\doxysubsection{5. Cadastrar Cliente}\label{md_README_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CC <cpf> <nome>}
+
+\end{DoxyCode}
+ Cadastra um novo cliente com CPF e nome.\hypertarget{md_README_autotoc_md7}{}\doxysubsection{6. Remover Cliente}\label{md_README_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RC <cpf>}
+
+\end{DoxyCode}
+ Remove um cliente com base no CPF.\hypertarget{md_README_autotoc_md8}{}\doxysubsection{7. Listar Clientes}\label{md_README_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LC C}
+\DoxyCodeLine{LC N}
+
+\end{DoxyCode}
+ Lista os clientes ordenados por CPF (C) ou Nome (N).\hypertarget{md_README_autotoc_md9}{}\doxysubsection{8. Aluguel de Mídias}\label{md_README_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AL}
+
+\end{DoxyCode}
+ Realiza o aluguel de mídias.\hypertarget{md_README_autotoc_md10}{}\doxysubsection{9. Devolução de Mídias}\label{md_README_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{DV <cpf>}
+
+\end{DoxyCode}
+ Realiza a devolução de mídias associadas a um cliente.\hypertarget{md_README_autotoc_md11}{}\doxysubsection{10. Finalizar Sistema}\label{md_README_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{FS}
+
+\end{DoxyCode}
+ Encerra o sistema.\hypertarget{md_README_autotoc_md12}{}\doxysubsection{11. Ajuda}\label{md_README_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{HP}
+
+\end{DoxyCode}
+ Exibe uma lista de comandos disponíveis.\hypertarget{md_README_autotoc_md13}{}\doxysection{Exemplo de Uso}\label{md_README_autotoc_md13}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LA dados.txt}
+\DoxyCodeLine{CF F 10 001 Titanic}
+\DoxyCodeLine{LF T}
+\DoxyCodeLine{CC 12345678900 João}
+\DoxyCodeLine{AL}
+\DoxyCodeLine{DV 12345678900}
+\DoxyCodeLine{FS}
+
+\end{DoxyCode}
+
+
+Lembre-\/se de conferir a ajuda (HP) para uma lista completa de comandos!
+
+Divirta-\/se explorando o Sistema de Locadora! 🍿🕹️
+
+Link para acessar a modelagem CRC \href{https://echeung.me/crcmaker/?share=W3sibmFtZSI6Ik1pZGlhIiwic3VwZXJjbGFzc2VzIjoiIiwic3ViY2xhc3NlcyI6IkR2ZCwgRml0YSwgSm9nbyIsInR5cGUiOjIsInJlc3BvbnNpYmlsaXRpZXMiOlsiQ29kaWdvIE51bWVyaWNvIiwiVGl0dWxvIiwiVW5pZGFkZXMgRGlzcG9uaXZlaXMiLCJJbXByaW1pciBpbmZvcm1h5/VlcyIsIkNhbGN1bGFyIHZhbG9yIGRlIGxvY2Hn428iLCIiXSwiY29sbGFib3JhdG9ycyI6WyJKb2dvIiwiRml0YSIsIkR2ZCJdfSx7Im5hbWUiOiJEdmQiLCJzdXBlcmNsYXNzZXMiOiIiLCJzdWJjbGFzc2VzIjoiTGFuY2FtZW50bywgRXN0b3F1ZSwgUHJvbW9jYW8iLCJ0eXBlIjoxLCJyZXNwb25zaWJpbGl0aWVzIjpbIkltcHJpbWlyIGluZm9ybWHn9WVzIiwiQ2FsY3VsYXIgdmFsb3IgZGUgbG9jYefjbyJdLCJjb2xsYWJvcmF0b3JzIjpbIkxhbmNhbWVudG8iLCJFc3RvcXVlIiwiUHJvbW9jYW8iXX0seyJuYW1lIjoiRml0YSIsInN1cGVyY2xhc3NlcyI6IiIsInN1YmNsYXNzZXMiOiIiLCJ0eXBlIjoxLCJyZXNwb25zaWJpbGl0aWVzIjpbIkltcHJpbWlyIGluZm9ybWHn9WVzICIsIkNhbGN1bGFyIGxvY2Hn428iXSwiY29sbGFib3JhdG9ycyI6WyIiXX0seyJuYW1lIjoiSm9nbyIsInN1cGVyY2xhc3NlcyI6IiIsInN1YmNsYXNzZXMiOiIiLCJ0eXBlIjoxLCJyZXNwb25zaWJpbGl0aWVzIjpbIkltcHJpbWlyIGluZm9ybWHn9WVzIiwiQ2FsY3VsYXIgbG9jYefjbyJdLCJjb2xsYWJvcmF0b3JzIjpbIiJdfSx7Im5hbWUiOiJEZXBvc2l0byIsInN1cGVyY2xhc3NlcyI6IiIsInN1YmNsYXNzZXMiOiIiLCJ0eXBlIjoxLCJyZXNwb25zaWJpbGl0aWVzIjpbIkVzdG9xdWUgZGFzIG1pZGlhcyIsInRpcG8gZGEgbWlkaWEiLCJjYXRlZ29yaWEgZGEgbWlkaWEiLCJDYWRhc3RyYXIgYXMgbWlkaWFzIiwiUmVtb3ZlciBhcyBtaWRpYXMiLCJMZXIgbyBlc3RvcXVlIiwiU2FsdmFyIG8gZXN0b3F1ZSIsIk9yZGVuYXIgcG9yIGNvZGlnb3Mgb3UgIG5vbWUiLCJDb250cm9sYXIgYSByZXRpcmFkYSBlIGRldm9sdefjbyBkZSBtaWRpYXMiLCJJbXByaW1pciBhcyBtaWRpYXMiXSwiY29sbGFib3JhdG9ycyI6WyJMb2NhZG9yIiwiIl19LHsibmFtZSI6IkNsaWVudGUiLCJzdXBlcmNsYXNzZXMiOiIiLCJzdWJjbGFzc2VzIjoiIiwidHlwZSI6MSwicmVzcG9uc2liaWxpdGllcyI6WyJOb21lIiwiQ3BmIiwiSW5pY2lhbGl6YXIgbm9tZSBlIGNwZiJdLCJjb2xsYWJvcmF0b3JzIjpbIkNvbnRyb2xlQ2xpZW50ZSJdfSx7Im5hbWUiOiJDb250cm9sZUNsaWVudGUiLCJzdXBlcmNsYXNzZXMiOiIiLCJzdWJjbGFzc2VzIjoiIiwidHlwZSI6MSwicmVzcG9uc2liaWxpdGllcyI6WyJBcm1hemVuYXIgb3MgY2xpZW50ZXMiLCJWYWxpZGFyIG8gY3BmIiwiQ2FkYXN0cmFyIGUgcmVtb3ZlciBjbGllbnRlcyIsIk9yZGVuYXIgb3MgY2xpZW50ZXMgcG9yIG5vbWUgZSBjcGYiXSwiY29sbGFib3JhdG9ycyI6WyIiXX0seyJuYW1lIjoiTG9jYWRvciIsInN1cGVyY2xhc3NlcyI6IiIsInN1YmNsYXNzZXMiOiIiLCJ0eXBlIjoxLCJyZXNwb25zaWJpbGl0aWVzIjpbIk9iamV0byBkYSBjbGFzc2UgZGVwb3NpdG8iLCJBbHVnYXIgZSBkZXZvbHZlciBtaWRpYXMiLCJMZXIgZSBzYWx2YXIgbyBlc3RvcXVlIiwiQ2FkYXN0cmFyIGUgcmVtb3ZlciBtaWRpYSIsIk9yZGVuYXIgcG9yIGPzZGlnbyBlIG5vbWUiLCJJbXByaW1pciBhcyBt7WRpYXMiLCIiLCIiXSwiY29sbGFib3JhdG9ycyI6WyIiXX1d}{\texttt{ https\+://echeung.\+me/crcmaker/?share=\+W3sibm\+Ft\+ZSI6\+Ik1p\+ZGlh\+Iiwic3\+Vw\+ZXJjb\+GFzc2\+Vz\+Ijoi\+Iiwic3\+Vi\+Y2xhc3\+Nlcy\+I6\+Ik\+R2\+ZCwg\+Rml0\+YSwg\+Sm9nby\+Is\+In\+R5c\+GUi\+Oj\+Is\+In\+Jlc3\+Bvbn\+Np\+Ymlsa\+XRp\+ZXMi\+Olsi\+Q29ka\+Wdv\+IE51b\+WVya\+WNv\+Iiwi\+VGl0d\+Wxv\+Iiwi\+VW5p\+ZGFk\+ZXMg\+RGlzc\+G9ua\+XZla\+XMi\+LCJJb\+XBya\+W1pci\+Bpbm\+Zvcm1h5/\+Vlcy\+Is\+Ik\+Nhb\+GN1b\+GFy\+IHZhb\+G9y\+IGRl\+IGxv\+Y2\+Hn428i\+LCIi\+XSwi\+Y29sb\+GFib3\+Jhd\+G9ycy\+I6\+Wy\+JKb2dv\+Iiwi\+Rml0\+YSIs\+Ik\+R2\+ZCJdf\+Sx7\+Im5hb\+WUi\+Oi\+JEdm\+Qi\+LCJzd\+XBlcm\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJzd\+WJjb\+GFzc2\+Vz\+Ijoi\+TGFu\+Y2\+Ft\+ZW50bywg\+RXN0b3\+F1\+ZSwg\+UHJvb\+W9j\+YW8i\+LCJ0e\+XBl\+Ijox\+LCJy\+ZXNwb25za\+WJpb\+Gl0a\+WVz\+Ijpb\+Ikltc\+HJpb\+Wly\+IGlu\+Zm9yb\+WHn9\+WVz\+Iiwi\+Q2\+Fs\+Y3\+Vs\+YXIgdm\+Fsb3\+Ig\+ZGUgb\+G9j\+Yefjby\+Jd\+LCJjb2xs\+YWJvcm\+F0b3\+Jz\+Ijpb\+Ikxhbm\+Nhb\+WVud\+G8i\+LCJFc3\+Rvc\+XVl\+Iiwi\+UHJvb\+W9j\+YW8i\+XX0sey\+Ju\+YW1l\+Ijoi\+Rml0\+YSIs\+In\+N1c\+GVy\+Y2xhc3\+Nlcy\+I6\+Ii\+Is\+In\+N1\+Ym\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJ0e\+XBl\+Ijox\+LCJy\+ZXNwb25za\+WJpb\+Gl0a\+WVz\+Ijpb\+Ikltc\+HJpb\+Wly\+IGlu\+Zm9yb\+WHn9\+WVz\+ICIs\+Ik\+Nhb\+GN1b\+GFy\+IGxv\+Y2\+Hn428i\+XSwi\+Y29sb\+GFib3\+Jhd\+G9ycy\+I6\+Wy\+Ii\+XX0sey\+Ju\+YW1l\+Ijoi\+Sm9nby\+Is\+In\+N1c\+GVy\+Y2xhc3\+Nlcy\+I6\+Ii\+Is\+In\+N1\+Ym\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJ0e\+XBl\+Ijox\+LCJy\+ZXNwb25za\+WJpb\+Gl0a\+WVz\+Ijpb\+Ikltc\+HJpb\+Wly\+IGlu\+Zm9yb\+WHn9\+WVz\+Iiwi\+Q2\+Fs\+Y3\+Vs\+YXIgb\+G9j\+Yefjby\+Jd\+LCJjb2xs\+YWJvcm\+F0b3\+Jz\+Ijpb\+Ii\+Jdf\+Sx7\+Im5hb\+WUi\+Oi\+JEZXBvc2l0by\+Is\+In\+N1c\+GVy\+Y2xhc3\+Nlcy\+I6\+Ii\+Is\+In\+N1\+Ym\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJ0e\+XBl\+Ijox\+LCJy\+ZXNwb25za\+WJpb\+Gl0a\+WVz\+Ijpb\+Ik\+Vzd\+G9xd\+WUg\+ZGFz\+IG1p\+ZGlhcy\+Is\+In\+Rpc\+G8g\+ZGEgb\+Wlka\+WEi\+LCJj\+YXRl\+Z29ya\+WEg\+ZGEgb\+Wlka\+WEi\+LCJDYWRhc3\+Ry\+YXIg\+YXMgb\+Wlka\+WFz\+Iiwi\+Um\+Vtb3\+Zlci\+Bhcy\+Bta\+WRp\+YXMi\+LCJMZXIgby\+Blc3\+Rvc\+XVl\+Iiwi\+U2\+Fsdm\+Fy\+IG8g\+ZXN0b3\+F1\+ZSIs\+Ik9y\+ZGVu\+YXIgc\+G9y\+IGNv\+ZGlnb3\+Mgb3\+Ug\+IG5vb\+WUi\+LCJDb250cm9s\+YXIg\+YSBy\+ZXRpcm\+Fk\+YSBl\+IGRldm9sdefjby\+Bk\+ZSBta\+WRp\+YXMi\+LCJJb\+XBya\+W1pci\+Bhcy\+Bta\+WRp\+YXMi\+XSwi\+Y29sb\+GFib3\+Jhd\+G9ycy\+I6\+Wy\+JMb2\+Nh\+ZG9y\+Iiwi\+Il19\+LHsibm\+Ft\+ZSI6\+Ik\+Nsa\+WVud\+GUi\+LCJzd\+XBlcm\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJzd\+WJjb\+GFzc2\+Vz\+Ijoi\+Iiwid\+Hlw\+ZSI6\+MSwicm\+Vzc\+G9uc2lia\+Wxpd\+Gllcy\+I6\+Wy\+JOb21l\+Iiwi\+Q3\+Bm\+Iiwi\+SW5p\+Y2lhb\+Gl6\+YXIgbm9t\+ZSBl\+IGNw\+Zi\+Jd\+LCJjb2xs\+YWJvcm\+F0b3\+Jz\+Ijpb\+Ik\+Nvbn\+Ryb2xl\+Q2xp\+ZW50\+ZSJdf\+Sx7\+Im5hb\+WUi\+Oi\+JDb250cm9s\+ZUNsa\+WVud\+GUi\+LCJzd\+XBlcm\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJzd\+WJjb\+GFzc2\+Vz\+Ijoi\+Iiwid\+Hlw\+ZSI6\+MSwicm\+Vzc\+G9uc2lia\+Wxpd\+Gllcy\+I6\+Wy\+JBcm1hem\+Vu\+YXIgb3\+Mg\+Y2xp\+ZW50\+ZXMi\+LCJWYWxp\+ZGFy\+IG8g\+Y3\+Bm\+Iiwi\+Q2\+Fk\+YXN0cm\+Fy\+IGUgcm\+Vtb3\+Zlci\+Bjb\+Gllbn\+Rlcy\+Is\+Ik9y\+ZGVu\+YXIgb3\+Mg\+Y2xp\+ZW50\+ZXMgc\+G9y\+IG5vb\+WUg\+ZSBjc\+GYi\+XSwi\+Y29sb\+GFib3\+Jhd\+G9ycy\+I6\+Wy\+Ii\+XX0sey\+Ju\+YW1l\+Ijoi\+TG9j\+YWRvci\+Is\+In\+N1c\+GVy\+Y2xhc3\+Nlcy\+I6\+Ii\+Is\+In\+N1\+Ym\+Ns\+YXNz\+ZXMi\+Oi\+Ii\+LCJ0e\+XBl\+Ijox\+LCJy\+ZXNwb25za\+WJpb\+Gl0a\+WVz\+Ijpb\+Ik9iam\+V0by\+Bk\+YSBjb\+GFzc2\+Ug\+ZGVwb3\+Npd\+G8i\+LCJBb\+HVn\+YXIg\+ZSBk\+ZXZvb\+HZlci\+Bta\+WRp\+YXMi\+LCJMZXIg\+ZSBz\+YWx2\+YXIgby\+Blc3\+Rvc\+XVl\+Iiwi\+Q2\+Fk\+YXN0cm\+Fy\+IGUgcm\+Vtb3\+Zlci\+Bta\+WRp\+YSIs\+Ik9y\+ZGVu\+YXIgc\+G9y\+IGPz\+ZGlnby\+Bl\+IG5vb\+WUi\+LCJJb\+XBya\+W1pci\+Bhcy\+Bt7\+WRp\+YXMi\+LCIi\+LCIi\+XSwi\+Y29sb\+GFib3\+Jhd\+G9ycy\+I6\+Wy\+Ii\+XX1d}} 
