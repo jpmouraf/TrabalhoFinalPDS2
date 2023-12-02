@@ -55,8 +55,12 @@ void ControleCliente::remover_cliente(long int cpf) {
 
 
 void ControleCliente::listar_codigo() {
+    _clientes.sort([](Cliente& a, Cliente& b) {
+        return a.getCPF() < b.getCPF();
+    });
+
     for (auto& cliente : _clientes) {
-        cout << cliente.getCPF() << ": " << cliente.getNome() << endl;
+        std::cout << cliente.getCPF() << ": " << cliente.getNome() << std::endl;
     }
 }
 
