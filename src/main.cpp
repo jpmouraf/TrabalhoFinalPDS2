@@ -198,7 +198,7 @@ int main(){
                 try {
                     disponiveis = cinerama.get_midia(codigo)->getUnidadesDisponiveis();
                 } catch (DadosInexistente &e){
-                    std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade." std::endl;
+                    std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade." << std::endl;
                     continue;
                 }
                 
