@@ -5,7 +5,7 @@ INCLUDE_DIR=include
 BUILD_DIR=build
 
 #procurando todos os cpp's em cada diretório
-CLIENTES_SRC=$(wildcard $(SRC_DIR)/clientes/*.cpp)
+CLIENTES_SRC=$(wildcard $(SRC_DIR)/Clientes/*.cpp)
 CONTROLE_LOCACAO_SRC=$(wildcard $(SRC_DIR)/ControleDeLocacao/*.cpp)
 CONTROLE_MIDIA_SRC=$(wildcard $(SRC_DIR)/ControleDeMidia/*.cpp)
 LOCADORA_SRC=$(wildcard $(SRC_DIR)/Locadora/*.cpp)
@@ -22,7 +22,7 @@ MAIN_OBJ=$(MAIN_SRC:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 INCLUDES=$(wildcard $(INCLUDE_DIR)/*.hpp)
 
 #definindo o executável
-TARGET=$(BUILD_DIR)/program
+TARGET=$(BUILD_DIR)/program.exe
 
 all: directories $(TARGET)
 
