@@ -11,19 +11,14 @@ Deposito::~Deposito(){
     this->salvar_estoque();
 }
 
-void Deposito::cadastrar_jogo(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo) {
+void Deposito::cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std::string titulo) {
     auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
         throw DadosRepetidos ("ERRO: codigo repetido");
     }
-    if(tipo == "FITA") {
-        Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
-        _midias[codigo_numerico] = nova_fita;
-        std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
-    }
-    else {
-        throw DadosInexistente ("ERRO: dados incorretos");
-    }
+    Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
+    _midias[codigo_numerico] = nova_fita;
+    std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
 };
 
 void Deposito::cadastrar_fita(std::string tipo, int unidades_disponiveis, int codigo_numerico, std::string titulo) {
@@ -46,7 +41,7 @@ void Deposito::cadastrar_dvd(std::string tipo, int unidades_disponiveis, int cod
     if (it != _midias.end()) {
         throw DadosRepetidos ("ERRO: codigo repetido");
     }
-   Dvd* novo_dvd = nullptr;
+    Dvd* novo_dvd = nullptr;
     if (tipo == "DVD") {
         if (categoria == "Lancamento") {
             novo_dvd = new Lancamento(codigo_numerico, titulo, unidades_disponiveis);
@@ -79,32 +74,32 @@ void Deposito::remover_midia(int codigo_numerico) {
 
 void Deposito::ler_estoque(std::string nome_arquivo) {
     if (nome_arquivo.find(".txt") == std::string::npos) {
-        throw FormatoInvalido("[DPST] ERRO: Voce selecionou um formato de arquivo invalido. Apenas TXT sao aceitados");
+        throw FormatoInvalido("[DPST] ERRO: Você selecionou um formato de arquivo inválido. Apenas TXT são aceitos");
     }
 
-    std::ifstream arquivo;
-    arquivo.open(nome_arquivo);
+    std::ifstream arquivo(nome_arquivo);
     if (arquivo.is_open()) {
-        std::string tipo, titulo, categoria;
-        int unidades_disponiveis, codigo_numerico;
+        std::string linha;
         int contador = 0;
+        int 
 
         while (arquivo >> tipo >> unidades_disponiveis >> codigo_numerico) {
             getline(arquivo, titulo);
-            if (tipo == "DVD") {
+            if (tipo == "D") {
                 getline(arquivo, categoria);
                 cadastrar_dvd(tipo, unidades_disponiveis, codigo_numerico, titulo, categoria);
-            } else if (tipo == "FITA") {
+            } else if (tipo == "F") {
                 cadastrar_fita(tipo, unidades_disponiveis, codigo_numerico, titulo);
-            } else if (tipo == "JOGO") {
+            } else if (tipo == "J") {
                 cadastrar_jogo(tipo, unidades_disponiveis, codigo_numerico, titulo);
             }
             contador++;
         }
+
         arquivo.close();
         std::cout << contador << " Midias cadastradas com sucesso" << std::endl;
     } else {
-        throw ExcecaoDeposito ("ERRO: arquivo inexistente");
+        throw ExcecaoDeposito("ERRO: arquivo inexistente");
     }
 };
 
@@ -161,7 +156,7 @@ void Deposito::salvar_estoque(){
 void Deposito::ordenar_codigo() {
     std::map<int, Midia*>::iterator it;
     for(it = _midias.begin(); it != _midias.end(); it++) {
-        std::cout << it ->first << ": " << it->second << std::endl;
+        std::cout << it ->first << ": " << it->second->getTitulo() << std::endl;
     }
 };
 
@@ -182,8 +177,9 @@ void Deposito::ordenar_titulo() {
 };
 
 void Deposito::imprimir_todas_midias(){
-    for (auto& midia : this->_midias) {
-        midia.second->imprimir_info();
+    std::map<int, Midia*>::iterator it;
+    for(it = _midias.begin(); it != _midias.end(); it++) {
+        it->second->imprimir_info();
     }
 };
 
