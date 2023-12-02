@@ -48,16 +48,56 @@ int main(){
             std::istringstream stream(entrada.substr(3));
             stream >> tipo >> quantidade >> codigo >> titulo >> categoria;
 
-            cinerama.cadastrar_midia(tipo, quantidade, codigo, titulo, categoria);
+            try
+            {
+                cinerama.cadastrar_midia(tipo, quantidade, codigo, titulo, categoria);
+            }
+            catch(const DadosRepetidos& e)
+            {
+                std::cerr << e.what() << '\n';
+                std::cout << "Codigo de midia ja cadastrado. Voce pode conferir as midias cadastradas com o comando CL" << '\n' ;
+            }
+            catch(const LocaErro& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+            catch(const DadosInexistente& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
         }
 
         // Remover Midia
         else if (comando == "RF") {
             int codigo;
-            std::istringstream stream(entrada.substr(3));
-            stream >> codigo;
 
-            cinerama.remover_midia(codigo);
+            try
+            {
+                std::istringstream stream(entrada.substr(3));
+                stream >> codigo;
+            }
+            catch(const std::out_of_range& e)
+            {
+                std::cout << "Provavelmente sua entrada esta em branco, tente usar RF <int>." << '\n';
+                continue;
+            }
+
+            try
+            {
+                cinerama.remover_midia(codigo);
+            }
+            catch(const DadosInexistente& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
+            catch(const std::exception& e)
+            {
+                std::cerr << e.what() << '\n';
+            }
         }
 
         // Listar Midia ordenadas por Codigo ou Titulo
@@ -78,6 +118,8 @@ int main(){
                 std::cout << "ERRO: ainda nao e possivel ordenar por " << tipo << std::endl;
             }
         }
+
+        // Imprimir midias organizadas por formato
         else if (comando == "CL"){
             cinerama.imprimir_catalogo();
         }
@@ -217,6 +259,7 @@ int main(){
             std::cout << "LA <nome_do_arquivo.txt> - Ler arquivo de cadastro" << std::endl;
             std::cout << "CF F <quantidade> <id> <titulo> - Cadastrar Midia do tipo Fita" << std::endl;
             std::cout << "CF D <quantidade> <id> <titulo> <categoria> - Cadastrar Midia do tipo DVD" << std::endl;
+            std::cout << "CL - Imprimir midias organizadas por formato" << std::endl;
             std::cout << "RF <id> - Remover Midia" << std::endl;
             std::cout << "LF C - Listar Midia ordenadas por Codigo" << std::endl;
             std::cout << "LF T - Listar Midia ordenadas por Titulo" << std::endl;
