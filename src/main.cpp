@@ -20,14 +20,20 @@ int main(){
         // Ler Arquivo de Cadastro
         if (comando == "LA") {
             std::filesystem::path caminho = std::filesystem::current_path();
-            std::string path = caminho.string() + "\\" + entrada.substr(3);
+            std::string path = caminho.string() + "\\" + entrada.substr(3);// USAR '//' no linux
             try
             {
                 cinerama.ler_estoque(path);
             }
             catch(const ExcecaoDeposito& e)
             {
-                std::cerr << e.what() << '\n';
+                try{
+                    path = caminho.string() + "//" + entrada.substr(3); // usando '\\' para windows.
+                    cinerama.ler_estoque(path);
+                } catch (const ExcecaoDeposito& e) {
+                    std::cerr << e.what() << '\n';
+                    std::cout << "O arquivo não foi encontrado. Utilize o comando 'LA' novamente caso queira tentar outra vez." << std::endl;
+                }
             }
         }
         

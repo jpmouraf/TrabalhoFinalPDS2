@@ -96,6 +96,8 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
                 cadastrar_dvd(tipo, unidades_disponiveis, codigo_numerico, titulo, categoria);
             } else if (tipo == "FITA") {
                 cadastrar_fita(tipo, unidades_disponiveis, codigo_numerico, titulo);
+            } else if (tipo == "JOGO") {
+                cadastrar_jogo(tipo, unidades_disponiveis, codigo_numerico, titulo);
             }
             contador++;
         }
