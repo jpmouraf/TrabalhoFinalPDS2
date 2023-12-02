@@ -36,7 +36,7 @@ int Midia::getUnidadesDisponiveis() {
 }
 
 void Midia::imprimir_info(){
-    std::cout << this->getCodigoNumerico() << this->getTitulo() << this->getUnidadesDisponiveis();
+    std::cout << "TESTE" << this->getCodigoNumerico() << this->getTitulo() << this->getUnidadesDisponiveis();
 }
 
 void Midia::setTipo(std::string tipo){
