@@ -5,8 +5,14 @@
 
 using namespace std;
 
+const string Fita::_tipo = "Fita cassete";
+
 Fita::Fita(int codigo_numerico, string titulo, int unidades_disponiveis) :
             Midia(codigo_numerico, titulo, unidades_disponiveis) {}
+
+string Fita::gettipo() {
+    cout << _tipo << endl;
+}
 
 int Fita::calcular_locacao(int dias) {
     int valor_fita = 0;

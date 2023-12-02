@@ -1,12 +1,17 @@
 #include "../../include/ControleDeMidia/Dvd.hpp"
 #include "../../include/ControleDeMidia/Midia.hpp"
 
+const string Dvd::_tipo = "Dvd";
+
 Dvd::Dvd(int codigo_numerico, string titulo, int unidades_disponiveis)
     :Midia(codigo_numerico, titulo, unidades_disponiveis) {}
 
 void Dvd::imprimir_info(){
     Midia::imprimir_info();
     cout << "DVD" << endl;
+}
+string Dvd::gettipo() {
+    cout << _tipo << endl;
 }
 
 Lancamento::Lancamento(int codigo_numerico, string titulo, int unidades_disponiveis)

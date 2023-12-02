@@ -8,9 +8,12 @@
 using namespace std;
 
 class Dvd : public Midia {
+    private:
+        static const string _tipo;
     public:
         Dvd(int codigo_numerico, string titulo, int unidades_disponiveis);
         void imprimir_info() override;
+        string gettipo() override;
 };
 
 class Lancamento : public Dvd {

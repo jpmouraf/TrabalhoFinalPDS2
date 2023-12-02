@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <vector>
 #include "../../include/ControleDeMidia/Deposito.hpp"
 
 
@@ -183,7 +184,7 @@ void Deposito::ordenar_titulo() {
     map <string, Midia*> temp_map;
     for(auto it : _midias){
         string nome = it.second->getTitulo();
-        if(temp_map.find(nome) == temp_map.end()){
+        if(temp_map.find(nome) != temp_map.end()){
             temp_map[nome] = it.second;
         }
     }
@@ -202,3 +203,25 @@ void Deposito::imprimir_todas_midias(){
         midia.second->imprimir_info();
     }
 }
+
+void Deposito::imprimir_todas_midias_agrupadas_nome(){
+    map<string, vector<Midia*>> categorias;
+    for(auto it : _midias){
+        Midia* midia_atual = it.second;
+        string nome = midia_atual->getTitulo();
+        if(categorias.find(nome) != categorias.end()){ //se o vetor desse nome existe
+            categorias.find(nome)->second.push_back(midia_atual);
+        } else { //se o vetor desse nome não existe
+            vector<Midia*> temp;
+            temp.push_back(midia_atual);
+            categorias[nome] = temp;
+        }
+    }
+
+    for(auto it : categorias){
+        cout << "Nome da mídia: " << it.first << ". Disponível nos seguintes formatos: " << endl;
+        for(auto it2 : it.second){
+            cout << " - "<< it2->gettipo() << ", " << it2->getUnidadesDisponiveis() << " unidades disponíveis em estoque." << endl;
+        }
+    }
+};
