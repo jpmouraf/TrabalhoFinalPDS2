@@ -29,15 +29,15 @@ class Cliente {
 
 struct info_midia{
     std::string titulo; ///< Titulo da Midia.
-    long int cpf_cliente;  ///< CPF do cliente que alocou a mídia.
+    long int cpf_cliente;  ///< CPF do cliente que alocou a midia.
 };
 
 /**
- * Estrutura para armazenar informações sobre locações de um cliente.
+ * Estrutura para armazenar informacoes sobre locacoes de um cliente.
  */
 struct InformacoesLocacoes{
-    int dias_desde_alocacao; ///< Número de dias de locação.
-    std::map<int, info_midia> locacoes; ///< Mapa que associa códigos de locação a informacoes da midia.
+    int dias_desde_alocacao; ///< Número de dias de locacao.
+    std::map<int, info_midia> locacoes; ///< Mapa que associa codigos de locacao a informacoes da midia.
 };
 
 class ControleCliente {
@@ -45,15 +45,15 @@ class ControleCliente {
         std::list<Cliente> _clientes; ///< Lista de clientes.
 
         /**
-         * Calcula o número de dias desde a data de locação.
+         * Calcula o número de dias desde a data de locacao.
          */
         int calcula_dias(time_t data_locacao);
         /**
-        * Encontra a data da alocação feita pelo cliente baseado em seu cpf e pelo código do filme
+        * Encontra a data da alocacao feita pelo cliente baseado em seu cpf e pelo codigo do filme
         */ 
         time_t encontrar_data_alocacao(long cpf, int codigo);
         /**
-        * Recebe o cpf e armazena todas as locações dele
+        * Recebe o cpf e armazena todas as locacoes dele
         */
         std::map<int, info_midia> carregar_locacoes_csv_cliente(long cpf);
 
@@ -67,7 +67,7 @@ class ControleCliente {
          */
         void listar_codigo();
         /**
-        * Valida o cpf de acordo com a sua entrada. Verdadeiro se o CPF for válido, falso caso contrário.
+        * Valida o cpf de acordo com a sua entrada. Verdadeiro se o CPF for valido, falso caso contrario.
         */
         bool validar_CPF(long int cpf);
         /**
@@ -80,19 +80,19 @@ class ControleCliente {
         void cadastrar_cliente(long int cpf, std::string nome);
 
         /**
-         * Imprime um relatório informando as 10 midias mais alugadas na nossa locadora.
+         * Imprime um relatorio informando as 10 midias mais alugadas na nossa locadora.
          */
         void midias_mais_alugadas();
         /**
-         * Armazena informações de locação para um cliente.
+         * Armazena informacoes de locacao para um cliente.
          */
         InformacoesLocacoes informacoes_locacoes;
         /**
-         * Obtém informações de locação para um cliente.
+         * Obtem informacoes de locacao para um cliente.
          */
         void ler_informacoes_locacao(long int cpf);
         /**
-         * Escreve as locações de um cliente e a armazena no map criado
+         * Escreve as locacoes de um cliente e a armazena no map criado
          */
         void escrever_locacoes_cliente(long int cpf, std::map<int, int> locacoes);
         
@@ -100,7 +100,7 @@ class ControleCliente {
 
 class ExcecaoCliente : public std::exception {
     private:
-        const char* _mensagem; ///< Mensagem de exceção.
+        const char* _mensagem; ///< Mensagem de excecao.
 
     public:
 
@@ -115,7 +115,7 @@ class ExcecaoCliente : public std::exception {
 };
 
 /**
- * Classe para exceção relacionada a erro ao abrir arquivo.
+ * Classe para excecao relacionada a erro ao abrir arquivo.
  */
 class ErroAbrirArquivo : public std::runtime_error {
     public:

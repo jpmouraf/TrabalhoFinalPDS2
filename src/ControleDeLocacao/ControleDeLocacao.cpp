@@ -4,16 +4,16 @@
 #include <iomanip>
 #include "../../include/ControleDeLocacao/ControleDeLocacao.hpp"
 
-void Locador::alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de exceção para quando o cliente quer alugar uma mídia que não existe no sistema.
+void Locador::alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de excecao para quando o cliente quer alugar uma midia que nao existe no sistema.
     clientes.escrever_locacoes_cliente(cpf_cliente, locacoes);
-    std::cout << "######### Recibo de Locação ###########" << std::endl;
+    std::cout << "######### Recibo de Locacao ###########" << std::endl;
     std::cout << "CPF: " << cpf_cliente << std::endl << std::endl;
     for (auto it : locacoes){
         int codigo_midia = it.first;
         int quantidade_midia = it.second;
         try {
             Midia* locada = armazenamento.get_midia(codigo_midia);
-            std::cout << "Mídia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << std::endl;
+            std::cout << "Midia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << std::endl;
         } catch(DadosInexistente &e) {
             throw;
         }
@@ -23,7 +23,7 @@ void Locador::alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, C
     std::cout << "######### Fim  do  Recibo ###########" << std::endl;
 }
 
-void Locador::devolver_midias(long int cpf_cliente, ControleCliente clientes){ //futuramente adicionar um handler de exceção para quando o cliente quer devolver uma mídia que não existe no sistema.
+void Locador::devolver_midias(long int cpf_cliente, ControleCliente clientes){ //futuramente adicionar um handler de excecao para quando o cliente quer devolver uma midia que nao existe no sistema.
     clientes.ler_informacoes_locacao(cpf_cliente);
     std::map<int, info_midia> locacoes = clientes.informacoes_locacoes.locacoes;
     int dias = clientes.informacoes_locacoes.dias_desde_alocacao;
@@ -38,15 +38,15 @@ void Locador::devolver_midias(long int cpf_cliente, ControleCliente clientes){ /
 
             Midia* devolvida = armazenamento.get_midia(codigo_midia);
             
-            std::cout << "Mídia: " << devolvida->getTitulo() << "Quantidade: x" << quantidade_midia << " ";
+            std::cout << "Midia: " << devolvida->getTitulo() << "Quantidade: x" << quantidade_midia << " ";
             int total_midia;
             for(int i = 0; i<quantidade_midia; i++){
                 total_midia += devolvida->calcular_locacao(dias);
             }
             std::cout << "Total: " << total_midia << " reais" << std::endl;
             total_locacao += total_midia;
-        } catch(DadosInexistente &e){ //mudar para exceção de código de filme não existente
-            std::cout << "[LOCADOR] Atenção: código de filme alugado '" << codigo_midia <<"' inexistente, verifique se o filme não foi retirado do sistema durante o período da locação." << std::endl;
+        } catch(DadosInexistente &e){ //mudar para excecao de codigo de filme nao existente
+            std::cout << "[LOCADOR] Atencao: codigo de filme alugado '" << codigo_midia <<"' inexistente, verifique se o filme nao foi retirado do sistema durante o periodo da locacao." << std::endl;
             continue;
         }
     }
@@ -78,7 +78,7 @@ void Locador::cadastrar_midia(std::string tipo, int quantidade, int codigo, std:
     }
 
     else {
-        throw LocaErro("ERRO: não foi posível identificar o tipo de midia escolhida");
+        throw LocaErro("ERRO: nao foi posivel identificar o tipo de midia escolhida");
     }
 }
 

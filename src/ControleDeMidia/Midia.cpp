@@ -1,5 +1,22 @@
 #include "../../include/ControleDeMidia/Midia.hpp"
 
+class MidiaErro : public std::exception {
+    private:
+        const char* _mensagem;
+    
+    public:
+        MidiaErro(const char* mensagem) : _mensagem(mensagem) {}
+        
+        virtual const char* what() const noexcept {
+            return _mensagem;
+        }
+};
+
+class RedefinirConstanteTipo : public MidiaErro {
+    public:
+        RedefinirConstanteTipo(char* mensagem) : MidiaErro(mensagem) {}
+};
+
 Midia::Midia(int codigo_numerico, std::string titulo, int unidades_disponiveis) : _codigo_numerico(codigo_numerico) , _titulo(titulo) , _unidades_disponiveis(unidades_disponiveis){}
 
 std::string Midia::getTipo() {
@@ -27,23 +44,6 @@ void Midia::setTipo(std::string tipo){
         this->_tipo = tipo;
         this->_const_tipo = true;
     } else{
-        throw RedefinirConstanteTipo("[MIDIA] ERRO: Você está tentando redefinir uma constante");
+        throw RedefinirConstanteTipo("[MIDIA] ERRO: Você esta tentando redefinir uma constante");
     }
 }
-
-class MidiaErro : public std::exception {
-    private:
-        const char* _mensagem;
-    
-    public:
-        MidiaErro(const char* mensagem) : _mensagem(mensagem) {}
-        
-        virtual const char* what() const noexcept {
-            return _mensagem;
-        }
-};
-
-class RedefinirConstanteTipo : public MidiaErro {
-    public:
-        RedefinirConstanteTipo(char* mensagem) : MidiaErro(mensagem) {}
-};

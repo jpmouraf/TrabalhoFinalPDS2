@@ -8,9 +8,17 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
-#include "Clientes.hpp"
+#include "../../include/Clientes/Clientes.hpp"
 
 //METODOS PRIVADOS
+long int Cliente::getCPF(){
+    return this->_cpf;
+}
+
+std::string Cliente::getNome(){
+    return this->_nome;
+}
+
 int ControleCliente::calcula_dias(time_t data_locacao){
     time_t data_devolucao = time(0);
     const int segundosPorDia = 60 * 60 * 24;
@@ -86,6 +94,8 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long cp
 };
 
 //METODOS PUBLICOS
+Cliente::Cliente(std::string nome, long int cpf) : _nome(nome) , _cpf(cpf) {}
+
 void ControleCliente::listar_nome() {
     _clientes.sort([](Cliente& a, Cliente& b) {
         return a.getNome() < b.getNome();
@@ -133,8 +143,8 @@ void ControleCliente::cadastrar_cliente(long int cpf, std::string nome) {
     }
 }
 
-void midias_mais_alugadas() {
-    // Mapa para armazenar a contagem de aluguéis para cada título de mídia
+void ControleCliente::midias_mais_alugadas() {
+    // Mapa para armazenar a contagem de alugueis para cada titulo de midia
     std::map<std::string, int> contagem_alugueis;
 
     std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
@@ -153,7 +163,7 @@ void midias_mais_alugadas() {
             celulas.push_back(campo);
         }
 
-        // Verificar se a linha possui as informações necessárias
+        // Verificar se a linha possui as informacoes necessarias
         if (celulas.size() >= 4) {
             std::string titulo = celulas[1];
             contagem_alugueis[titulo]++;
@@ -162,7 +172,7 @@ void midias_mais_alugadas() {
 
     banco_de_locacoes.close();
 
-    // Converter o mapa em um vetor de pares (título, contagem)
+    // Converter o mapa em um vetor de pares (titulo, contagem)
     std::vector<std::pair<std::string, int>> vetor_contagem(contagem_alugueis.begin(), contagem_alugueis.end());
 
     // Classificar o vetor com base na contagem (do maior para o menor)
@@ -171,11 +181,11 @@ void midias_mais_alugadas() {
                   return a.second > b.second;
               });
 
-    // Imprimir as 10 mídias mais alugadas
-    std::cout << "As 10 mídias mais alugadas:" << std::endl;
+    // Imprimir as 10 midias mais alugadas
+    std::cout << "As 10 midias mais alugadas:" << std::endl;
     int contador = 0;
     for (const auto &par : vetor_contagem) {
-        std::cout << "Título: " << par.first << ", Aluguéis: " << par.second << std::endl;
+        std::cout << "Titulo: " << par.first << ", Alugueis: " << par.second << std::endl;
         contador++;
         if (contador == 10) {
             break;

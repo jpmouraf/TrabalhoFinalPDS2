@@ -36,7 +36,7 @@ class Deposito {
         Midia* get_midia(int codigo_numerico);
         void imprimir_todas_midias_agrupadas_nome();
         void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
-        void devolver_midia(int codigo_numerico, int quantidade); // funções por favor sinta-se livre para mudar
+        void devolver_midia(int codigo_numerico, int quantidade); // funcoes por favor sinta-se livre para mudar
 };
 
 class ExcecaoDeposito : public std::exception {
@@ -51,7 +51,6 @@ class ExcecaoDeposito : public std::exception {
 
 };
 
-
 class DadosRepetidos : public ExcecaoDeposito {
     public:
         DadosRepetidos(char* mensagem) : ExcecaoDeposito(mensagem) {}
@@ -60,6 +59,16 @@ class DadosRepetidos : public ExcecaoDeposito {
 class DadosInexistente : public ExcecaoDeposito {
     public:
         DadosInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
+};
+
+class ArquivoInexistente : public ExcecaoDeposito {
+    public:
+        ArquivoInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
+};
+
+class FormatoInvalido : public ExcecaoDeposito {
+    public:
+        FormatoInvalido(char* mensagem) : ExcecaoDeposito(mensagem) {}
 };
 
 #endif

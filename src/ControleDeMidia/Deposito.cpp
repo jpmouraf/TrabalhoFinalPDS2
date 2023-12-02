@@ -19,7 +19,7 @@ void Deposito::cadastrar_jogo(std::string tipo, int unidades_disponiveis, int co
     if(tipo == "FITA") {
         Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
         _midias[codigo_numerico] = nova_fita;
-        std::cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
+        std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
     }
     else {
         throw DadosInexistente ("ERRO: dados incorretos");
@@ -34,7 +34,7 @@ void Deposito::cadastrar_fita(std::string tipo, int unidades_disponiveis, int co
     if(tipo == "FITA") {
         Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
         _midias[codigo_numerico] = nova_fita;
-        std::cout << "Mídia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
+        std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
     }
     else {
         throw DadosInexistente ("ERRO: dados incorretos");
@@ -71,14 +71,19 @@ void Deposito::remover_midia(int codigo_numerico) {
     auto it = _midias.find(codigo_numerico);
     if(it != _midias.end()) {
         _midias.erase(it);
-        std::cout << "Mídia " << codigo_numerico << " removida com sucesso" << std::endl;
+        std::cout << "Midia " << codigo_numerico << " removida com sucesso" << std::endl;
     } else {
-        throw DadosInexistente ("ERRO: código inexistente");
+        throw DadosInexistente ("ERRO: codigo inexistente");
     }
 };
 
 void Deposito::ler_estoque(std::string nome_arquivo) {
-    std::ifstream arquivo(nome_arquivo);
+    if (nome_arquivo.find(".txt") == std::string::npos) {
+        throw FormatoInvalido("[DPST] ERRO: Voce selecionou um formato de arquivo invalido. Apenas TXT sao aceitados");
+    }
+
+    std::ifstream arquivo;
+    arquivo.open(nome_arquivo);
     if (arquivo.is_open()) {
         std::string tipo, titulo, categoria;
         int unidades_disponiveis, codigo_numerico;
@@ -95,7 +100,7 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
             contador++;
         }
         arquivo.close();
-        std::cout << contador << " Mídias cadastradas com sucesso" << std::endl;
+        std::cout << contador << " Midias cadastradas com sucesso" << std::endl;
     } else {
         throw ExcecaoDeposito ("ERRO: arquivo inexistente");
     }
@@ -166,11 +171,11 @@ void Deposito::ordenar_titulo() {
             temp_map[nome] = it.second;
         }
     }
-    std::cout << "## {RELATÓRIO}: Título de todas as mídias em estoque ##" << std::endl;
+    std::cout << "## {RELAToRIO}: Titulo de todas as midias em estoque ##" << std::endl;
     for(auto it : temp_map){
         std::cout << it.first << std::endl;
     }
-    std::cout << "################## FIM DO RELATÓRIO ##################" << std::endl;
+    std::cout << "################## FIM DO RELAToRIO ##################" << std::endl;
     
 };
 
@@ -184,7 +189,7 @@ Midia* Deposito::get_midia(int codigo_numerico){
     if(_midias.find(codigo_numerico) != _midias.end()){
         return _midias[codigo_numerico];
     } else {
-        throw DadosInexistente("Nenhuma mídia encontrada com o código numérico dado");
+        throw DadosInexistente("Nenhuma midia encontrada com o codigo numerico dado");
     }
 };
 
@@ -195,7 +200,7 @@ void Deposito::imprimir_todas_midias_agrupadas_nome(){
         std::string nome = midia_atual->getTitulo();
         if(categorias.find(nome) != categorias.end()){ //se o vetor desse nome existe
             categorias.find(nome)->second.push_back(midia_atual);
-        } else { //se o vetor desse nome não existe
+        } else { //se o vetor desse nome nao existe
             std::vector<Midia*> temp;
             temp.push_back(midia_atual);
             categorias[nome] = temp;
@@ -203,9 +208,9 @@ void Deposito::imprimir_todas_midias_agrupadas_nome(){
     }
 
     for(auto it : categorias){
-        std::cout << "Nome da mídia: " << it.first << ". Disponível nos seguintes formatos: " << std::endl;
+        std::cout << "Nome da midia: " << it.first << ". Disponivel nos seguintes formatos: " << std::endl;
         for(auto it2 : it.second){
-            std::cout << " - "<< it2->getTipo() << ", " << it2->getUnidadesDisponiveis() << " unidades disponíveis em estoque." << std::endl;
+            std::cout << " - "<< it2->getTipo() << ", " << it2->getUnidadesDisponiveis() << " unidades disponiveis em estoque." << std::endl;
         }
     }
 };
@@ -214,7 +219,7 @@ void Deposito::retirar_midia(int codigo_numerico, int quantidade){
     try {
         _midias[codigo_numerico] += quantidade;
     } catch(std::out_of_range e){
-        throw DadosInexistente("ERRO: Mídia não existente na base de dados.");
+        throw DadosInexistente("ERRO: Midia nao existente na base de dados.");
     }
 };
 
@@ -222,6 +227,6 @@ void Deposito::devolver_midia(int codigo_numerico, int quantidade){ //talvez ten
     try {
         _midias[codigo_numerico] += quantidade;
     } catch(std::out_of_range e){
-        throw DadosInexistente(("[DPST] ERRO: Mídia não existe na base de dados. Verifique se a mídia não foi descadastrada durante o período de locação."));
+        throw DadosInexistente(("[DPST] ERRO: Midia nao existe na base de dados. Verifique se a midia nao foi descadastrada durante o periodo de locacao."));
     }
 };
