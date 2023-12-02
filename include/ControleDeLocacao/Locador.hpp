@@ -13,7 +13,7 @@ class Locador {
 
     public:
         void alugar_midias(long int cpf_cliente, map<int, int> locacoes, ControleCliente clientes);
-        void devolver_midias(long int cpf_cliente, int dias, ControleCliente clientes);
+        void devolver_midias(long int cpf_cliente, ControleCliente clientes);
         void gerar_relatorio();
         void ler_estoque(std::string nome_do_arquivo);
         void cadastrar_midia(std::string tipo, int quantidade, int codigo, std::string titulo, std::string categoria);
