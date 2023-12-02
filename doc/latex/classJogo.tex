@@ -1,0 +1,76 @@
+\hypertarget{classJogo}{}\doxysection{Jogo Class Reference}
+\label{classJogo}\index{Jogo@{Jogo}}
+
+
+{\ttfamily \#include $<$Jogo.\+hpp$>$}
+
+
+
+Inheritance diagram for Jogo\+:
+% FIG 0
+
+
+Collaboration diagram for Jogo\+:
+% FIG 1
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classJogo_a661b429abfe3d7f9bf64a8a3b62217a6}{Jogo}} (int codigo\+\_\+numerico, string titulo, int unidades\+\_\+disponiveis)
+\item 
+int \mbox{\hyperlink{classJogo_aef1467470ede9b27477fa284bd5e0bd7}{calcular\+\_\+locacao}} (int dias) override
+\item 
+void \mbox{\hyperlink{classJogo_af8709aab4c216e57196755727daaa498}{imprimir\+\_\+info}} () override
+\item 
+string \mbox{\hyperlink{classJogo_afd3af8b9ef5156b8edf12cf02d5fa140}{gettipo}} () override
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe \mbox{\hyperlink{classJogo}{Jogo}}, subclasse de \mbox{\hyperlink{classMidia}{Midia}}. É um tipo de mídia extra da nossa locadora 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classJogo_a661b429abfe3d7f9bf64a8a3b62217a6}\label{classJogo_a661b429abfe3d7f9bf64a8a3b62217a6}} 
+\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\index{Jogo@{Jogo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{Jogo()}{Jogo()}}
+{\footnotesize\ttfamily Jogo\+::\+Jogo (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico,  }\item[{string}]{titulo,  }\item[{int}]{unidades\+\_\+disponiveis }\end{DoxyParamCaption})}
+
+Construtor da classe \mbox{\hyperlink{classJogo}{Jogo}} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classJogo_aef1467470ede9b27477fa284bd5e0bd7}\label{classJogo_aef1467470ede9b27477fa284bd5e0bd7}} 
+\index{Jogo@{Jogo}!calcular\_locacao@{calcular\_locacao}}
+\index{calcular\_locacao@{calcular\_locacao}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{calcular\_locacao()}{calcular\_locacao()}}
+{\footnotesize\ttfamily int Jogo\+::calcular\+\_\+locacao (\begin{DoxyParamCaption}\item[{int}]{dias }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Calcula a locação do tipo \mbox{\hyperlink{classJogo}{Jogo}}. É aplicada uma multa de 5 reais caso o cliente retorno o jogo arranhado. Essa variável é calculada aleatoriamente 
+
+Implements \mbox{\hyperlink{classMidia_afb86f93d52cb850e8b3212d5ccffaa5b}{Midia}}.
+
+\mbox{\Hypertarget{classJogo_afd3af8b9ef5156b8edf12cf02d5fa140}\label{classJogo_afd3af8b9ef5156b8edf12cf02d5fa140}} 
+\index{Jogo@{Jogo}!gettipo@{gettipo}}
+\index{gettipo@{gettipo}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{gettipo()}{gettipo()}}
+{\footnotesize\ttfamily string Jogo\+::gettipo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Retorna o tipo \char`\"{}\+Jogo\char`\"{} 
+
+Implements \mbox{\hyperlink{classMidia_a643d50fd995c8fee000e6e78cafb48a3}{Midia}}.
+
+\mbox{\Hypertarget{classJogo_af8709aab4c216e57196755727daaa498}\label{classJogo_af8709aab4c216e57196755727daaa498}} 
+\index{Jogo@{Jogo}!imprimir\_info@{imprimir\_info}}
+\index{imprimir\_info@{imprimir\_info}!Jogo@{Jogo}}
+\doxysubsubsection{\texorpdfstring{imprimir\_info()}{imprimir\_info()}}
+{\footnotesize\ttfamily void Jogo\+::imprimir\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+Imprime as informações do jogo. 
+
+Reimplemented from \mbox{\hyperlink{classMidia_aca8470853ef3b59cf7120f10d0116c92}{Midia}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Controle\+De\+Midia/\mbox{\hyperlink{Jogo_8hpp}{Jogo.\+hpp}}\item 
+src/\+Controle\+De\+Midia/\mbox{\hyperlink{Jogo_8cpp}{Jogo.\+cpp}}\end{DoxyCompactItemize}

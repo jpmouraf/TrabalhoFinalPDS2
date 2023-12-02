@@ -1,0 +1,117 @@
+\hypertarget{classLocadora}{}\doxysection{Locadora Class Reference}
+\label{classLocadora}\index{Locadora@{Locadora}}
+
+
+{\ttfamily \#include $<$Locadora.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classLocadora_aae33af194f7fc797318b8c6b76278cce}{ler\+\_\+estoque}} (std\+::string nome\+\_\+do\+\_\+arquivo)
+\item 
+void \mbox{\hyperlink{classLocadora_af21e0bf112c8e78a49af1bb9a525280e}{salvar\+\_\+estoque}} (std\+::string nome\+\_\+do\+\_\+arquivo)
+\item 
+void \mbox{\hyperlink{classLocadora_a3e92a68922e94aa70e443423b6cc41b3}{cadastrar\+\_\+midia}} (std\+::string tipo, int quantidade, int codigo, std\+::string titulo, std\+::string categoria)
+\item 
+void \mbox{\hyperlink{classLocadora_a789f69a02fe680955ae6c12ab9e80707}{remover\+\_\+midia}} (int codigo\+\_\+numerico)
+\item 
+void \mbox{\hyperlink{classLocadora_a8a409b0d58371c1733337b5c9b0772d8}{ordenar\+\_\+midias\+\_\+por\+\_\+codigo}} ()
+\item 
+void \mbox{\hyperlink{classLocadora_a1c717320b186c0c2640052f8302319d5}{ordenar\+\_\+midias\+\_\+por\+\_\+titulo}} ()
+\item 
+void \mbox{\hyperlink{classLocadora_a44791918ee635bbd06d3b185631bcc3d}{cadastrar\+\_\+cliente}} (long cpf, std\+::string nome)
+\item 
+void \mbox{\hyperlink{classLocadora_a87092e5b98ca2eed90ba70f700dc5f34}{remover\+\_\+cliente}} (long cpf)
+\item 
+void \mbox{\hyperlink{classLocadora_a99ecc93aa2de500bdbc0c56700db8cb0}{listar\+\_\+clientes\+\_\+por\+\_\+nome}} ()
+\item 
+void \mbox{\hyperlink{classLocadora_a32287a2808832370463596b61e63594c}{listar\+\_\+clientes\+\_\+por\+\_\+cpf}} ()
+\item 
+void \mbox{\hyperlink{classLocadora_a3ab8e0d8709321c7dc3ec4708a35ad95}{alugar\+\_\+midias}} (long cpf, std\+::map$<$ int, int $>$ locacoes)
+\item 
+void \mbox{\hyperlink{classLocadora_a2df5cd3f722120b41ebb938f387784d1}{devolver\+\_\+midias}} (long cpf)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe \mbox{\hyperlink{classLocadora}{Locadora}} que cria objetos das classes \mbox{\hyperlink{classLocador}{Locador}} e Controle \mbox{\hyperlink{classCliente}{Cliente}}. Ela será responsável pelo controle das mídias 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLocadora_a3ab8e0d8709321c7dc3ec4708a35ad95}\label{classLocadora_a3ab8e0d8709321c7dc3ec4708a35ad95}} 
+\index{Locadora@{Locadora}!alugar\_midias@{alugar\_midias}}
+\index{alugar\_midias@{alugar\_midias}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{alugar\_midias()}{alugar\_midias()}}
+{\footnotesize\ttfamily void Locadora\+::alugar\+\_\+midias (\begin{DoxyParamCaption}\item[{long}]{cpf,  }\item[{std\+::map$<$ int, int $>$}]{locacoes }\end{DoxyParamCaption})}
+
+Controle de Locação \mbox{\Hypertarget{classLocadora_a44791918ee635bbd06d3b185631bcc3d}\label{classLocadora_a44791918ee635bbd06d3b185631bcc3d}} 
+\index{Locadora@{Locadora}!cadastrar\_cliente@{cadastrar\_cliente}}
+\index{cadastrar\_cliente@{cadastrar\_cliente}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_cliente()}{cadastrar\_cliente()}}
+{\footnotesize\ttfamily void Locadora\+::cadastrar\+\_\+cliente (\begin{DoxyParamCaption}\item[{long}]{cpf,  }\item[{std\+::string}]{nome }\end{DoxyParamCaption})}
+
+Controle de Clientes \mbox{\Hypertarget{classLocadora_a3e92a68922e94aa70e443423b6cc41b3}\label{classLocadora_a3e92a68922e94aa70e443423b6cc41b3}} 
+\index{Locadora@{Locadora}!cadastrar\_midia@{cadastrar\_midia}}
+\index{cadastrar\_midia@{cadastrar\_midia}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_midia()}{cadastrar\_midia()}}
+{\footnotesize\ttfamily void Locadora\+::cadastrar\+\_\+midia (\begin{DoxyParamCaption}\item[{std\+::string}]{tipo,  }\item[{int}]{quantidade,  }\item[{int}]{codigo,  }\item[{std\+::string}]{titulo,  }\item[{std\+::string}]{categoria }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a2df5cd3f722120b41ebb938f387784d1}\label{classLocadora_a2df5cd3f722120b41ebb938f387784d1}} 
+\index{Locadora@{Locadora}!devolver\_midias@{devolver\_midias}}
+\index{devolver\_midias@{devolver\_midias}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{devolver\_midias()}{devolver\_midias()}}
+{\footnotesize\ttfamily void Locadora\+::devolver\+\_\+midias (\begin{DoxyParamCaption}\item[{long}]{cpf }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_aae33af194f7fc797318b8c6b76278cce}\label{classLocadora_aae33af194f7fc797318b8c6b76278cce}} 
+\index{Locadora@{Locadora}!ler\_estoque@{ler\_estoque}}
+\index{ler\_estoque@{ler\_estoque}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{ler\_estoque()}{ler\_estoque()}}
+{\footnotesize\ttfamily void Locadora\+::ler\+\_\+estoque (\begin{DoxyParamCaption}\item[{std\+::string}]{nome\+\_\+do\+\_\+arquivo }\end{DoxyParamCaption})}
+
+Inicializa os métodos que já foram criados e explicados nas classes \mbox{\hyperlink{classLocador}{Locador}} e Controle \mbox{\hyperlink{classCliente}{Cliente}} Controle de Midias \mbox{\Hypertarget{classLocadora_a32287a2808832370463596b61e63594c}\label{classLocadora_a32287a2808832370463596b61e63594c}} 
+\index{Locadora@{Locadora}!listar\_clientes\_por\_cpf@{listar\_clientes\_por\_cpf}}
+\index{listar\_clientes\_por\_cpf@{listar\_clientes\_por\_cpf}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{listar\_clientes\_por\_cpf()}{listar\_clientes\_por\_cpf()}}
+{\footnotesize\ttfamily void Locadora\+::listar\+\_\+clientes\+\_\+por\+\_\+cpf (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a99ecc93aa2de500bdbc0c56700db8cb0}\label{classLocadora_a99ecc93aa2de500bdbc0c56700db8cb0}} 
+\index{Locadora@{Locadora}!listar\_clientes\_por\_nome@{listar\_clientes\_por\_nome}}
+\index{listar\_clientes\_por\_nome@{listar\_clientes\_por\_nome}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{listar\_clientes\_por\_nome()}{listar\_clientes\_por\_nome()}}
+{\footnotesize\ttfamily void Locadora\+::listar\+\_\+clientes\+\_\+por\+\_\+nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a8a409b0d58371c1733337b5c9b0772d8}\label{classLocadora_a8a409b0d58371c1733337b5c9b0772d8}} 
+\index{Locadora@{Locadora}!ordenar\_midias\_por\_codigo@{ordenar\_midias\_por\_codigo}}
+\index{ordenar\_midias\_por\_codigo@{ordenar\_midias\_por\_codigo}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{ordenar\_midias\_por\_codigo()}{ordenar\_midias\_por\_codigo()}}
+{\footnotesize\ttfamily void Locadora\+::ordenar\+\_\+midias\+\_\+por\+\_\+codigo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a1c717320b186c0c2640052f8302319d5}\label{classLocadora_a1c717320b186c0c2640052f8302319d5}} 
+\index{Locadora@{Locadora}!ordenar\_midias\_por\_titulo@{ordenar\_midias\_por\_titulo}}
+\index{ordenar\_midias\_por\_titulo@{ordenar\_midias\_por\_titulo}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{ordenar\_midias\_por\_titulo()}{ordenar\_midias\_por\_titulo()}}
+{\footnotesize\ttfamily void Locadora\+::ordenar\+\_\+midias\+\_\+por\+\_\+titulo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a87092e5b98ca2eed90ba70f700dc5f34}\label{classLocadora_a87092e5b98ca2eed90ba70f700dc5f34}} 
+\index{Locadora@{Locadora}!remover\_cliente@{remover\_cliente}}
+\index{remover\_cliente@{remover\_cliente}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{remover\_cliente()}{remover\_cliente()}}
+{\footnotesize\ttfamily void Locadora\+::remover\+\_\+cliente (\begin{DoxyParamCaption}\item[{long}]{cpf }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_a789f69a02fe680955ae6c12ab9e80707}\label{classLocadora_a789f69a02fe680955ae6c12ab9e80707}} 
+\index{Locadora@{Locadora}!remover\_midia@{remover\_midia}}
+\index{remover\_midia@{remover\_midia}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{remover\_midia()}{remover\_midia()}}
+{\footnotesize\ttfamily void Locadora\+::remover\+\_\+midia (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLocadora_af21e0bf112c8e78a49af1bb9a525280e}\label{classLocadora_af21e0bf112c8e78a49af1bb9a525280e}} 
+\index{Locadora@{Locadora}!salvar\_estoque@{salvar\_estoque}}
+\index{salvar\_estoque@{salvar\_estoque}!Locadora@{Locadora}}
+\doxysubsubsection{\texorpdfstring{salvar\_estoque()}{salvar\_estoque()}}
+{\footnotesize\ttfamily void Locadora\+::salvar\+\_\+estoque (\begin{DoxyParamCaption}\item[{std\+::string}]{nome\+\_\+do\+\_\+arquivo }\end{DoxyParamCaption})}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Locadora/\mbox{\hyperlink{Locadora_8hpp}{Locadora.\+hpp}}\item 
+src/\+Locadora/\mbox{\hyperlink{Locadora_8cpp}{Locadora.\+cpp}}\end{DoxyCompactItemize}

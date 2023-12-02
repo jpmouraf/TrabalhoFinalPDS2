@@ -1,0 +1,19 @@
+digraph "doctest::ContextOptions"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="doctest::ContextOptions",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="OCLINT too many fields."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" binary_name\norder_by\nout" ];
+  Node2 [label="doctest::String",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classdoctest_1_1String.html",tooltip=" "];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" data" ];
+  Node3 [label="doctest::String::view",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" currentTest" ];
+  Node4 [label="doctest::detail::TestCase",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdoctest_1_1detail_1_1TestCase.html",tooltip=" "];
+  Node5 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="doctest::TestCaseData",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structdoctest_1_1TestCaseData.html",tooltip=" "];
+  Node2 -> Node5 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_file" ];
+  Node2 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" m_full_name\nm_type" ];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cout" ];
+  Node6 [label="std::basic_ostream\l\< charT, traits \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classstd_1_1basic__ostream.html",tooltip=" "];
+}
