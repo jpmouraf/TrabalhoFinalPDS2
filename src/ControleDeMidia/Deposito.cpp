@@ -160,10 +160,9 @@ void Deposito::salvar_estoque(){
 };
 
 void Deposito::ordenar_codigo() {
-    std::cout << "TAMANHO: " << this->_midias.size();
     std::map<int, Midia*>::iterator it;
     for(it = _midias.begin(); it != _midias.end(); it++) {
-        std::cout << it ->first << ": " << it->second << std::endl;
+        std::cout << it ->first << ": " << it->second->getTitulo() << std::endl;
     }
 };
 
@@ -184,8 +183,9 @@ void Deposito::ordenar_titulo() {
 };
 
 void Deposito::imprimir_todas_midias(){
-    for (auto& midia : this->_midias) {
-        midia.second->imprimir_info();
+    std::map<int, Midia*>::iterator it;
+    for(it = _midias.begin(); it != _midias.end(); it++) {
+        it->second->imprimir_info();
     }
 };
 
