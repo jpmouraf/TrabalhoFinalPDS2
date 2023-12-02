@@ -42,3 +42,7 @@ void Locadora::alugar_midias(long cpf, std::map<int, int> locacoes){
 void Locadora::devolver_midias(long cpf){
     
 }
+
+void Locadora::imprimir_catalogo(){
+    this->central_midia_locacoes.imprimir_catalogo();
+}

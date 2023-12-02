@@ -32,7 +32,7 @@ int main(){
                     cinerama.ler_estoque(path);
                 } catch (const ExcecaoDeposito& e) {
                     std::cerr << e.what() << '\n';
-                    std::cout << "O arquivo não foi encontrado. Utilize o comando 'LA' novamente caso queira tentar outra vez." << std::endl;
+                    std::cout << "Erro de leitura. Utilize o comando 'LA' novamente caso queira tentar outra vez." << std::endl;
                 }
             }
         }
@@ -77,6 +77,9 @@ int main(){
             else {
                 std::cout << "ERRO: ainda nao e possivel ordenar por " << tipo << std::endl;
             }
+        }
+        else if (comando == "CL"){
+            cinerama.imprimir_catalogo();
         }
         
         // Cadastrar Cliente
