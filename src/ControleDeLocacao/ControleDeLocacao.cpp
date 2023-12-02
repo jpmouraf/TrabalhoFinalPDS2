@@ -4,7 +4,7 @@
 #include <iomanip>
 #include "../../include/ControleDeLocacao/ControleDeLocacao.hpp"
 
-void Locador::alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de excecao para quando o cliente quer alugar uma midia que nao existe no sistema.
+void Locador::alugar_midias(long long cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de excecao para quando o cliente quer alugar uma midia que nao existe no sistema.
     clientes.escrever_locacoes_cliente(cpf_cliente, locacoes);
     std::cout << "######### Recibo de Locacao ###########" << std::endl;
     std::cout << "CPF: " << cpf_cliente << std::endl << std::endl;
@@ -23,7 +23,7 @@ void Locador::alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, C
     std::cout << "######### Fim  do  Recibo ###########" << std::endl;
 }
 
-void Locador::devolver_midias(long int cpf_cliente, ControleCliente clientes){ //futuramente adicionar um handler de excecao para quando o cliente quer devolver uma midia que nao existe no sistema.
+void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ //futuramente adicionar um handler de excecao para quando o cliente quer devolver uma midia que nao existe no sistema.
     clientes.ler_informacoes_locacao(cpf_cliente);
     std::map<int, info_midia> locacoes = clientes.informacoes_locacoes.locacoes;
     int dias = clientes.informacoes_locacoes.dias_desde_alocacao;

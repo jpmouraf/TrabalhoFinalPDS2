@@ -12,8 +12,8 @@ class Locador {
         Deposito armazenamento;
 
     public:
-        void alugar_midias(long int cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes);
-        void devolver_midias(long int cpf_cliente, ControleCliente clientes);
+        void alugar_midias(long long cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes);
+        void devolver_midias(long long cpf_cliente, ControleCliente clientes);
 
         void gerar_relatorio(ControleCliente Clientes);
         void ler_estoque(std::string nome_do_arquivo);

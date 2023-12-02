@@ -29,10 +29,10 @@ bool Locadora::validar_CPF(long long int cpf){
 }
 
 // Controle de Clientes
-void Locadora::cadastrar_cliente(long cpf, std::string nome){
+void Locadora::cadastrar_cliente(long long cpf, std::string nome){
     this->central_de_clientes.cadastrar_cliente(cpf, nome);
 }
-void Locadora::remover_cliente(long cpf){
+void Locadora::remover_cliente(long long cpf){
     this->central_de_clientes.remover_cliente(cpf);
 }
 void Locadora::listar_clientes_por_nome(){

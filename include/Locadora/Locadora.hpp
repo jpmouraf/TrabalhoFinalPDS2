@@ -23,15 +23,15 @@ class Locadora{
         Midia* get_midia(int codigo);
 
         // Controle de Clientes
-        void cadastrar_cliente(long cpf, std::string nome);
-        void remover_cliente(long cpf);
+        void cadastrar_cliente(long long cpf, std::string nome);
+        void remover_cliente(long long cpf);
         void listar_clientes_por_nome();
         void listar_clientes_por_cpf();
         bool validar_CPF(long long int cpf);
 
         // Controle de Locacao
-        void alugar_midias(long cpf, std::map<int, int> locacoes);
-        void devolver_midias(long cpf);
+        void alugar_midias(long long cpf, std::map<int, int> locacoes);
+        void devolver_midias(long long cpf);
 
 };
 
