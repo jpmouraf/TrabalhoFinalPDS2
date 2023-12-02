@@ -1,0 +1,5 @@
+
+build/Locadora/Locadora.o
+build/ControleDeMidia/Midia.o
+build/ControleDeMidia/Deposito.o
+build/ControleDeLocacao/ControleDeLocacao.o

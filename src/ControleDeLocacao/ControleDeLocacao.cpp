@@ -86,10 +86,6 @@ void Locador::remover_midia(int codigo_numerico){
     this->armazenamento.remover_midia(codigo_numerico);
 }
 
-void Locador::ordenar_codigo(){
-    this->armazenamento.ordenar_codigo();
-}
-
 void Locador::ordenar_titulo(){
     this->armazenamento.ordenar_titulo();
 }

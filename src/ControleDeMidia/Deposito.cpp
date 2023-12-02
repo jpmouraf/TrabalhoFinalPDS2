@@ -152,20 +152,11 @@ void Deposito::salvar_estoque(){
     estoque_saida.close();
 };
 
-void Deposito::ordenar_codigo() {
-    std::map<int, Midia*>::iterator it;
-    for(it = _midias.begin(); it != _midias.end(); it++) {
-        std::cout << it ->first << ": " << it->second->getTitulo() /*<< ":" << it->second->getUnidadesDisponiveis() */<< std::endl;
-    }
-};
-
 void Deposito::ordenar_titulo() {
     std::map<std::string, Midia*> temp_map;
     for(auto it : _midias){
         std::string nome = it.second->getTitulo();
-        if(temp_map.find(nome) != temp_map.end()){
-            temp_map[nome] = it.second;
-        }
+        temp_map[nome] = it.second;
     }
     std::cout << "## {RELAToRIO}: Titulo de todas as midias em estoque ##" << std::endl;
     for(auto it : temp_map){

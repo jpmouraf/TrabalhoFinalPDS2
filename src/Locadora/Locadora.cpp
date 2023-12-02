@@ -14,12 +14,11 @@ void Locadora::remover_midia(int codigo_numerico){
     this->central_midia_locacoes.remover_midia(codigo_numerico);
 }
 void Locadora::ordenar_midias_por_codigo(){
-    this->central_midia_locacoes.ordenar_codigo();
     this->central_midia_locacoes.imprimir_todas_midias();
 }
 void Locadora::ordenar_midias_por_titulo(){
     this->central_midia_locacoes.ordenar_titulo();
-    this->central_midia_locacoes.imprimir_todas_midias();
+    //this->central_midia_locacoes.imprimir_todas_midias();
 }
 
 // Controle de Clientes
