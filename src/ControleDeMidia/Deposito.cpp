@@ -72,6 +72,14 @@ void Deposito::cadastrar_jogo(string tipo, int unidades_disponiveis, int codigo_
     }
 }
 
+Midia* Deposito::get_midia(int codigo_numerico){
+    if(_midias.find(codigo_numerico) != _midias.end()){
+        return _midias[codigo_numerico];
+    } else {
+        throw DadosInexistente("Nenhuma mídia encontrada com o código numérico dado");
+    }
+}
+
 void Deposito::remover_midia(int codigo_numerico) {
     auto it = _midias.find(codigo_numerico);
     if(it != _midias.end()) {
