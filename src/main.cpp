@@ -322,9 +322,6 @@ int main(){
             std::cout << "LC N - Listar Clientes ordenados por Nome" << std::endl;
             std::cout << "AL - Alugar Midias" << std::endl;
             std::cout << "DV - Devolver Midia" << std::endl;
-            std::cout << "PG <genero> - Criar Promocao de genero (APENAS DVD'S)" << std::endl;
-            std::cout << "PI <id> - Criar Promocao por id (APENAS DVD'S)" << std::endl;
-            std::cout << "RL - Relatorio das receitas do ultimo mês" << std::endl;
             std::cout << "FS - Encerrar o sistema" << std::endl;
         }
 
