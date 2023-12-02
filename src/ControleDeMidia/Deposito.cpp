@@ -195,7 +195,7 @@ void Deposito::imprimir_catalogo(){
     for(auto it : categorias){
         std::cout << "Nome da midia: " << it.first << ". Disponivel nos seguintes formatos: " << std::endl;
         for(auto it2 : it.second){
-            std::cout << " - "<< it2->getTipo() << ", " << it2->getUnidadesDisponiveis() << " unidades disponiveis em estoque." << std::endl;
+            std::cout << " - "<< it2->getTipo() << ", " << it2->getUnidadesDisponiveis() << " unidades disponiveis em estoque. Código da mídia: " << it2->getCodigoNumerico() << std::endl;
         }
     }
 };
