@@ -18,7 +18,7 @@ void Locador::alugar_midias(long int cpf_cliente, map<int, int> locacoes, Contro
         try {
             Midia* locada = armazenamento.get_midia(codigo_midia);
             cout << "Mídia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << endl;
-        } catch(DadosInexistente e) {
+        } catch(DadosInexistente &e) {
             throw;
         }
         armazenamento.retirar_midia(codigo_midia, quantidade_midia);
@@ -49,7 +49,7 @@ void Locador::devolver_midias(long int cpf_cliente, ControleCliente clientes){ /
             }
             cout << "Total: " << total_midia << " reais" << endl;
             total_locacao += total_midia;
-        } catch(DadosInexistente e){ //mudar para exceção de código de filme não existente
+        } catch(DadosInexistente &e){ //mudar para exceção de código de filme não existente
             cout << "[LOCADOR] Atenção: código de filme alugado '" << codigo_midia <<"' inexistente, verifique se o filme não foi retirado do sistema durante o período da locação." << endl;
             continue;
         }
