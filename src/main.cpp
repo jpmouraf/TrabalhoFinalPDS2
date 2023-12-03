@@ -328,8 +328,8 @@ int main(){
             std::cout << "RC <cpf> - Remover Cliente" << std::endl;
             std::cout << "LC C - Listar Clientes ordenados por CPF" << std::endl;
             std::cout << "LC N - Listar Clientes ordenados por Nome" << std::endl;
-            std::cout << "AL - Alugar Midias" << std::endl;
-            std::cout << "DV - Devolver Midia" << std::endl;
+            std::cout << "AL - Alugar Midias - digite apenas o comando (sem argumentos) e siga as instrucoes" << std::endl;
+            std::cout << "DV - Devolver Midia - digite apenas o comando (sem argumentos) e siga as instrucoes" << std::endl;
             std::cout << "FS - Encerrar o sistema" << std::endl;
         }
 

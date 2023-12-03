@@ -19,23 +19,60 @@ class Deposito {
     public:
         Deposito();
         ~Deposito();
-
+        /**
+        * Recebe uma quantidade, um código e um título, e cadastra um jogo no sistema
+        */  
         void cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        /**
+        * Recebe uma quantidade, um código e um título, e cadastra uma fita no sistema
+        */  
         void cadastrar_fita(int unidades_disponiveis, int codigo_numerico, std::string titulo);
+        /**
+        * Recebe uma quantidade, um código, um título e uma categoria, e cadastra um dvd no sistema
+        */  
         void cadastrar_dvd(int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria);
-
+        /**
+        * Recebe um codigo numerico e remove uma mídia do sistema
+        */
         void remover_midia(int codigo_numerico);
+        /**
+        * Recebe um nome de arquivo (ou caminho) e abre o arquivo para leitura de mídias
+        */
         void ler_estoque(std::string nome_arquivo);
+        /**
+        * Recebe um nome de arquivo (ou caminho) e abre o arquivo para salvar mídias atualmente no sistema
+        */
         void salvar_estoque(std::string nome_arquivo);
+        /**
+        * Salva as mídias atualmente no sistema no arquivo default (banco_de_midias.txt)
+        */
         void salvar_estoque();
+        /**
+        * Imprime todas as mídias, ordenadas alfabeticamente
+        */
         
         void ordenar_titulo();
+        /**
+        * Imprime todas as mídias, ordenadas por código numerico
+        */
         void imprimir_todas_midias();
+        /**
+        * Busca e retorna uma midia no sistema a partir do codigo numerico dado
+        */
 
         Midia* get_midia(int codigo_numerico);
+        /**
+        * Imprime todas as midias no sistema, suas quantidades e codigos numericos, agrupadas por titulo.
+        */
         void imprimir_catalogo();
-        void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
-        void devolver_midia(int codigo_numerico, int quantidade); // funcoes por favor sinta-se livre para mudar
+        /**
+        * Recebe um codigo numerico e retira uma unidade de uma mídia do sistema
+        */
+        void retirar_midia(int codigo_numerico, int quantidade);
+        /**
+        * Recebe um codigo numerico e adiciona uma unidade de uma mídia do sistema
+        */
+        void devolver_midia(int codigo_numerico, int quantidade);
 };
 
 class ExcecaoDeposito : public std::exception {

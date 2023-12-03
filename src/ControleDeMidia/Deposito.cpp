@@ -18,8 +18,8 @@ void Deposito::cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std
         throw DadosRepetidos (erro);
     }
 
-    Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
-    _midias[codigo_numerico] = nova_fita;
+    Jogo* novo_jogo = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
+    _midias[codigo_numerico] = novo_jogo;
     std::cout << "Midia " << codigo_numerico << " cadastrada com sucesso" << std::endl;
 };
 

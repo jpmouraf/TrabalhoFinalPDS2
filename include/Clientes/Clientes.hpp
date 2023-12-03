@@ -42,8 +42,10 @@ struct InformacoesLocacoes{
 
 class ControleCliente {
     private:
+        /**
+        * uma lista encadeada com todos os clientes
+        */  
         std::list<Cliente> _clientes; ///< Lista de clientes.
-
         /**
          * Calcula o número de dias desde a data de locacao.
          */
@@ -56,7 +58,7 @@ class ControleCliente {
         * Recebe o cpf e armazena todas as locacoes dele
         */
         std::map<int, info_midia> carregar_locacoes_csv_cliente(long long cpf);
-
+        
     public:
         ControleCliente();
         ~ControleCliente();
