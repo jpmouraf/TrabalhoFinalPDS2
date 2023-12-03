@@ -5,6 +5,10 @@
 #include <iostream>
 #include "Midia.hpp"
 
+/**
+ * Classe que representa um DVD, derivada da classe Midia.
+ * Sobescreve o metodo imprimir informações.
+*/
 class Dvd : public Midia { 
     public:
         Dvd(int codigo_numerico, std::string titulo, int unidades_disponiveis);
@@ -12,6 +16,10 @@ class Dvd : public Midia {
         void imprimir_info() override;
 };
 
+/**
+ * Subclasses que representam o tipo especifico de cada Dvd
+ * Todas vao possuir o construtor, a variavel dias de locação e o meotodo calcular_locacao
+*/
 class Lancamento : public Dvd {
     public:
         Lancamento(int codigo_numerico, std::string titulo, int unidades_disponiveis);
