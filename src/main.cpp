@@ -3,6 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include <filesystem>
+#include "Locadora/doctest.h"
 #include "../include/Locadora/Locadora.hpp"
 
 int main(){
@@ -230,7 +231,7 @@ int main(){
             int quantidade_locada;
             long long int cpf;
             bool cpf_valido = false;
-            std::map<int, int> locacoes;
+            std::map<int, info_midia> locacoes;
             std::cout << "digite o cpf do cliente, 0 para cancelar" << std::endl;
             while (1){
                 std::cin >> cpf;
@@ -253,15 +254,17 @@ int main(){
                     break;
                 }
                 std::cin >> quantidade;
+                Midia* desejada_para_alugar;
 
                 try {
-                    disponiveis = cinerama.get_midia(codigo)->getUnidadesDisponiveis();
+                    desejada_para_alugar = cinerama.get_midia(codigo);
                 } catch (DadosInexistente &e){
                     std::cout << e.what() << std::endl;
                     std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade ou digite 0 para sair." << std::endl;
                     continue;
                 }
                 
+                disponiveis = desejada_para_alugar->getUnidadesDisponiveis();
                 
                 if (quantidade < 1) {
                     std::cout << "Quantidade inválida selecionada. Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis ou digite 0 para sair." << std::endl;
@@ -272,8 +275,12 @@ int main(){
                     continue;
                 } 
                 else {
+                    info_midia dados;
                     quantidade_locada++;
-                    locacoes[codigo] = quantidade;
+                    dados.quantidade = quantidade;
+                    dados.titulo = desejada_para_alugar->getTitulo();
+                    dados.cpf_cliente = cpf;
+                    locacoes[codigo] = dados;
                     continue;
                 }
             }

@@ -22,7 +22,7 @@ class Locador {
  * Recebe as informações do cliente em escrever_locacao_cliente e imprime um recibo para o cliente
  * com o seu cpf, quais filmes e quantidade alugadas por ele. Além de retirar a mídia do armazenamento
 */
-        void alugar_midias(long long cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes);
+        void alugar_midias(long long cpf_cliente, std::map<int, info_midia> locacoes, ControleCliente clientes);
 /**
  * Recebe as informações sobre a locação e cria um mapa para armazenar temporariamente essas informações
  * Depois, imprime um recibo com as informações das mídias devolvidas, calcula o total a ser pago e devolve a mídia

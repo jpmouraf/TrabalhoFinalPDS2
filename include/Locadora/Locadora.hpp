@@ -45,7 +45,7 @@ class Locadora{
 /**
  * Controle de Locação
 */
-        void alugar_midias(long long cpf, std::map<int, int> locacoes);
+        void alugar_midias(long long cpf, std::map<int, info_midia> locacoes);
         void devolver_midias(long long cpf);
         void mais_alugadas();
 

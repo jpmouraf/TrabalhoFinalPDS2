@@ -104,7 +104,7 @@ class ControleCliente {
         /**
          * Escreve as locacoes de um cliente e a armazena no map criado
          */
-        void escrever_locacoes_cliente(long long cpf, std::map<int, int> locacoes);
+        void escrever_locacoes_cliente(long long cpf, std::map<int, info_midia> locacoes);
         
 };
 

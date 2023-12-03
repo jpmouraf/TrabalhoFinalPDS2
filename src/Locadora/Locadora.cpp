@@ -53,7 +53,7 @@ void Locadora::listar_clientes_por_cpf(){
 }
 
 // Controle de Locacao
-void Locadora::alugar_midias(long long cpf, std::map<int, int> locacoes){
+void Locadora::alugar_midias(long long cpf, std::map<int, info_midia> locacoes){
     this->central_midia_locacoes.alugar_midias(cpf, locacoes, this->central_de_clientes);
 }
 void Locadora::devolver_midias(long long cpf){

@@ -4,13 +4,13 @@
 #include <iomanip>
 #include "../../include/ControleDeLocacao/ControleDeLocacao.hpp"
 
-void Locador::alugar_midias(long long cpf_cliente, std::map<int, int> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de excecao para quando o cliente quer alugar uma midia que nao existe no sistema.
+void Locador::alugar_midias(long long cpf_cliente, std::map<int, info_midia> locacoes, ControleCliente clientes){ // futuramente adicionar um handler de excecao para quando o cliente quer alugar uma midia que nao existe no sistema.
     clientes.escrever_locacoes_cliente(cpf_cliente, locacoes);
     std::cout << "######### Recibo de Locacao ###########" << std::endl;
     std::cout << "CPF: " << cpf_cliente << std::endl << std::endl;
     for (auto it : locacoes){
         int codigo_midia = it.first;
-        int quantidade_midia = it.second;
+        int quantidade_midia = it.second.quantidade;
         try {
             Midia* locada = armazenamento.get_midia(codigo_midia);
             std::cout << "Midia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << std::endl;
@@ -32,7 +32,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){
     int total_locacao;
     for (auto it : locacoes){
         int codigo_midia = it.first;
-        int quantidade_midia = 1;
+        int quantidade_midia = it.second.quantidade;
         try {
             armazenamento.devolver_midia(codigo_midia, quantidade_midia);
 

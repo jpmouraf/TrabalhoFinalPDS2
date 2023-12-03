@@ -255,7 +255,7 @@ void ControleCliente::ler_informacoes_locacao(long long cpf){
     this->informacoes_locacoes = saida;
 };
 
-void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, int> locacoes){
+void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, info_midia> locacoes){
     std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
     std::ofstream banco_de_locacoes(caminho.string(), std::ios::app);
     if (!banco_de_locacoes.is_open()) {
@@ -263,9 +263,11 @@ void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, int
     }
 
     time_t agora = time(0);
+    std::string data = ctime(&agora);
+    if (!data.empty() && data[data.size() - 1] == '\r') data.pop_back();
 
     for (auto& info_midia : locacoes) {
-        banco_de_locacoes << cpf << "," << info_midia.first << "," << info_midia.second << "," << ctime(&agora) << ",,\n";
+        banco_de_locacoes << cpf << "," << info_midia.second.titulo << "," << info_midia.first << "," << info_midia.second.quantidade << "," << data << ",\n";
     }
 
     banco_de_locacoes.close();
