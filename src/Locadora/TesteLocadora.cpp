@@ -13,7 +13,8 @@
 TEST_CASE("Teste de validar Cpf") {
     ControleCliente cliente; /// Criando um objeto ControleCliente para teste
     CHECK(cliente.validar_CPF(12345678900) == true);
-    CHECK(cliente.validar_CPF(12345) == false);
+    CHECK(cliente.validar_CPF(0) == false);
+    CHECK(cliente.validar_CPF(123456789000) == false);
 }
 
 /**
@@ -31,10 +32,11 @@ TEST_CASE("Teste de deposito do get_midia") {
 
     Midia* midia_retornada = deposito.get_midia(codigo_existente); /// Obtém a mídia e verifica se não é nulo
     CHECK(midia_retornada != nullptr); /// Verifica se a mídia retornada não é nula
-
-    // Teste para código de mídia inexistente (deve lançar exceção)
+/**
+* Teste para código de mídia inexistente (deve lançar exceção)
+*/
     int codigo_nao_existente = 456; /// Código de mídia inexistente
-    CHECK_THROWS_AS(deposito.get_midia(codigo_nao_existente), DadosInexistente); // Verifica se lança a exceção DadosInexistente
+    CHECK_THROWS_AS(deposito.get_midia(codigo_nao_existente), DadosInexistente); /// Verifica se lança a exceção DadosInexistente
 }
 
 /**
