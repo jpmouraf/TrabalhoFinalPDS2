@@ -1,0 +1,144 @@
+\hypertarget{classDeposito}{}\doxysection{Deposito Class Reference}
+\label{classDeposito}\index{Deposito@{Deposito}}
+
+
+{\ttfamily \#include $<$Deposito.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDeposito_a584e52a46904e74efd17e94368bc4efd}{Deposito}} ()
+\item 
+\mbox{\hyperlink{classDeposito_aa9353586f04c13d423a14a08bf01526c}{$\sim$\+Deposito}} ()
+\item 
+void \mbox{\hyperlink{classDeposito_ad8cc39ce6708f7c52dec36307eca95b4}{cadastrar\+\_\+jogo}} (int unidades\+\_\+disponiveis, int codigo\+\_\+numerico, std\+::string titulo)
+\item 
+void \mbox{\hyperlink{classDeposito_aefd216467fd9db04bd8a9ba5f943aca1}{cadastrar\+\_\+fita}} (int unidades\+\_\+disponiveis, int codigo\+\_\+numerico, std\+::string titulo)
+\item 
+void \mbox{\hyperlink{classDeposito_ae522198078c716b15bc11c6c03c6ed19}{cadastrar\+\_\+dvd}} (int unidades\+\_\+disponiveis, int codigo\+\_\+numerico, std\+::string titulo, std\+::string categoria)
+\item 
+void \mbox{\hyperlink{classDeposito_acc0f3a20ef22e458703ba4a8a484b569}{remover\+\_\+midia}} (int codigo\+\_\+numerico)
+\item 
+void \mbox{\hyperlink{classDeposito_ad0545e890d11673f2388d75dc536d265}{ler\+\_\+estoque}} (std\+::string nome\+\_\+arquivo)
+\item 
+void \mbox{\hyperlink{classDeposito_a2bc60bb353afa0d64c4a5aa66a4e92c7}{salvar\+\_\+estoque}} (std\+::string nome\+\_\+arquivo)
+\item 
+void \mbox{\hyperlink{classDeposito_ab8d8fea9842488aadc2b8d5b1581cc27}{salvar\+\_\+estoque}} ()
+\item 
+void \mbox{\hyperlink{classDeposito_ad5782bd246189c1ab3bcb0ad25f39beb}{ordenar\+\_\+titulo}} ()
+\item 
+void \mbox{\hyperlink{classDeposito_ad1c0070e9f4aa37edaf992e8da114361}{imprimir\+\_\+todas\+\_\+midias}} ()
+\item 
+\mbox{\hyperlink{classMidia}{Midia}} $\ast$ \mbox{\hyperlink{classDeposito_af09a3e5310c3a5933d9d337c44faa55e}{get\+\_\+midia}} (int codigo\+\_\+numerico)
+\item 
+void \mbox{\hyperlink{classDeposito_a9b02c63fa219c311a4a366c8934ba033}{imprimir\+\_\+catalogo}} ()
+\item 
+void \mbox{\hyperlink{classDeposito_afaad69826279db6a7bd77cf6b9bb880b}{retirar\+\_\+midia}} (int codigo\+\_\+numerico, int quantidade)
+\item 
+void \mbox{\hyperlink{classDeposito_a9c91110464fb78e4f34a32b8651c7393}{devolver\+\_\+midia}} (int codigo\+\_\+numerico, int quantidade)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe depósito que armazena as mídias em um map, que tem como identificador o código numérico do filme Além disso, declara as variáveis tipo e categoria, que são necessárias para diferenciar os filmes entre si, para fatores que as diferenciam, como o cálculo da locação 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classDeposito_a584e52a46904e74efd17e94368bc4efd}\label{classDeposito_a584e52a46904e74efd17e94368bc4efd}} 
+\index{Deposito@{Deposito}!Deposito@{Deposito}}
+\index{Deposito@{Deposito}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{Deposito()}{Deposito()}}
+{\footnotesize\ttfamily Deposito\+::\+Deposito (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classDeposito_aa9353586f04c13d423a14a08bf01526c}\label{classDeposito_aa9353586f04c13d423a14a08bf01526c}} 
+\index{Deposito@{Deposito}!````~Deposito@{$\sim$Deposito}}
+\index{````~Deposito@{$\sim$Deposito}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{$\sim$Deposito()}{~Deposito()}}
+{\footnotesize\ttfamily Deposito\+::$\sim$\+Deposito (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classDeposito_ae522198078c716b15bc11c6c03c6ed19}\label{classDeposito_ae522198078c716b15bc11c6c03c6ed19}} 
+\index{Deposito@{Deposito}!cadastrar\_dvd@{cadastrar\_dvd}}
+\index{cadastrar\_dvd@{cadastrar\_dvd}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_dvd()}{cadastrar\_dvd()}}
+{\footnotesize\ttfamily void Deposito\+::cadastrar\+\_\+dvd (\begin{DoxyParamCaption}\item[{int}]{unidades\+\_\+disponiveis,  }\item[{int}]{codigo\+\_\+numerico,  }\item[{std\+::string}]{titulo,  }\item[{std\+::string}]{categoria }\end{DoxyParamCaption})}
+
+Recebe uma quantidade, um código, um título e uma categoria, e cadastra um dvd no sistema \mbox{\Hypertarget{classDeposito_aefd216467fd9db04bd8a9ba5f943aca1}\label{classDeposito_aefd216467fd9db04bd8a9ba5f943aca1}} 
+\index{Deposito@{Deposito}!cadastrar\_fita@{cadastrar\_fita}}
+\index{cadastrar\_fita@{cadastrar\_fita}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_fita()}{cadastrar\_fita()}}
+{\footnotesize\ttfamily void Deposito\+::cadastrar\+\_\+fita (\begin{DoxyParamCaption}\item[{int}]{unidades\+\_\+disponiveis,  }\item[{int}]{codigo\+\_\+numerico,  }\item[{std\+::string}]{titulo }\end{DoxyParamCaption})}
+
+Recebe uma quantidade, um código e um título, e cadastra uma fita no sistema \mbox{\Hypertarget{classDeposito_ad8cc39ce6708f7c52dec36307eca95b4}\label{classDeposito_ad8cc39ce6708f7c52dec36307eca95b4}} 
+\index{Deposito@{Deposito}!cadastrar\_jogo@{cadastrar\_jogo}}
+\index{cadastrar\_jogo@{cadastrar\_jogo}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_jogo()}{cadastrar\_jogo()}}
+{\footnotesize\ttfamily void Deposito\+::cadastrar\+\_\+jogo (\begin{DoxyParamCaption}\item[{int}]{unidades\+\_\+disponiveis,  }\item[{int}]{codigo\+\_\+numerico,  }\item[{std\+::string}]{titulo }\end{DoxyParamCaption})}
+
+Recebe uma quantidade, um código e um título, e cadastra um jogo no sistema \mbox{\Hypertarget{classDeposito_a9c91110464fb78e4f34a32b8651c7393}\label{classDeposito_a9c91110464fb78e4f34a32b8651c7393}} 
+\index{Deposito@{Deposito}!devolver\_midia@{devolver\_midia}}
+\index{devolver\_midia@{devolver\_midia}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{devolver\_midia()}{devolver\_midia()}}
+{\footnotesize\ttfamily void Deposito\+::devolver\+\_\+midia (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico,  }\item[{int}]{quantidade }\end{DoxyParamCaption})}
+
+Recebe um codigo numerico e adiciona uma unidade de uma mídia do sistema \mbox{\Hypertarget{classDeposito_af09a3e5310c3a5933d9d337c44faa55e}\label{classDeposito_af09a3e5310c3a5933d9d337c44faa55e}} 
+\index{Deposito@{Deposito}!get\_midia@{get\_midia}}
+\index{get\_midia@{get\_midia}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{get\_midia()}{get\_midia()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classMidia}{Midia}} $\ast$ Deposito\+::get\+\_\+midia (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico }\end{DoxyParamCaption})}
+
+Busca e retorna uma midia no sistema a partir do codigo numerico dado \mbox{\Hypertarget{classDeposito_a9b02c63fa219c311a4a366c8934ba033}\label{classDeposito_a9b02c63fa219c311a4a366c8934ba033}} 
+\index{Deposito@{Deposito}!imprimir\_catalogo@{imprimir\_catalogo}}
+\index{imprimir\_catalogo@{imprimir\_catalogo}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{imprimir\_catalogo()}{imprimir\_catalogo()}}
+{\footnotesize\ttfamily void Deposito\+::imprimir\+\_\+catalogo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Imprime todas as midias no sistema, suas quantidades e codigos numericos, agrupadas por titulo. \mbox{\Hypertarget{classDeposito_ad1c0070e9f4aa37edaf992e8da114361}\label{classDeposito_ad1c0070e9f4aa37edaf992e8da114361}} 
+\index{Deposito@{Deposito}!imprimir\_todas\_midias@{imprimir\_todas\_midias}}
+\index{imprimir\_todas\_midias@{imprimir\_todas\_midias}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{imprimir\_todas\_midias()}{imprimir\_todas\_midias()}}
+{\footnotesize\ttfamily void Deposito\+::imprimir\+\_\+todas\+\_\+midias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Imprime todas as mídias, ordenadas por código numerico \mbox{\Hypertarget{classDeposito_ad0545e890d11673f2388d75dc536d265}\label{classDeposito_ad0545e890d11673f2388d75dc536d265}} 
+\index{Deposito@{Deposito}!ler\_estoque@{ler\_estoque}}
+\index{ler\_estoque@{ler\_estoque}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{ler\_estoque()}{ler\_estoque()}}
+{\footnotesize\ttfamily void Deposito\+::ler\+\_\+estoque (\begin{DoxyParamCaption}\item[{std\+::string}]{nome\+\_\+arquivo }\end{DoxyParamCaption})}
+
+Recebe um nome de arquivo (ou caminho) e abre o arquivo para leitura de mídias \mbox{\Hypertarget{classDeposito_ad5782bd246189c1ab3bcb0ad25f39beb}\label{classDeposito_ad5782bd246189c1ab3bcb0ad25f39beb}} 
+\index{Deposito@{Deposito}!ordenar\_titulo@{ordenar\_titulo}}
+\index{ordenar\_titulo@{ordenar\_titulo}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{ordenar\_titulo()}{ordenar\_titulo()}}
+{\footnotesize\ttfamily void Deposito\+::ordenar\+\_\+titulo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Imprime todas as mídias, ordenadas alfabeticamente \mbox{\Hypertarget{classDeposito_acc0f3a20ef22e458703ba4a8a484b569}\label{classDeposito_acc0f3a20ef22e458703ba4a8a484b569}} 
+\index{Deposito@{Deposito}!remover\_midia@{remover\_midia}}
+\index{remover\_midia@{remover\_midia}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{remover\_midia()}{remover\_midia()}}
+{\footnotesize\ttfamily void Deposito\+::remover\+\_\+midia (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico }\end{DoxyParamCaption})}
+
+Recebe um codigo numerico e remove uma mídia do sistema \mbox{\Hypertarget{classDeposito_afaad69826279db6a7bd77cf6b9bb880b}\label{classDeposito_afaad69826279db6a7bd77cf6b9bb880b}} 
+\index{Deposito@{Deposito}!retirar\_midia@{retirar\_midia}}
+\index{retirar\_midia@{retirar\_midia}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{retirar\_midia()}{retirar\_midia()}}
+{\footnotesize\ttfamily void Deposito\+::retirar\+\_\+midia (\begin{DoxyParamCaption}\item[{int}]{codigo\+\_\+numerico,  }\item[{int}]{quantidade }\end{DoxyParamCaption})}
+
+Recebe um codigo numerico e retira uma unidade de uma mídia do sistema \mbox{\Hypertarget{classDeposito_ab8d8fea9842488aadc2b8d5b1581cc27}\label{classDeposito_ab8d8fea9842488aadc2b8d5b1581cc27}} 
+\index{Deposito@{Deposito}!salvar\_estoque@{salvar\_estoque}}
+\index{salvar\_estoque@{salvar\_estoque}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{salvar\_estoque()}{salvar\_estoque()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Deposito\+::salvar\+\_\+estoque (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Salva as mídias atualmente no sistema no arquivo default (banco\+\_\+de\+\_\+midias.\+txt) \mbox{\Hypertarget{classDeposito_a2bc60bb353afa0d64c4a5aa66a4e92c7}\label{classDeposito_a2bc60bb353afa0d64c4a5aa66a4e92c7}} 
+\index{Deposito@{Deposito}!salvar\_estoque@{salvar\_estoque}}
+\index{salvar\_estoque@{salvar\_estoque}!Deposito@{Deposito}}
+\doxysubsubsection{\texorpdfstring{salvar\_estoque()}{salvar\_estoque()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Deposito\+::salvar\+\_\+estoque (\begin{DoxyParamCaption}\item[{std\+::string}]{nome\+\_\+arquivo }\end{DoxyParamCaption})}
+
+Recebe um nome de arquivo (ou caminho) e abre o arquivo para salvar mídias atualmente no sistema 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Controle\+De\+Midia/\mbox{\hyperlink{Deposito_8hpp}{Deposito.\+hpp}}\item 
+src/\+Controle\+De\+Midia/\mbox{\hyperlink{Deposito_8cpp}{Deposito.\+cpp}}\end{DoxyCompactItemize}

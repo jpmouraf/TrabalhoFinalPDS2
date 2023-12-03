@@ -1,0 +1,24 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node16 [label="std::exception",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",tooltip=" "];
+  Node16 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node0 [label="ExcecaoCliente",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classExcecaoCliente.html",tooltip=" "];
+  Node16 -> Node18 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node18 [label="ExcecaoDeposito",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classExcecaoDeposito.html",tooltip=" "];
+  Node18 -> Node19 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node19 [label="DadosInexistente",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDadosInexistente.html",tooltip=" "];
+  Node18 -> Node20 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node20 [label="DadosRepetidos",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classDadosRepetidos.html",tooltip=" "];
+  Node16 -> Node21 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node21 [label="LocaErro",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classLocaErro.html",tooltip=" "];
+  Node21 -> Node22 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node22 [label="ErroArquivo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classErroArquivo.html",tooltip=" "];
+  Node16 -> Node23 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node23 [label="MidiaErro",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classMidiaErro.html",tooltip=" "];
+  Node23 -> Node24 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node24 [label="RedefinirConstanteTipo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classRedefinirConstanteTipo.html",tooltip=" "];
+}

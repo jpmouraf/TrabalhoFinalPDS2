@@ -1,0 +1,17 @@
+digraph "include" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_d44c64559bbebec7f509842c48db8b23 {
+    graph [ bgcolor="#eeeeff", pencolor="black", label="" URL="dir_d44c64559bbebec7f509842c48db8b23.html"];
+    dir_d44c64559bbebec7f509842c48db8b23 [shape=plaintext label="include"];
+  dir_ec6a903a0df8b571c0d4f587cbc71316 [shape=box label="Clientes" fillcolor="white" style="filled" URL="dir_ec6a903a0df8b571c0d4f587cbc71316.html"];
+  dir_ae8947f27a34c7a193b052471f2ba39d [shape=box label="ControleDeLocacao" fillcolor="white" style="filled" URL="dir_ae8947f27a34c7a193b052471f2ba39d.html"];
+  dir_805053fb025c36b0844ca6f5f2d4e5a0 [shape=box label="ControleDeMidia" fillcolor="white" style="filled" URL="dir_805053fb025c36b0844ca6f5f2d4e5a0.html"];
+  dir_d9d10512407c310e76f51670089d2a82 [shape=box label="Locadora" fillcolor="white" style="filled" URL="dir_d9d10512407c310e76f51670089d2a82.html"];
+  }
+  dir_ae8947f27a34c7a193b052471f2ba39d->dir_805053fb025c36b0844ca6f5f2d4e5a0 [headlabel="1", labeldistance=1.5 headhref="dir_000002_000003.html"];
+  dir_ae8947f27a34c7a193b052471f2ba39d->dir_ec6a903a0df8b571c0d4f587cbc71316 [headlabel="1", labeldistance=1.5 headhref="dir_000002_000001.html"];
+  dir_d9d10512407c310e76f51670089d2a82->dir_ae8947f27a34c7a193b052471f2ba39d [headlabel="1", labeldistance=1.5 headhref="dir_000004_000002.html"];
+  dir_d9d10512407c310e76f51670089d2a82->dir_ec6a903a0df8b571c0d4f587cbc71316 [headlabel="1", labeldistance=1.5 headhref="dir_000004_000001.html"];
+}
