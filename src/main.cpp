@@ -248,7 +248,7 @@ int main(){
             while (1){
                 int codigo, quantidade, disponiveis;
                 std::cin >> codigo;
-                if (codigo = 0){
+                if (codigo == 0){
                     break;
                 }
                 std::cin >> quantidade;
