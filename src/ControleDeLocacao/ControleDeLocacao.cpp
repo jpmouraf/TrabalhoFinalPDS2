@@ -77,6 +77,10 @@ void Locador::cadastrar_midia(std::string tipo, int quantidade, int codigo, std:
         this->armazenamento.cadastrar_dvd(quantidade, codigo, titulo, categoria);
     }
 
+    else if (tipo == "J"){
+        this->armazenamento.cadastrar_jogo(quantidade, codigo, titulo);
+    }
+
     else {
         throw LocaErro("ERRO: nao foi posivel identificar o tipo de midia escolhida");
     }

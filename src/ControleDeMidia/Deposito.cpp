@@ -14,7 +14,8 @@ Deposito::~Deposito(){
 void Deposito::cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std::string titulo) {
     auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
-        throw DadosRepetidos ("ERRO: codigo repetido");
+        char* erro = "ERRO: codigo repetido";
+        throw DadosRepetidos (erro);
     }
 
     Jogo* nova_fita = new Jogo(codigo_numerico, titulo, unidades_disponiveis);
@@ -25,7 +26,8 @@ void Deposito::cadastrar_jogo(int unidades_disponiveis, int codigo_numerico, std
 void Deposito::cadastrar_fita(int unidades_disponiveis, int codigo_numerico, std::string titulo) {
     auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
-        throw DadosRepetidos ("ERRO: codigo repetido");
+        char* erro = "ERRO: codigo repetido";
+        throw DadosRepetidos (erro);
     }
 
     Fita* nova_fita = new Fita(codigo_numerico, titulo, unidades_disponiveis);
@@ -36,7 +38,8 @@ void Deposito::cadastrar_fita(int unidades_disponiveis, int codigo_numerico, std
 void Deposito::cadastrar_dvd(int unidades_disponiveis, int codigo_numerico, std::string titulo, std::string categoria) {
    auto it = _midias.find(codigo_numerico);
     if (it != _midias.end()) {
-        throw DadosRepetidos ("ERRO: codigo repetido");
+        char* erro = "ERRO: codigo repetido";
+        throw DadosRepetidos (erro);
     }
 
     Dvd* novo_dvd = nullptr;
@@ -56,7 +59,8 @@ void Deposito::cadastrar_dvd(int unidades_disponiveis, int codigo_numerico, std:
         std::cout << "Midia " << codigo_numerico << " cadastrado com sucesso" << std::endl;
     }
     else {
-        throw DadosInexistente ("ERRO: dados incorretos");
+        char* erro  = "ERRO: dados incorretos";
+        throw DadosInexistente (erro);
     }
 };
 
@@ -66,7 +70,8 @@ void Deposito::remover_midia(int codigo_numerico) {
         _midias.erase(it);
         std::cout << "Midia " << codigo_numerico << " removida com sucesso" << std::endl;
     } else {
-        throw DadosInexistente ("ERRO: codigo inexistente");
+        char* erro  = "ERRO: codigo inexistente";
+        throw DadosInexistente (erro);
     }
 };
 
@@ -89,16 +94,21 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
 
             if (tipo == "D") {
                 cadastrar_dvd(unidades_disponiveis, codigo_numerico, titulo, categoria);
+                contador++;
             } else if (tipo == "F") {
                 cadastrar_fita(unidades_disponiveis, codigo_numerico, titulo);
+                contador++;
+            } else if (tipo == "J") {
+                cadastrar_jogo(unidades_disponiveis, codigo_numerico, titulo);
+                contador++;
             }
-            contador++;
         }
 
         arquivo.close();
         if (contador > 0) std::cout << contador << " Midias cadastradas com sucesso" << std::endl;
     } else {
-        throw ExcecaoDeposito("ERRO: arquivo inexistente");
+        char* erro = "ERRO: arquivo inexistente";
+        throw ExcecaoDeposito(erro);
     }
 };
 
@@ -174,7 +184,8 @@ Midia* Deposito::get_midia(int codigo_numerico){
     if(this->_midias.find(codigo_numerico) != this->_midias.end()){
         return this->_midias[codigo_numerico];
     } else {
-        throw DadosInexistente("Nenhuma midia encontrada com o codigo numerico dado");
+        char* erro = "Nenhuma midia encontrada com o codigo numerico dado";
+        throw DadosInexistente(erro);
     }
 };
 
@@ -203,15 +214,17 @@ void Deposito::imprimir_catalogo(){
 void Deposito::retirar_midia(int codigo_numerico, int quantidade){
     try {
         _midias[codigo_numerico] += quantidade;
-    } catch(std::out_of_range e){
-        throw DadosInexistente("ERRO: Midia nao existente na base de dados.");
+    } catch(std::out_of_range &e){
+        char* erro = "ERRO: Midia nao existente na base de dados.";
+        throw DadosInexistente(erro);
     }
 };
 
 void Deposito::devolver_midia(int codigo_numerico, int quantidade){ //talvez tenhamos que revisar isso
     try {
         _midias[codigo_numerico] += quantidade;
-    } catch(std::out_of_range e){
-        throw DadosInexistente(("[DPST] ERRO: Midia nao existe na base de dados. Verifique se a midia nao foi descadastrada durante o periodo de locacao."));
+    } catch(std::out_of_range &e){
+        char* erro = "[DPST] ERRO: Midia nao existe na base de dados. Verifique se a midia nao foi descadastrada durante o periodo de locacao.";
+        throw DadosInexistente(erro);
     }
 };
