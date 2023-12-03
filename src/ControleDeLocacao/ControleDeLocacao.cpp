@@ -27,7 +27,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ 
     clientes.ler_informacoes_locacao(cpf_cliente);
     std::map<int, info_midia> locacoes = clientes.informacoes_locacoes.locacoes;
     int dias = clientes.informacoes_locacoes.dias_desde_alocacao;
-    std::cout << "######### Recibo de Aluguel ###########" << std::endl;
+    std::cout << "\n######### Recibo de Aluguel ###########" << std::endl;
     std::cout << "CPF: " << cpf_cliente << std::endl << std::endl;
     int total_locacao;
     for (auto it : locacoes){
@@ -38,7 +38,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ 
 
             Midia* devolvida = armazenamento.get_midia(codigo_midia);
             
-            std::cout << "Midia: " << devolvida->getTitulo() << "Quantidade: x" << quantidade_midia << " ";
+            std::cout << "Midia: " << devolvida->getTitulo() << " Quantidade: x" << quantidade_midia << " ";
             int total_midia;
             for(int i = 0; i<quantidade_midia; i++){
                 total_midia += devolvida->calcular_locacao(dias);
@@ -52,7 +52,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ 
     }
     std::cout << std::endl;
     std::cout << "Total a ser pago: " << total_locacao << " reais" << std::endl;
-    std::cout << "######### Fim  do  Recibo ###########" << std::endl;
+    std::cout << "######### Fim  do  Recibo ###########\n" << std::endl;
 }
 
 void Locador::gerar_relatorio(ControleCliente Clientes){

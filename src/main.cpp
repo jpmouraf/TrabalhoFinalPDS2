@@ -248,7 +248,7 @@ int main(){
             while (1){
                 int codigo, quantidade, disponiveis;
                 std::cin >> codigo;
-                if (codigo = 0){
+                if (codigo == 0){
                     break;
                 }
                 std::cin >> quantidade;
@@ -308,6 +308,10 @@ int main(){
             std::cout << "Devolução finalizada com sucesso!" << std::endl;
         }
 
+        else if (comando == "TP"){
+            cinerama.mais_alugadas();
+        }
+
         // Finalizar Sistema
         else if (comando == "FS") {
             return 0;
@@ -325,6 +329,7 @@ int main(){
             std::cout << "RC <cpf> - Remover Cliente" << std::endl;
             std::cout << "LC C - Listar Clientes ordenados por CPF" << std::endl;
             std::cout << "LC N - Listar Clientes ordenados por Nome" << std::endl;
+            std::cout << "TP - Imprimir as 10 midias mais alugadas" << std::endl;
             std::cout << "AL - Alugar Midias" << std::endl;
             std::cout << "DV - Devolver Midia" << std::endl;
             std::cout << "FS - Encerrar o sistema" << std::endl;
