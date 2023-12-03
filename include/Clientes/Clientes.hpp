@@ -119,7 +119,7 @@ class ExcecaoCliente : public std::exception {
 };
 
 /**
- * Classe para excecao relacionada a erro ao abrir arquivo.
+ * Classe para excecao relacionada a erro ao abrir arquivo percebido em tempo de execução.
  */
 class ErroAbrirArquivo : public std::runtime_error {
     public:
