@@ -122,9 +122,4 @@ class ErroAbrirArquivo : public std::runtime_error {
         ErroAbrirArquivo() : std::runtime_error("Erro ao abrir o arquivo.") {}
 };
 
-class FormatoInvalido : public ExcecaoCliente{
-    public:
-        FormatoInvalido(char* mensagem) : ExcecaoCliente(mensagem) {}
-};
-
 #endif

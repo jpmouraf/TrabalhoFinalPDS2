@@ -10,6 +10,7 @@
 #include <stdexcept>
 #include <filesystem>
 #include "../../include/Clientes/Clientes.hpp"
+#include "../../include/ControleDeMidia/Deposito.hpp"
 
 //METODOS PRIVADOS
 long long Cliente::getCPF(){
