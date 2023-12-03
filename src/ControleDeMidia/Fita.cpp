@@ -23,6 +23,9 @@ void Fita::imprimir_info() {
 int Fita::calcular_locacao(int dias) {
     int valor_fita = 0;
     bool _isRebobinada = rand() % 2;
+    if (dias < 0) {
+            throw std::invalid_argument("O número de dias não pode ser negativo.");
+        }
     if(_isRebobinada) {
         return valor_fita = 7;
     }

@@ -18,6 +18,9 @@ Jogo::Jogo(int codigo_numerico, std::string titulo, int unidades_disponiveis) : 
 int Jogo::calcular_locacao(int dias) {
     int valor_jogo = 0;
     int nivel_arranhado = rand() % 10;
+    if (dias < 0) {
+            throw std::invalid_argument("O número de dias não pode ser negativo.");
+        }
     return 5*nivel_arranhado + 5;
 }
 

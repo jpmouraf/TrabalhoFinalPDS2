@@ -22,6 +22,9 @@ Lancamento::Lancamento(int codigo_numerico, std::string titulo, int unidades_dis
     : Dvd(codigo_numerico, titulo, unidades_disponiveis) {}
 
 int Lancamento::calcular_locacao(int dias) {
+    if (dias < 0) {
+            throw std::invalid_argument("O número de dias não pode ser negativo.");
+        }
     int valor_lancamento = 20 * dias;
     return valor_lancamento;
 }
