@@ -1,0 +1,87 @@
+Bem-\/vindo ao Sistema de Locadora, um projeto de software em C++ desenvolvido por Denner, Vitor Gabriel e Joao Paulo!\hypertarget{md_README_autotoc_md1}{}\doxysection{Funcionalidades Principais}\label{md_README_autotoc_md1}
+\hypertarget{md_README_autotoc_md2}{}\doxysubsection{1. Ler Arquivo de Cadastro}\label{md_README_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LA <nome\_do\_arquivo.txt>}
+
+\end{DoxyCode}
+ Este comando permite a leitura de um arquivo de cadastro para inicializar a locadora.\hypertarget{md_README_autotoc_md3}{}\doxysubsection{2. Cadastrar Midia}\label{md_README_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CF F <quantidade> <\textcolor{keywordtype}{id}> <titulo>}
+\DoxyCodeLine{CF D <quantidade> <\textcolor{keywordtype}{id}> <titulo> <categoria>}
+
+\end{DoxyCode}
+ Cadastra uma nova midia, seja ela do tipo Fita (F) ou DVD (D), com suas respectivas informacoes.\hypertarget{md_README_autotoc_md4}{}\doxysubsection{3. Remover Midia}\label{md_README_autotoc_md4}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RF <id>}
+
+\end{DoxyCode}
+ Remove uma midia com base no seu ID.\hypertarget{md_README_autotoc_md5}{}\doxysubsection{4. Listar Midias}\label{md_README_autotoc_md5}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LF C}
+\DoxyCodeLine{LF T}
+
+\end{DoxyCode}
+ Lista as midias ordenadas por Codigo (C) ou Titulo (T).\hypertarget{md_README_autotoc_md6}{}\doxysubsection{5. Cadastrar Cliente}\label{md_README_autotoc_md6}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{CC <cpf> <nome>}
+
+\end{DoxyCode}
+ Cadastra um novo cliente com CPF e nome.\hypertarget{md_README_autotoc_md7}{}\doxysubsection{6. Remover Cliente}\label{md_README_autotoc_md7}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{RC <cpf>}
+
+\end{DoxyCode}
+ Remove um cliente com base no CPF.\hypertarget{md_README_autotoc_md8}{}\doxysubsection{7. Listar Clientes}\label{md_README_autotoc_md8}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LC C}
+\DoxyCodeLine{LC N}
+
+\end{DoxyCode}
+ Lista os clientes ordenados por CPF (C) ou Nome (N).\hypertarget{md_README_autotoc_md9}{}\doxysubsection{8. Aluguel de Midias}\label{md_README_autotoc_md9}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{AL}
+
+\end{DoxyCode}
+ Realiza o aluguel de midias.\hypertarget{md_README_autotoc_md10}{}\doxysubsection{9. Devolucao de Midias}\label{md_README_autotoc_md10}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{DV <cpf>}
+
+\end{DoxyCode}
+ Realiza a devolucao de midias associadas a um cliente.\hypertarget{md_README_autotoc_md11}{}\doxysubsection{10. Finalizar Sistema}\label{md_README_autotoc_md11}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{FS}
+
+\end{DoxyCode}
+ Encerra o sistema.\hypertarget{md_README_autotoc_md12}{}\doxysubsection{11. Ajuda}\label{md_README_autotoc_md12}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{HP}
+
+\end{DoxyCode}
+ Exibe uma lista de comandos disponiveis.\hypertarget{md_README_autotoc_md13}{}\doxysection{Exemplo de Uso}\label{md_README_autotoc_md13}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{LA dados.txt}
+\DoxyCodeLine{CF F 10 001 Titanic}
+\DoxyCodeLine{LF T}
+\DoxyCodeLine{CC 12345678900 Joao}
+\DoxyCodeLine{AL}
+\DoxyCodeLine{DV 12345678900}
+\DoxyCodeLine{FS}
+
+\end{DoxyCode}
+
+
+Lembre-\/se de conferir a ajuda (HP) para uma lista completa de comandos!
+
+Divirta-\/se explorando o Sistema de Locadora! 🍿🕹️ 
