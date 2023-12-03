@@ -256,17 +256,18 @@ int main(){
                 try {
                     disponiveis = cinerama.get_midia(codigo)->getUnidadesDisponiveis();
                 } catch (DadosInexistente &e){
-                    std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade." << std::endl;
+                    std::cout << e.what() << std::endl;
+                    std::cout << "Não existe uma mídia com esse código. Digite um novo código e uma nova quantidade ou digite 0 para sair." << std::endl;
                     continue;
                 }
                 
                 
                 if (quantidade < 1) {
-                    std::cout << "Quantidade inválida selecionada. Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis." << std::endl;
+                    std::cout << "Quantidade inválida selecionada. Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis ou digite 0 para sair." << std::endl;
                     continue;
                 }
                 else if (quantidade > disponiveis) {
-                    std::cout << "Quantidade inválida selecionada (maior do que as unidades em estoque). Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis." << std::endl;
+                    std::cout << "Quantidade inválida selecionada (maior do que as unidades em estoque). Digite novamente o código e insira uma quantidade entre 1 e o número de unidades disponíveis ou digite 0 para sair." << std::endl;
                     continue;
                 } 
                 else {
