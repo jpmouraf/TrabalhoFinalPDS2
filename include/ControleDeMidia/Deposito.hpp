@@ -10,6 +10,11 @@
 #include "Jogo.hpp"
 #include "Midia.hpp"
 
+/**
+ * Classe depósito que armazena as mídias em um map, que tem como identificador o código numérico do filme
+ * Além disso, declara as variáveis tipo e categoria, que são necessárias para diferenciar os filmes entre si,
+ * para fatores que as diferenciam, como o cálculo da locação
+*/
 class Deposito {
     private:
         std::string tipo;
@@ -75,6 +80,10 @@ class Deposito {
         void devolver_midia(int codigo_numerico, int quantidade);
 };
 
+/**
+ * Classe base para exceções relacionadas ao Deposito.
+ * Esta classe representa uma exceção genérica associada ao Deposito.
+*/
 class ExcecaoDeposito : public std::exception {
     private:
         const char* _mensagem;
@@ -87,6 +96,10 @@ class ExcecaoDeposito : public std::exception {
 
 };
 
+/**
+ * Estas subclasses representam exceções específicas para dados que já existem no Deposito ou dados inexistentes.
+ * São derivadas da classe ExcecaoDeposito.
+*/
 class DadosRepetidos : public ExcecaoDeposito {
     public:
         DadosRepetidos(char* mensagem) : ExcecaoDeposito(mensagem) {}
@@ -97,6 +110,10 @@ class DadosInexistente : public ExcecaoDeposito {
         DadosInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
 };
 
+/** 
+ * Estas classes são derivadas da classe runtime_error e são usadas para sinalizar
+ * um erro que ocorre ao tentar abrir um arquivo ou arquivos com formatos inválidos.
+ */
 class ArquivoInexistente : public std::runtime_error {
     public:
         ArquivoInexistente(char* mensagem) : std::runtime_error(mensagem) {}
