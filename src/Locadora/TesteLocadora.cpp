@@ -13,7 +13,8 @@
 TEST_CASE("Teste de validar Cpf") {
     ControleCliente cliente; /// Criando um objeto ControleCliente para teste
     CHECK(cliente.validar_CPF(12345678900) == true);
-    CHECK(cliente.validar_CPF(12345) == false);
+    CHECK(cliente.validar_CPF(0) == false);
+    CHECK(cliente.validar_CPF(123456789000) == false);
 }
 
 /**
