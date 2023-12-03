@@ -1,4 +1,3 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <string>
 #include <sstream>
 #include <iostream>
@@ -8,9 +7,10 @@
 
 int main(){
     Locadora cinerama;
-
+    
+    std::cout << std::endl << "Sistema Eletronico de Locacao, versao 1.0" << std::endl << "Digite 'HP' para receber uma lista de todos os comandos" << std::endl;
     while(true){
-        std::cout << std::endl << "Sistema Eletronico de Locacao, versao 1.0" << std::endl << "Digite 'HP' para receber uma lista de todos os comandos" << std::endl;
+        std::cout << "Digite um comando." << std::endl;
         std::string entrada;
         getline(std::cin, entrada);
 
@@ -236,8 +236,11 @@ int main(){
             std::cout << "digite o cpf do cliente, 0 para cancelar" << std::endl;
             while (1){
                 std::cin >> cpf;
-                if(cpf == 0) break;
-                else if(!cinerama.validar_CPF(cpf)){
+                if(cpf == 0) {
+                    std::cout << "saindo" << std::endl;
+                    break;
+                }
+                else if(!cinerama.validar_cliente(cpf)){
                     std::cout << "Não há cliente com este CPF. Tente novamente, digite 0 para cancelar ou considere cadastrar o cliente." << std:: endl;
                 } else {
                     cpf_valido = true;
