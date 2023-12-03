@@ -2,3 +2,4 @@
 *.o
 makefile
 build/program.exe
+build/teste.txt

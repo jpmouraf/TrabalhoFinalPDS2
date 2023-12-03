@@ -58,6 +58,8 @@ class ControleCliente {
         std::map<int, info_midia> carregar_locacoes_csv_cliente(long long cpf);
 
     public:
+        ControleCliente();
+        ~ControleCliente();
         /**
          * Lista os clientes em ordem alfabetica
          */
