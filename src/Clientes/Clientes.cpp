@@ -8,65 +8,174 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
+#include <filesystem>
+#include <algorithm>
 #include "../../include/Clientes/Clientes.hpp"
+#include "../../include/ControleDeMidia/Deposito.hpp"
 
 using namespace std;
 
-Cliente::Cliente(string nome, long int cpf) : _nome(nome) , _cpf(cpf) {}
-
-long int Cliente::getCPF() {
-    return _cpf;
+//METODOS PRIVADOS
+long long Cliente::getCPF(){
+    return this->_cpf;
 }
 
-string Cliente::getNome() {
-    return _nome;
+std::string Cliente::getNome(){
+    return this->_nome;
 }
 
-bool ControleCliente::validarCPF(long int cpf) {
-    int contaDigito = 0;
-    while(cpf != 0) {
-        cpf /= 10;
-        contaDigito++;
+int ControleCliente::calcula_dias(time_t data_locacao){
+    time_t data_devolucao = time(0);
+    const int segundosPorDia = 60 * 60 * 24;
+
+    int diferencaSegundos = static_cast<int>(difftime(data_locacao, data_devolucao));
+    int diferencaDias = diferencaSegundos / segundosPorDia;
+
+    return abs(diferencaDias);
+};
+
+time_t ControleCliente::encontrar_data_alocacao(std::string data) {
+    time_t datetime_alocacao;
+    tm tmStruct = {};
+    std::istringstream ss(data);
+    ss >> std::get_time(&tmStruct, "%a %b %d %H:%M:%S %Y");
+    datetime_alocacao = mktime(&tmStruct);
+    return datetime_alocacao;
+};
+
+std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long long cpf){
+    info_midia midia;
+    std::map<int, info_midia> saida;
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::string nome_arquivo = caminho.string();
+    std::ifstream banco_de_locacoes(caminho);
+
+    if (!banco_de_locacoes.is_open()) {
+        throw ErroAbrirArquivo();
     }
-    return contaDigito = 11;
-}
 
-void ControleCliente::cadastrar_cliente(long int cpf, string nome) {
-    if(!validarCPF(cpf)) {
-        throw ExcecaoCliente("ERRO: dados incorretos");
+    vector<vector<string>> banco;
+    std::string linha;
+    std::getline(banco_de_locacoes, linha);//descartar headers
+    while (std::getline(banco_de_locacoes, linha)){
+        stringstream temp(linha);
+        vector<string> lidos;
+        std::string celula;
+        while (getline(temp, celula, ',')) {
+            lidos.push_back(celula);
+        }
+        banco.push_back(lidos);
     }
-    else {
-        for (auto& cliente : _clientes) {
-            if (cliente.getCPF() == cpf) {
-                throw ExcecaoCliente("ERRO: CPF repetido");
+    
+    for(auto linha: banco){
+        long long int cpf_csv = stoi(linha[0]);
+        if(cpf == cpf_csv){
+            midia.cpf_cliente = cpf_csv;
+            midia.titulo = linha[1];
+            midia.quantidade = stoi(linha[3]);
+            midia.data = linha[4];
+            int id = stoi(linha[2]);
+            saida[id] = midia;
+        }
+    }
+
+    banco_de_locacoes.close();
+    return saida;
+};
+
+void ControleCliente::limpar_locacoes_csv_cliente(long long cpf){
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::string nome_arquivo = caminho.string();
+    std::fstream banco_de_locacoes;
+    banco_de_locacoes.open(caminho, ios::out);
+    if (!banco_de_locacoes.is_open()) {
+        throw ErroAbrirArquivo();
+    }
+
+    vector<vector<string>> banco;
+    std::string headers;
+    std::string linha;
+    std::getline(banco_de_locacoes, headers);//guardar headers
+    while (std::getline(banco_de_locacoes, linha)){ //ler o arquivo todo
+        stringstream temp(linha);
+        vector<string> lidos;
+        std::string celula;
+        while (getline(temp, celula, ',')) {
+            lidos.push_back(celula);
+        }
+        banco.push_back(lidos);
+    }
+    
+    banco_de_locacoes.close();
+    banco_de_locacoes.open(caminho, ios::in);
+    if (!banco_de_locacoes.is_open()) {
+        throw ErroAbrirArquivo();
+    }
+
+
+    for(auto linha: banco){ //escrever tudo que não é do cliente no arquivo
+        long long int cpf_csv = stoi(linha[0]);
+        if(cpf != cpf_csv){
+            stringstream nova_linha;
+            nova_linha << linha[0] << "," << linha[1] << "," << linha[2] << "," << linha[3] << "," << linha[4];
+            banco_de_locacoes << nova_linha.str();
+        }
+    }
+
+
+
+    banco_de_locacoes.close();
+};
+
+//METODOS PUBLICOS
+Cliente::Cliente(std::string nome, long long cpf) : _nome(nome) , _cpf(cpf) {}
+
+ControleCliente::ControleCliente() {
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_clientes.txt";
+    std::string nome_arquivo = caminho.string();
+    std::cout << "Lendo informacoes de clientes da seguinte database (arquivo): " << nome_arquivo << std::endl;
+    if (nome_arquivo.find(".txt") == std::string::npos) {
+        throw FormatoInvalido("[DPST] ERRO: Você selecionou um formato de arquivo inválido. Apenas TXT são aceitos");
+    }
+
+    std::ifstream arquivo(nome_arquivo);
+    if (arquivo.is_open()) {
+        std::string linha;
+        int contador = 0;
+
+        while (std::getline(arquivo, linha)) {
+            std::stringstream linhaStream(linha);
+            std::string nome;
+            long long cpf;
+
+            linhaStream >> cpf >> nome;
+            if (!validar_CPF(cpf)){
+                arquivo.close();
+                break;
             }
+            this->cadastrar_cliente(cpf, nome);
+            contador++;
         }
-        Cliente novoCliente(nome, cpf);
-        _clientes.push_back(novoCliente);
-        cout << "Cliente " << cpf << " cadastrado com sucesso." << endl;
+
+        arquivo.close();
+        if (contador >= 1){
+            std::cout << contador << " Clientes cadastrados com sucesso" << std::endl;
+        }
+    } else {
+        throw ExcecaoCliente("ERRO: arquivo inexistente");
     }
 }
 
-void ControleCliente::remover_cliente(long int cpf) {
-    for (auto it = _clientes.begin(); it != _clientes.end(); ++it) {
-        if (it->getCPF() == cpf) {
-            _clientes.erase(it);
-            cout << "Cliente " << cpf << " removido com sucesso" << endl;
-            return;
-        }
+ControleCliente::~ControleCliente(){
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_clientes.txt";
+    std::string nome_arquivo = caminho.string();
+    std::ofstream banco_de_clientes(nome_arquivo);
+
+    for (auto& cliente : this->_clientes){
+        banco_de_clientes << cliente.getCPF() << " " << cliente.getNome() << '\n';
     }
-    throw ExcecaoCliente("ERRO: CPF inexistente");
-}
-
-
-void ControleCliente::listar_codigo() {
-    _clientes.sort([](Cliente& a, Cliente& b) {
-        return a.getCPF() < b.getCPF();
-    });
-
-    for (auto& cliente : _clientes) {
-        std::cout << cliente.getCPF() << ": " << cliente.getNome() << std::endl;
-    }
+    
+    banco_de_clientes.close();
 }
 
 void ControleCliente::listar_nome() {
@@ -77,99 +186,123 @@ void ControleCliente::listar_nome() {
     for (auto& cliente : _clientes) {
         std::cout << cliente.getNome() << ": " << cliente.getCPF() << std::endl;
     }
+};
+
+void ControleCliente::listar_codigo() {
+    for (auto& cliente : _clientes) {
+        std::cout << cliente.getCPF() << ": " << cliente.getNome() << std::endl;
+    }
+};
+
+bool ControleCliente::validar_CPF(long long cpf) {
+    return cpf > 0 && cpf <= 99999999999;
+};
+bool ControleCliente::validar_cliente(long long cpf){
+    for (auto it : _clientes){
+        if(it.getCPF() == cpf) return true;
+    }
+    return false;
 }
 
-int ControleCliente::calcula_dias(time_t data_locacao){
-    time_t data_devolucao = time(0);
-    const int segundosPorDia = 60 * 60 * 24;
+void ControleCliente::remover_cliente(long long cpf) {
+    for (auto it = _clientes.begin(); it != _clientes.end(); ++it) {
+        if (it->getCPF() == cpf) {
+            _clientes.erase(it);
+            std::cout << "Cliente " << cpf << " removido com sucesso" << std::endl;
+            return;
+        }
+    }
+    throw ExcecaoCliente("ERRO: CPF inexistente");
+};
 
-    int diferencaSegundos = static_cast<int>(difftime(data_locacao, data_devolucao));
-    int diferencaDias = diferencaSegundos / segundosPorDia;
-
-    return diferencaDias;
+void ControleCliente::cadastrar_cliente(long long cpf, std::string nome) {
+    if(!validar_CPF(cpf)) {
+        throw ExcecaoCliente("ERRO: dados incorretos");
+    }
+    else {
+        for (auto& cliente : _clientes) {
+            if (cliente.getCPF() == cpf) {
+                throw ExcecaoCliente("ERRO: CPF repetido");
+            }
+        }
+        Cliente novoCliente(nome, cpf);
+        _clientes.push_back(novoCliente);
+        std::cout << "Cliente " << cpf << " cadastrado com sucesso." << std::endl;
+    }
 }
 
-time_t ControleCliente::encontrar_data_alocacao(long cpf, int codigo) {
-    ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
+void ControleCliente::midias_mais_alugadas() {
+    // Mapa para armazenar a contagem de alugueis para cada titulo de midia
+    std::map<std::string, int> contagem_alugueis;
+
+    std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
 
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
     }
 
-    string linha;
-    getline(banco_de_locacoes, linha);
-    stringstream linhaStream(linha);
+    std::string linha;
+    while (getline(banco_de_locacoes, linha)) {
+        std::stringstream linhaStream(linha);
+        std::vector<std::string> celulas;
+        std::string campo;
 
-    string campo;
-    vector<string> celulas;
+        while (getline(linhaStream, campo, ',')) {
+            celulas.push_back(campo);
+        }
 
-    while (getline(linhaStream, campo, ',')) {
-        celulas.push_back(campo);
-    }
-
-    long cpf_csv = stol(celulas[0]);
-    if (cpf_csv == cpf) {
-        string datetime = celulas[3];
-        tm tmStruct = {};
-        istringstream ss(datetime);
-        ss >> get_time(&tmStruct, "%Y-%m-%d %H:%M:%S");
-        time_t tempo = mktime(&tmStruct);
-        cout << "Valor de time_t: " << tempo << endl;
-        banco_de_locacoes.close();
-        return tempo;
+        // Verificar se a linha possui as informacoes necessarias
+        if (celulas.size() >= 4) {
+            std::string titulo = celulas[1];
+            contagem_alugueis[titulo]++;
+        }
     }
 
     banco_de_locacoes.close();
+
+    // Converter o mapa em um vetor de pares (titulo, contagem)
+    std::vector<std::pair<std::string, int>> vetor_contagem(contagem_alugueis.begin(), contagem_alugueis.end());
+
+    // Classificar o vetor com base na contagem (do maior para o menor)
+    std::sort(vetor_contagem.begin(), vetor_contagem.end(),
+              [](const auto &a, const auto &b) {
+                  return a.second > b.second;
+              });
+
+    // Imprimir as 10 midias mais alugadas
+    std::cout << "As 10 midias mais alugadas:" << std::endl;
+    int contador = 0;
+    for (const auto &par : vetor_contagem) {
+        std::cout << "Titulo: " << par.first << ", Alugueis: " << par.second << std::endl;
+        contador++;
+        if (contador == 10) {
+            break;
+        }
+    }
 }
 
-void ControleCliente::escrever_locacoes_cliente(long int cpf_cliente, map<int, int> locacoes){
-    ofstream banco_de_locacoes("../../data/banco_de_locacoes.csv", ios::app);
+void ControleCliente::ler_informacoes_locacao(long long cpf){
+    InformacoesLocacoes saida;
+    saida.locacoes = this->carregar_locacoes_csv_cliente(cpf);
+    int id1 = saida.locacoes.begin()->first;
+    saida.dias_desde_alocacao = this->calcula_dias(encontrar_data_alocacao(saida.locacoes[id1].data)); //assumimos que todas as midias são alocadas na mesma data
+    this->informacoes_locacoes = saida;
+};
+
+void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, info_midia> locacoes){
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::ofstream banco_de_locacoes(caminho.string(), std::ios::app);
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
     }
 
     time_t agora = time(0);
+    std::string data = ctime(&agora);
+    data[data.size() - 1] = '\0';
 
     for (auto& info_midia : locacoes) {
-        banco_de_locacoes << cpf_cliente << "," << info_midia.first << "," << info_midia.second << "," << ctime(&agora) << ",,\n";
+        banco_de_locacoes << cpf << "," << info_midia.second.titulo << "," << info_midia.first << "," << info_midia.second.quantidade << "," << data << ",\n";
     }
 
     banco_de_locacoes.close();
-}
-
-map<int, int> ControleCliente::locacoes_cliente(long cpf){
-    map<int, int> saida;
-    ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
-
-    if (!banco_de_locacoes.is_open()) {
-        throw ErroAbrirArquivo();
-    }
-
-    string linha;
-    getline(banco_de_locacoes, linha);
-    stringstream linhaStream(linha);
-
-    string campo;
-    vector<string> celulas;
-
-    while (getline(linhaStream, campo, ',')) {
-        celulas.push_back(campo);
-    }
-
-    long cpf_csv = stol(celulas[0]);
-    if (cpf_csv == cpf) {
-        int id = stol(celulas[1]);
-        saida[id] = cpf;
-    }
-
-    banco_de_locacoes.close();
-    return saida;
-}
-
-InformacoesLocacao ControleCliente::informacoes_locacao(long cpf){
-    InformacoesLocacao saida;
-    saida.locacoes = this->locacoes_cliente(cpf);
-    int id_teste = saida.locacoes.begin()->first;
-    saida.dias = this->calcula_dias(encontrar_data_alocacao(cpf, id_teste));
-    return saida;
 }

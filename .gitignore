@@ -1,0 +1,9 @@
+
+*.o
+makefile
+build/program.exe
+build/teste.txt
+.vscode/settings.json
+makefile
+.vscode/settings.json
+makefile

@@ -1,31 +1,35 @@
 #include <string>
+#include "cstdlib"
 #include <iostream>
 #include "../../include/ControleDeMidia/Fita.hpp"
-#include "cstdlib"
 
-using namespace std;
+Fita::Fita(int codigo_numerico, std::string titulo, int unidades_disponiveis) : Midia(codigo_numerico, titulo, unidades_disponiveis) {
+    try
+    {
+        this->setTipo("FITA");
+    }
 
-const string Fita::_tipo = "Fita cassete";
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+}
 
-Fita::Fita(int codigo_numerico, string titulo, int unidades_disponiveis) :
-            Midia(codigo_numerico, titulo, unidades_disponiveis) {}
-
-string Fita::gettipo() {
-    cout << _tipo << endl;
+void Fita::imprimir_info() {
+    Midia::imprimir_info();
+    std::cout << "FITA" << std::endl;
 }
 
 int Fita::calcular_locacao(int dias) {
     int valor_fita = 0;
     bool _isRebobinada = rand() % 2;
+    if (dias < 0) {
+            throw std::invalid_argument("O número de dias não pode ser negativo.");
+        }
     if(_isRebobinada) {
         return valor_fita = 7;
     }
     else {
         return valor_fita = 5;
     }
-}
-
-void Fita::imprimir_info() {
-    Midia::imprimir_info();
-    cout << "FITA" << endl;
 }
