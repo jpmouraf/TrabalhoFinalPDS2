@@ -99,7 +99,7 @@ Cliente::Cliente(std::string nome, long long cpf) : _nome(nome) , _cpf(cpf) {}
 ControleCliente::ControleCliente() {
     std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_clientes.txt";
     std::string nome_arquivo = caminho.string();
-    
+    std::cout << "Lendo informacoes de clientes da seguinte database (arquivo): " << nome_arquivo << std::endl;
     if (nome_arquivo.find(".txt") == std::string::npos) {
         throw FormatoInvalido("[DPST] ERRO: Você selecionou um formato de arquivo inválido. Apenas TXT são aceitos");
     }

@@ -9,6 +9,7 @@ int main(){
     Locadora cinerama;
 
     while(true){
+        std::cout << std::endl << "Sistema Eletronico de Locacao, versao 1.0" << std::endl << "Digite 'HP' para receber uma lista de todos os comandos" << std::endl;
         std::string entrada;
         getline(std::cin, entrada);
 
