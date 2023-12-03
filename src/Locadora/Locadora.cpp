@@ -59,3 +59,7 @@ void Locadora::devolver_midias(long long cpf){
 void Locadora::imprimir_catalogo(){
     this->central_midia_locacoes.imprimir_catalogo();
 }
+
+void Locadora::mais_alugadas(){
+    this->central_midia_locacoes.gerar_relatorio(this->central_de_clientes);
+}

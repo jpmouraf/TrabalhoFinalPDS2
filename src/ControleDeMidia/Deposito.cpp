@@ -88,7 +88,7 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
         while (std::getline(arquivo, linha)) {
             std::stringstream linhaStream(linha);
             std::string tipo, titulo, categoria;
-            int unidades_disponiveis, codigo_numerico;
+            int quantidade, unidades_disponiveis, codigo_numerico;
 
             linhaStream >> tipo >> unidades_disponiveis >> codigo_numerico >> titulo >> categoria;
 
@@ -105,7 +105,7 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
         }
 
         arquivo.close();
-        std::cout << contador << " Midias cadastradas com sucesso" << std::endl;
+        if (contador > 0) std::cout << contador << " Midias cadastradas com sucesso" << std::endl;
     } else {
         char* erro = "ERRO: arquivo inexistente";
         throw ExcecaoDeposito(erro);
@@ -181,8 +181,8 @@ void Deposito::imprimir_todas_midias(){
 };
 
 Midia* Deposito::get_midia(int codigo_numerico){
-    if(_midias.find(codigo_numerico) != _midias.end()){
-        return _midias[codigo_numerico];
+    if(this->_midias.find(codigo_numerico) != this->_midias.end()){
+        return this->_midias[codigo_numerico];
     } else {
         char* erro = "Nenhuma midia encontrada com o codigo numerico dado";
         throw DadosInexistente(erro);

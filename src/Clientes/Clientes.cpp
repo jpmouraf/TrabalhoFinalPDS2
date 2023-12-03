@@ -32,7 +32,9 @@ int ControleCliente::calcula_dias(time_t data_locacao){
 };
 
 time_t ControleCliente::encontrar_data_alocacao(long long cpf, int codigo) {
-    std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::string nome_arquivo = caminho.string();
+    std::ifstream banco_de_locacoes(nome_arquivo);
 
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
@@ -66,7 +68,9 @@ time_t ControleCliente::encontrar_data_alocacao(long long cpf, int codigo) {
 std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long long cpf){
     info_midia midia;
     std::map<int, info_midia> saida;
-    std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::string nome_arquivo = caminho.string();
+    std::ifstream banco_de_locacoes(caminho);
 
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
@@ -83,12 +87,20 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
         celulas.push_back(campo);
     }
 
-    long long cpf_csv = stol(celulas[0]);
-    if (cpf_csv == cpf) {
-        midia.cpf_cliente = cpf_csv;
-        midia.titulo = celulas[1];
-        int id = stol(celulas[2]);
-        saida[id] = midia;
+    try
+    {
+        std::cout << celulas[0] << " " << celulas[1] << " " << celulas[2];
+        long long cpf_csv = stol(celulas[0]);
+        if (cpf_csv == cpf) {
+            midia.cpf_cliente = cpf_csv;
+            midia.titulo = celulas[1];
+            int id = stol(celulas[2]);
+            saida[id] = midia;
+        }
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << "pass";
     }
 
     banco_de_locacoes.close();
@@ -117,12 +129,18 @@ ControleCliente::ControleCliente() {
             long long cpf;
 
             linhaStream >> cpf >> nome;
+            if (!validar_CPF(cpf)){
+                arquivo.close();
+                break;
+            }
             this->cadastrar_cliente(cpf, nome);
             contador++;
         }
 
         arquivo.close();
-        std::cout << contador << " Clientes cadastrados com sucesso" << std::endl;
+        if (contador >= 1){
+            std::cout << contador << " Clientes cadastrados com sucesso" << std::endl;
+        }
     } else {
         throw ExcecaoCliente("ERRO: arquivo inexistente");
     }
@@ -246,7 +264,8 @@ void ControleCliente::ler_informacoes_locacao(long long cpf){
 };
 
 void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, int> locacoes){
-    std::ofstream banco_de_locacoes("../../data/banco_de_locacoes.csv", std::ios::app);
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::ofstream banco_de_locacoes(caminho.string(), std::ios::app);
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
     }
