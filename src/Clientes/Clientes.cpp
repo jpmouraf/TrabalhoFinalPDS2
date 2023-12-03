@@ -83,6 +83,50 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
     return saida;
 };
 
+void ControleCliente::limpar_locacoes_csv_cliente(long long cpf){
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::string nome_arquivo = caminho.string();
+    std::fstream banco_de_locacoes;
+    banco_de_locacoes.open(caminho, ios::out);
+    if (!banco_de_locacoes.is_open()) {
+        throw ErroAbrirArquivo();
+    }
+
+    vector<vector<string>> banco;
+    std::string headers;
+    std::string linha;
+    std::getline(banco_de_locacoes, headers);//guardar headers
+    while (std::getline(banco_de_locacoes, linha)){ //ler o arquivo todo
+        stringstream temp(linha);
+        vector<string> lidos;
+        std::string celula;
+        while (getline(temp, celula, ',')) {
+            lidos.push_back(celula);
+        }
+        banco.push_back(lidos);
+    }
+    
+    banco_de_locacoes.close();
+    banco_de_locacoes.open(caminho, ios::in);
+    if (!banco_de_locacoes.is_open()) {
+        throw ErroAbrirArquivo();
+    }
+
+
+    for(auto linha: banco){ //escrever tudo que não é do cliente no arquivo
+        long long int cpf_csv = stoi(linha[0]);
+        if(cpf != cpf_csv){
+            stringstream nova_linha;
+            nova_linha << linha[0] << "," << linha[1] << "," << linha[2] << "," << linha[3] << "," << linha[4];
+            banco_de_locacoes << nova_linha.str();
+        }
+    }
+
+
+
+    banco_de_locacoes.close();
+};
+
 //METODOS PUBLICOS
 Cliente::Cliente(std::string nome, long long cpf) : _nome(nome) , _cpf(cpf) {}
 

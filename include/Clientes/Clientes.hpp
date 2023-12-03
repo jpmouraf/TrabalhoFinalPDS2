@@ -105,6 +105,11 @@ class ControleCliente {
          * Escreve as locacoes de um cliente e a armazena no map criado
          */
         void escrever_locacoes_cliente(long long cpf, std::map<int, info_midia> locacoes);
+        /**
+         * Limpa as locações de um cliente.
+         */
+        void limpar_locacoes_csv_cliente(long long cpf);
+
         
 };
 

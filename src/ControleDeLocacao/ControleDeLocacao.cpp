@@ -53,6 +53,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){
     std::cout << std::endl;
     std::cout << "Total a ser pago: " << total_locacao << " reais" << std::endl;
     std::cout << "######### Fim  do  Recibo ###########\n" << std::endl;
+    clientes.limpar_locacoes_csv_cliente(cpf_cliente);
 }
 
 void Locador::gerar_relatorio(ControleCliente Clientes){
