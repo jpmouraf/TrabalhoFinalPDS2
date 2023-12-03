@@ -13,7 +13,7 @@ void Locador::alugar_midias(long long cpf_cliente, std::map<int, info_midia> loc
         int quantidade_midia = it.second.quantidade;
         try {
             Midia* locada = armazenamento.get_midia(codigo_midia);
-            std::cout << "Midia: " << locada->getTitulo() << "Quantidade: x" << quantidade_midia << std::endl;
+            std::cout << "Midia: " << locada->getTitulo() << " Quantidade: x" << quantidade_midia << std::endl;
         } catch(DadosInexistente &e) {
             throw;
         }

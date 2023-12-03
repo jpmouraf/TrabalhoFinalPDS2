@@ -308,7 +308,7 @@ void ControleCliente::escrever_locacoes_cliente(long long cpf, std::map<int, inf
 
     time_t agora = time(0);
     std::string data = ctime(&agora);
-    if (!data.empty() && data[data.size() - 1] == '\r') data.pop_back();
+    data[data.size() - 1] = '\0';
 
     for (auto& info_midia : locacoes) {
         banco_de_locacoes << cpf << "," << info_midia.second.titulo << "," << info_midia.first << "," << info_midia.second.quantidade << "," << data << ",\n";
