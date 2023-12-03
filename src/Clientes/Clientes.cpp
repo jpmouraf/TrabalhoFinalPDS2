@@ -8,6 +8,7 @@
 #include <iostream>
 #include <algorithm>
 #include <stdexcept>
+#include <filesystem>
 #include "../../include/Clientes/Clientes.hpp"
 
 //METODOS PRIVADOS
@@ -95,6 +96,48 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
 
 //METODOS PUBLICOS
 Cliente::Cliente(std::string nome, long long cpf) : _nome(nome) , _cpf(cpf) {}
+
+ControleCliente::ControleCliente() {
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_clientes.txt";
+    std::string nome_arquivo = caminho.string();
+    
+    if (nome_arquivo.find(".txt") == std::string::npos) {
+        throw FormatoInvalido("[DPST] ERRO: Você selecionou um formato de arquivo inválido. Apenas TXT são aceitos");
+    }
+
+    std::ifstream arquivo(nome_arquivo);
+    if (arquivo.is_open()) {
+        std::string linha;
+        int contador = 0;
+
+        while (std::getline(arquivo, linha)) {
+            std::stringstream linhaStream(linha);
+            std::string nome;
+            long long cpf;
+
+            linhaStream >> cpf >> nome;
+            this->cadastrar_cliente(cpf, nome);
+            contador++;
+        }
+
+        arquivo.close();
+        std::cout << contador << " Clientes cadastrados com sucesso" << std::endl;
+    } else {
+        throw ExcecaoCliente("ERRO: arquivo inexistente");
+    }
+}
+
+ControleCliente::~ControleCliente(){
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_clientes.txt";
+    std::string nome_arquivo = caminho.string();
+    std::ofstream banco_de_clientes(nome_arquivo);
+
+    for (auto& cliente : this->_clientes){
+        banco_de_clientes << cliente.getCPF() << " " << cliente.getNome() << '\n';
+    }
+    
+    banco_de_clientes.close();
+}
 
 void ControleCliente::listar_nome() {
     _clientes.sort([](Cliente& a, Cliente& b) {

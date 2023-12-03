@@ -4,6 +4,8 @@ SRC_DIR=src
 INCLUDE_DIR=include
 BUILD_DIR=build
 
+IGNORE_CLEAN_FILES = build/teste.txt
+
 # Procurando todos os cpp's em cada diretório
 CLIENTES_SRC=$(wildcard $(SRC_DIR)/clientes/*.cpp)
 CONTROLE_LOCACAO_SRC=$(wildcard $(SRC_DIR)/ControleDeLocacao/*.cpp)
@@ -75,3 +77,4 @@ $(BUILD_DIR)/Locadora:
 # Chame 'make clean' para usar
 clean:
 	$(RM) $(call FIXPATH,$(BUILD_DIR)/*)
+	$(RM) $(call FIXPATH,$(IGNORE_CLEAN_FILES))
