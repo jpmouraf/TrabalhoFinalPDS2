@@ -73,6 +73,10 @@ int main(){
             {
                 std::cerr << e.what() << '\n';
             }
+            catch(const std::out_of_range &e){
+                std::cout << "Erro: " << e.what() << std::endl;
+                std::cout << "Erro ao cadastrar mídia por conta de dados inadequados. Use o comando CF novamente para iniciar uma nova tentativa." << std::endl;
+            }
             catch(const std::exception& e)
             {
                 std::cerr << e.what() << '\n';
@@ -155,6 +159,7 @@ int main(){
             catch(const ExcecaoCliente& e)
             {
                 std::cerr << e.what() << '\n';
+                std::cout << "Erro ao cadastrar cliente. Use 'CC' novamente para iniciar uma nova tentativa." << std::endl;
             }
             catch(const std::exception& e)
             {

@@ -157,7 +157,7 @@ void ControleCliente::listar_codigo() {
 };
 
 bool ControleCliente::validar_CPF(long long cpf) {
-    return cpf >= 10000000000 && cpf <= 99999999999;
+    return cpf > 0 && cpf <= 99999999999;
 };
 
 void ControleCliente::remover_cliente(long long cpf) {

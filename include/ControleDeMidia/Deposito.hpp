@@ -27,12 +27,11 @@ class Deposito {
         void remover_midia(int codigo_numerico);
         void ler_estoque(std::string nome_arquivo);
         void salvar_estoque(std::string nome_arquivo);
-
         void salvar_estoque();
-        void ordenar_codigo();
+        
         void ordenar_titulo();
-
         void imprimir_todas_midias();
+
         Midia* get_midia(int codigo_numerico);
         void imprimir_catalogo();
         void retirar_midia(int codigo_numerico, int quantidade); // se alguem pensar em nomes melhores para essas
