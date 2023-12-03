@@ -31,14 +31,14 @@ int ControleCliente::calcula_dias(time_t data_locacao){
     int diferencaSegundos = static_cast<int>(difftime(data_locacao, data_devolucao));
     int diferencaDias = diferencaSegundos / segundosPorDia;
 
-    return diferencaDias;
+    return abs(diferencaDias);
 };
 
 time_t ControleCliente::encontrar_data_alocacao(std::string data) {
     time_t datetime_alocacao;
     tm tmStruct = {};
     std::istringstream ss(data);
-    ss >> std::get_time(&tmStruct, "%Y-%m-%d %H:%M:%S");
+    ss >> std::get_time(&tmStruct, "%a %b %d %H:%M:%S %Y");
     datetime_alocacao = mktime(&tmStruct);
     return datetime_alocacao;
 };
@@ -67,26 +67,16 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
         banco.push_back(lidos);
     }
     
-
-    try
-    {
-        for(auto linha: banco){
-            cout << linha[0];
-            long long int cpf_csv = stoi(linha[0]);
-            if(cpf == cpf_csv){
-                midia.cpf_cliente = cpf_csv;
-                midia.titulo = linha[1];
-                midia.quantidade = stoi(linha[3]);
-                midia.data = linha[4];
-                int id = stoi(linha[2]);
-                saida[id] = midia;
-            }
+    for(auto linha: banco){
+        long long int cpf_csv = stoi(linha[0]);
+        if(cpf == cpf_csv){
+            midia.cpf_cliente = cpf_csv;
+            midia.titulo = linha[1];
+            midia.quantidade = stoi(linha[3]);
+            midia.data = linha[4];
+            int id = stoi(linha[2]);
+            saida[id] = midia;
         }
-
-    }
-    catch(const std::exception& e)
-    {
-        std::cout << "pass";
     }
 
     banco_de_locacoes.close();
