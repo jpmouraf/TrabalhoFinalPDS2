@@ -35,6 +35,10 @@ int Midia::getUnidadesDisponiveis() {
     return this->_unidades_disponiveis;
 }
 
+void Midia::setUnidadesDisponiveis(int quantidade) {
+    this->_unidades_disponiveis = quantidade;
+}
+
 void Midia::imprimir_info(){
     std::cout << this->getCodigoNumerico() << " " << this->getTitulo() << " " << this->getUnidadesDisponiveis() << " ";
 }

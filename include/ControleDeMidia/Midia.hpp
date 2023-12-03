@@ -35,6 +35,11 @@ class Midia {
 */
         virtual void imprimir_info();
 /**
+ * Muda a quantidade em estoque de uma midia;
+*/
+        void setUnidadesDisponiveis(int quantidade);
+
+/**
 * Verifica se o atributo tipo foi definido pela primeira vez
 * Caso contrário, garante que o atributo não será modificado
 */

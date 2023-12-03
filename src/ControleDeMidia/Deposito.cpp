@@ -213,7 +213,7 @@ void Deposito::imprimir_catalogo(){
 
 void Deposito::retirar_midia(int codigo_numerico, int quantidade){
     try {
-        _midias[codigo_numerico] += quantidade;
+        _midias[codigo_numerico]->setUnidadesDisponiveis(_midias[codigo_numerico]->getUnidadesDisponiveis() - quantidade);
     } catch(std::out_of_range &e){
         char* erro = "ERRO: Midia nao existente na base de dados.";
         throw DadosInexistente(erro);
@@ -222,7 +222,7 @@ void Deposito::retirar_midia(int codigo_numerico, int quantidade){
 
 void Deposito::devolver_midia(int codigo_numerico, int quantidade){ //talvez tenhamos que revisar isso
     try {
-        _midias[codigo_numerico] += quantidade;
+        _midias[codigo_numerico]->setUnidadesDisponiveis(_midias[codigo_numerico]->getUnidadesDisponiveis() + quantidade);
     } catch(std::out_of_range &e){
         char* erro = "[DPST] ERRO: Midia nao existe na base de dados. Verifique se a midia nao foi descadastrada durante o periodo de locacao.";
         throw DadosInexistente(erro);
