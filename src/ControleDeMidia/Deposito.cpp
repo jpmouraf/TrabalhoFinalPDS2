@@ -79,7 +79,7 @@ void Deposito::ler_estoque(std::string nome_arquivo) {
     if (nome_arquivo.find(".txt") == std::string::npos) {
         throw FormatoInvalido("[DPST] ERRO: Você selecionou um formato de arquivo inválido. Apenas TXT são aceitos");
     }
-
+    std::cout << "Lendo do arquivo: " << nome_arquivo << std::endl;
     std::ifstream arquivo(nome_arquivo);
     if (arquivo.is_open()) {
         std::string linha;

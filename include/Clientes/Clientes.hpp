@@ -30,6 +30,8 @@ class Cliente {
 struct info_midia{
     std::string titulo; ///< Titulo da Midia.
     long long cpf_cliente;  ///< CPF do cliente que alocou a midia.
+    std::string data; ///< hora que o ciente alocou.
+    int quantidade;
 };
 
 /**

@@ -34,37 +34,12 @@ int ControleCliente::calcula_dias(time_t data_locacao){
     return diferencaDias;
 };
 
-time_t ControleCliente::encontrar_data_alocacao(long long cpf, int codigo) {
-    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
-    std::string nome_arquivo = caminho.string();
-    std::ifstream banco_de_locacoes(nome_arquivo);
-
-    if (!banco_de_locacoes.is_open()) {
-        throw ErroAbrirArquivo();
-    }
-
-    std::string linha;
-    getline(banco_de_locacoes, linha);
-    std::stringstream linhaStream(linha);
-
-    std::string campo;
-    std::vector<std::string> celulas;
+time_t ControleCliente::encontrar_data_alocacao(string data) {
     time_t datetime_alocacao;
-
-    while (getline(linhaStream, campo, ',')) {
-        celulas.push_back(campo);
-    }
-
-    long long cpf_csv = stol(celulas[0]);
-    if (cpf_csv == cpf) {
-        std::string datetime = celulas[4];
-        tm tmStruct = {};
-        std::istringstream ss(datetime);
-        ss >> std::get_time(&tmStruct, "%Y-%m-%d %H:%M:%S");
-        datetime_alocacao = mktime(&tmStruct);
-    }
-
-    banco_de_locacoes.close();
+    tm tmStruct = {};
+    std::istringstream ss(data);
+    ss >> std::get_time(&tmStruct, "%Y-%m-%d %H:%M:%S");
+    datetime_alocacao = mktime(&tmStruct);
     return datetime_alocacao;
 };
 
@@ -79,17 +54,15 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
         throw ErroAbrirArquivo();
     }
 
-    vector<vector<stringstream>> banco;
+    vector<vector<string>> banco;
     std::string linha;
     std::getline(banco_de_locacoes, linha);//descartar headers
     while (std::getline(banco_de_locacoes, linha)){
-        vector<stringstream> lidos;
+        stringstream temp(linha);
+        vector<string> lidos;
         std::string celula;
-        std::stringstream temp;
-        std::stringstream linha_arquivo(linha);
-        while (getline(linha_arquivo, celula, ',')) {
-            temp.str(celula);
-            lidos.push_back(temp);
+        while (getline(temp, celula, ',')) {
+            lidos.push_back(celula);
         }
         banco.push_back(lidos);
     }
@@ -98,12 +71,14 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
     try
     {
         for(auto linha: banco){
-            long long int cpf_csv;
-            linha[1] >> cpf_csv;
+            cout << linha[0];
+            long long int cpf_csv = stoi(linha[0]);
             if(cpf == cpf_csv){
                 midia.cpf_cliente = cpf_csv;
-                int id;
-                linha[2] >> id;
+                midia.titulo = linha[1];
+                midia.quantidade = stoi(linha[3]);
+                midia.data = linha[4];
+                int id = stoi(linha[2]);
                 saida[id] = midia;
             }
         }
@@ -275,8 +250,8 @@ void ControleCliente::midias_mais_alugadas() {
 void ControleCliente::ler_informacoes_locacao(long long cpf){
     InformacoesLocacoes saida;
     saida.locacoes = this->carregar_locacoes_csv_cliente(cpf);
-    int id_teste = saida.locacoes.begin()->first;
-    saida.dias_desde_alocacao = this->calcula_dias(encontrar_data_alocacao(cpf, id_teste));
+    int id1 = saida.locacoes.begin()->first;
+    saida.dias_desde_alocacao = this->calcula_dias(encontrar_data_alocacao(saida.locacoes[id1].data)); //assumimos que todas as midias são alocadas na mesma data
     this->informacoes_locacoes = saida;
 };
 
