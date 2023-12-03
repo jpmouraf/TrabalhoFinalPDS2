@@ -294,9 +294,10 @@ int main(){
             while (1){
                 std::cin >> cpf;
                 if(cpf == 0) break;
-                else if(!cinerama.validar_CPF(cpf)){
+                else if(!cinerama.validar_cliente(cpf)){
                     std::cout << "Não há cliente com este CPF. Tente novamente, digite 0 para cancelar ou considere cadastrar o cliente." << std:: endl;
                 } else {
+                    std::cout << "CPF válido" << std::endl;
                     cpf_valido = true;
                     break;
                 }
@@ -304,7 +305,7 @@ int main(){
             if(!cpf_valido) continue;
             std::cout << "Cliente localizado, iniciando devolução....." << std::endl;
             try{
-            cinerama.devolver_midias(cpf);
+                cinerama.devolver_midias(cpf);
             }catch(DadosInexistente &e){
                 std::cout<<"Algo deu errado, tente novamente: "<<e.what()<<std::endl;
             }

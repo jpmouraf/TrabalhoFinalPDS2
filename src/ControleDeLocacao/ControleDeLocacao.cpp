@@ -23,7 +23,7 @@ void Locador::alugar_midias(long long cpf_cliente, std::map<int, int> locacoes, 
     std::cout << "######### Fim  do  Recibo ###########" << std::endl;
 }
 
-void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ //futuramente adicionar um handler de excecao para quando o cliente quer devolver uma midia que nao existe no sistema.
+void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){ 
     clientes.ler_informacoes_locacao(cpf_cliente);
     std::map<int, info_midia> locacoes = clientes.informacoes_locacoes.locacoes;
     int dias = clientes.informacoes_locacoes.dias_desde_alocacao;

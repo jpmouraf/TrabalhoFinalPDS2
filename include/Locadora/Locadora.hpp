@@ -28,6 +28,7 @@ class Locadora{
         void listar_clientes_por_nome();
         void listar_clientes_por_cpf();
         bool validar_CPF(long long int cpf);
+        bool validar_cliente(long long int cpf);
 
         // Controle de Locacao
         void alugar_midias(long long cpf, std::map<int, int> locacoes);

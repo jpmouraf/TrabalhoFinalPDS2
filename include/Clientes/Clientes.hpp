@@ -75,6 +75,10 @@ class ControleCliente {
         */
         bool validar_CPF(long long cpf);
         /**
+         * Aceita um cpf e retorna verdadeiro caso um cliente exista na base de dados com aquele cpf e falso caso contrario
+         */
+        bool validar_cliente(long long cpf);
+        /**
         * Remove um cliente cadastrado de acordo com o seu cpf
         */
         void remover_cliente(long long cpf);

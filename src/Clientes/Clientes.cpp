@@ -9,8 +9,11 @@
 #include <algorithm>
 #include <stdexcept>
 #include <filesystem>
+#include <algorithm>
 #include "../../include/Clientes/Clientes.hpp"
 #include "../../include/ControleDeMidia/Deposito.hpp"
+
+using namespace std;
 
 //METODOS PRIVADOS
 long long Cliente::getCPF(){
@@ -76,27 +79,35 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
         throw ErroAbrirArquivo();
     }
 
+    vector<vector<stringstream>> banco;
     std::string linha;
-    std::getline(banco_de_locacoes, linha);
-    std::stringstream linhaStream(linha);
-
-    std::string campo;
-    std::vector<std::string> celulas;
-
-    while (getline(linhaStream, campo, ',')) {
-        celulas.push_back(campo);
+    std::getline(banco_de_locacoes, linha);//descartar headers
+    while (std::getline(banco_de_locacoes, linha)){
+        vector<stringstream> lidos;
+        std::string celula;
+        std::stringstream temp;
+        std::stringstream linha_arquivo(linha);
+        while (getline(linha_arquivo, celula, ',')) {
+            temp.str(celula);
+            lidos.push_back(temp);
+        }
+        banco.push_back(lidos);
     }
+    
 
     try
     {
-        std::cout << celulas[0] << " " << celulas[1] << " " << celulas[2];
-        long long cpf_csv = stol(celulas[0]);
-        if (cpf_csv == cpf) {
-            midia.cpf_cliente = cpf_csv;
-            midia.titulo = celulas[1];
-            int id = stol(celulas[2]);
-            saida[id] = midia;
+        for(auto linha: banco){
+            long long int cpf_csv;
+            linha[1] >> cpf_csv;
+            if(cpf == cpf_csv){
+                midia.cpf_cliente = cpf_csv;
+                int id;
+                linha[2] >> id;
+                saida[id] = midia;
+            }
         }
+
     }
     catch(const std::exception& e)
     {
@@ -177,6 +188,12 @@ void ControleCliente::listar_codigo() {
 bool ControleCliente::validar_CPF(long long cpf) {
     return cpf > 0 && cpf <= 99999999999;
 };
+bool ControleCliente::validar_cliente(long long cpf){
+    for (auto it : _clientes){
+        if(it.getCPF() == cpf) return true;
+    }
+    return false;
+}
 
 void ControleCliente::remover_cliente(long long cpf) {
     for (auto it = _clientes.begin(); it != _clientes.end(); ++it) {
