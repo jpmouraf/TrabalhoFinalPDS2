@@ -13,8 +13,8 @@
 TEST_CASE("Teste de validar Cpf") {
     ControleCliente cliente; /// Criando um objeto ControleCliente para teste
     CHECK(cliente.validar_CPF(12345678900) == true);
-    CHECK(cliente.validar_CPF(0) == false);
-    CHECK(cliente.validar_CPF(123456789000) == false);
+    CHECK(cliente.validar_CPF(12345) == false);
+    CHECK(cliente.validar_CPF(-10) == false);
 }
 
 /**
@@ -32,11 +32,10 @@ TEST_CASE("Teste de deposito do get_midia") {
 
     Midia* midia_retornada = deposito.get_midia(codigo_existente); /// Obtém a mídia e verifica se não é nulo
     CHECK(midia_retornada != nullptr); /// Verifica se a mídia retornada não é nula
-/**
-* Teste para código de mídia inexistente (deve lançar exceção)
-*/
+
+    // Teste para código de mídia inexistente (deve lançar exceção)
     int codigo_nao_existente = 456; /// Código de mídia inexistente
-    CHECK_THROWS_AS(deposito.get_midia(codigo_nao_existente), DadosInexistente); /// Verifica se lança a exceção DadosInexistente
+    CHECK_THROWS_AS(deposito.get_midia(codigo_nao_existente), DadosInexistente); // Verifica se lança a exceção DadosInexistente
 }
 
 /**
@@ -56,6 +55,8 @@ TEST_CASE("Teste do método calcular_locacao da classe Jogo") {
     int valor_retornado_maximo = jogo.calcular_locacao(1); /// Supondo 1 dia de locação
 
     CHECK(valor_retornado_maximo <= valor_esperado_maximo); /// Verifica se o valor retornado é menor ou igual ao valor máximo esperado
+
+    CHECK_THROWS(jogo.calcular_locacao(-1)); ///Verifica se a excecao é lançada
 }
 
 /**
@@ -75,6 +76,8 @@ TEST_CASE("Teste do método calcular_locacao da classe Fita") {
 
         CHECK(valor_rebobinada == 7); /// Verifica se o valor retornado para uma fita rebobinada é 7
     }
+
+    CHECK_THROWS(fita.calcular_locacao(-1)); ///Verifica se a excecao é lançada
 }
 
 /**
@@ -88,6 +91,8 @@ TEST_CASE("Teste do método calcular_locacao da classe Lancamento") {
 
         CHECK(valor_retornado_1_dia == 20); /// Verifica se o valor retornado para 1 dia de locação é 20
     }
+
+    CHECK_THROWS(lancamento.calcular_locacao(-1)); ///Verifica se a excecao é lançada
 }
 
 /**
@@ -101,6 +106,8 @@ TEST_CASE("Teste do método calcular_locacao da classe Estoque") {
 
         CHECK(valor_retornado_3_dia == 30); /// Verifica se o valor retornado para 3 dias de locação é 30
     }
+
+    CHECK_THROWS(estoque.calcular_locacao(-1)); ///Verifica se a excecao é lançada
 }
 
 /**
@@ -114,4 +121,6 @@ TEST_CASE("Teste do método calcular_locacao da classe Promocao") {
 
         CHECK(valor_retornado_5_dia == 10); /// Verifica se o valor retornado para 1 dia de locação é 10
     }
+
+    CHECK_THROWS(promocao.calcular_locacao(-1)); ///Verifica se a excecao é lançada
 }
