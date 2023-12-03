@@ -8,6 +8,12 @@ void Locadora::salvar_estoque(std::string nome_do_arquivo){
     this->central_midia_locacoes.salvar_estoque(nome_do_arquivo);
 }
 void Locadora::cadastrar_midia(std::string tipo, int quantidade, int codigo, std::string titulo, std::string categoria){
+    if (quantidade < 1) {
+        throw std::out_of_range("Quantidade não positiva");
+    } else if (codigo < 1) {
+        throw std::out_of_range("Código não positivo");
+    }
+
     this->central_midia_locacoes.cadastrar_midia(tipo, quantidade, codigo, titulo, categoria);
 }
 void Locadora::remover_midia(int codigo_numerico){
