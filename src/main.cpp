@@ -273,7 +273,9 @@ int main(){
                 else {
                     quantidade_locada++;
                     locacoes[codigo] = quantidade;
+                    break;
                 }
+                break;
             }
             std::cout << "Locação fechada, inciando processo..." << std::endl;
             try{
