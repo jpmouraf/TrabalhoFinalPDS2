@@ -119,10 +119,7 @@ class ExcecaoCliente : public std::exception {
  */
 class ErroAbrirArquivo : public std::runtime_error {
     public:
-
         ErroAbrirArquivo() : std::runtime_error("Erro ao abrir o arquivo.") {}
 };
-
-
 
 #endif

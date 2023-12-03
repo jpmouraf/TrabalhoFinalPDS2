@@ -60,14 +60,14 @@ class DadosInexistente : public ExcecaoDeposito {
         DadosInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
 };
 
-class ArquivoInexistente : public ExcecaoDeposito {
+class ArquivoInexistente : public std::runtime_error {
     public:
-        ArquivoInexistente(char* mensagem) : ExcecaoDeposito(mensagem) {}
+        ArquivoInexistente(char* mensagem) : std::runtime_error(mensagem) {}
 };
 
-class FormatoInvalido : public ExcecaoDeposito {
+class FormatoInvalido : public std::runtime_error {
     public:
-        FormatoInvalido(char* mensagem) : ExcecaoDeposito(mensagem) {}
+        FormatoInvalido(char* mensagem) : std::runtime_error(mensagem) {}
 };
 
 #endif
