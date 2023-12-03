@@ -1,4 +1,4 @@
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#define DOCTEST_CONFIG_IMPLEMENT
 #include "doctest.h"
 #include "../../include/Locadora/Locadora.hpp"
 #include "../../include/Clientes/Clientes.hpp"

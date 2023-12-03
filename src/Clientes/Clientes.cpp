@@ -34,7 +34,7 @@ int ControleCliente::calcula_dias(time_t data_locacao){
     return diferencaDias;
 };
 
-time_t ControleCliente::encontrar_data_alocacao(string data) {
+time_t ControleCliente::encontrar_data_alocacao(std::string data) {
     time_t datetime_alocacao;
     tm tmStruct = {};
     std::istringstream ss(data);

@@ -53,9 +53,9 @@ class ControleCliente {
          */
         int calcula_dias(time_t data_locacao);
         /**
-        * Encontra a data da alocacao feita pelo cliente baseado em seu cpf e pelo codigo do filme
+        * Encontra a data da alocacao feita pelo cliente a partir de uma data fornecida (assumida como data atual)
         */ 
-        time_t encontrar_data_alocacao(long long cpf, int codigo);
+        time_t encontrar_data_alocacao(std::string data);
         /**
         * Recebe o cpf e armazena todas as locacoes dele
         */
