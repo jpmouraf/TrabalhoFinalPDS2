@@ -237,13 +237,16 @@ void ControleCliente::midias_mais_alugadas() {
     // Mapa para armazenar a contagem de alugueis para cada titulo de midia
     std::map<std::string, int> contagem_alugueis;
 
-    std::ifstream banco_de_locacoes("../../data/banco_de_locacoes.csv");
+    std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
+    std::ifstream banco_de_locacoes(caminho.string(), std::ios::app);
 
     if (!banco_de_locacoes.is_open()) {
+        std::cout << "RESTE";
         throw ErroAbrirArquivo();
     }
 
     std::string linha;
+    std::getline(banco_de_locacoes, linha);//descartar headers
     while (getline(banco_de_locacoes, linha)) {
         std::stringstream linhaStream(linha);
         std::vector<std::string> celulas;
