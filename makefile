@@ -22,7 +22,7 @@ MAIN_OBJ=$(MAIN_SRC:$(SRC_DIR)/%.cpp=$(BUILD_DIR)/%.o)
 INCLUDES=$(wildcard $(INCLUDE_DIR)/*.hpp)
 
 #definindo o executável
-TARGET=$(BUILD_DIR)/program.exe
+TARGET=$(BUILD_DIR)/Locadora.exe
 
 all: directories $(TARGET)
 
