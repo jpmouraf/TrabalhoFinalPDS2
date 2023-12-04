@@ -29,7 +29,7 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){
     int dias = clientes.informacoes_locacoes.dias_desde_alocacao;
     std::cout << "\n######### Recibo de Aluguel ###########" << std::endl;
     std::cout << "CPF: " << cpf_cliente << std::endl << std::endl;
-    int total_locacao;
+    int total_locacao = 0;
     for (auto it : locacoes){
         int codigo_midia = it.first;
         int quantidade_midia = it.second.quantidade;
@@ -38,13 +38,13 @@ void Locador::devolver_midias(long long cpf_cliente, ControleCliente clientes){
 
             Midia* devolvida = armazenamento.get_midia(codigo_midia);
             
-            std::cout << "Midia: " << devolvida->getTitulo() << " Quantidade: x" << quantidade_midia << " ";
-            int total_midia;
+            std::cout << "Midia: " << devolvida->getTitulo() << " Quantidade: x" << quantidade_midia << " (" << dias << " dias) ";
+            int total_midia = 0;
             for(int i = 0; i<quantidade_midia; i++){
                 total_midia += devolvida->calcular_locacao(dias);
             }
-            std::cout << "Total: " << devolvida->calcular_locacao(dias) << " reais" << std::endl;
-            total_locacao = total_midia;
+            std::cout << "Total: " << total_midia << " reais" << std::endl;
+            total_locacao += total_midia;
         } catch(DadosInexistente &e){ //mudar para excecao de codigo de filme nao existente
             std::cout << "[LOCADOR] Atencao: codigo de filme alugado '" << codigo_midia <<"' inexistente, verifique se o filme nao foi retirado do sistema durante o periodo da locacao." << std::endl;
             continue;

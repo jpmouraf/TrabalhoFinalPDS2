@@ -86,8 +86,8 @@ std::map<int, info_midia> ControleCliente::carregar_locacoes_csv_cliente(long lo
 void ControleCliente::limpar_locacoes_csv_cliente(long long cpf){
     std::filesystem::path caminho = std::filesystem::current_path()/"../data/banco_de_locacoes.csv";
     std::string nome_arquivo = caminho.string();
-    std::fstream banco_de_locacoes;
-    banco_de_locacoes.open(caminho, ios::out);
+    std::ifstream banco_de_locacoes;
+    banco_de_locacoes.open(caminho);
     if (!banco_de_locacoes.is_open()) {
         throw ErroAbrirArquivo();
     }
@@ -107,18 +107,19 @@ void ControleCliente::limpar_locacoes_csv_cliente(long long cpf){
     }
     
     banco_de_locacoes.close();
-    banco_de_locacoes.open(caminho, ios::in);
-    if (!banco_de_locacoes.is_open()) {
+    std::ofstream banco_de_locacoes2(caminho);
+    if (!banco_de_locacoes2.is_open()) {
         throw ErroAbrirArquivo();
     }
 
 
+    banco_de_locacoes2 << headers << std::endl;
     for(auto linha: banco){ //escrever tudo que não é do cliente no arquivo
         long long int cpf_csv = stoi(linha[0]);
         if(cpf != cpf_csv){
             stringstream nova_linha;
-            nova_linha << linha[0] << "," << linha[1] << "," << linha[2] << "," << linha[3] << "," << linha[4];
-            banco_de_locacoes << nova_linha.str();
+            nova_linha << linha[0] << "," << linha[1] << "," << linha[2] << "," << linha[3] << "," << linha[4] << std::endl;
+            banco_de_locacoes2 << nova_linha.str();
         }
     }
 
@@ -207,6 +208,7 @@ bool ControleCliente::validar_cliente(long long cpf){
 void ControleCliente::remover_cliente(long long cpf) {
     for (auto it = _clientes.begin(); it != _clientes.end(); ++it) {
         if (it->getCPF() == cpf) {
+            this->limpar_locacoes_csv_cliente(cpf);
             _clientes.erase(it);
             std::cout << "Cliente " << cpf << " removido com sucesso" << std::endl;
             return;
