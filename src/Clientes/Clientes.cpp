@@ -241,7 +241,6 @@ void ControleCliente::midias_mais_alugadas() {
     std::ifstream banco_de_locacoes(caminho.string(), std::ios::app);
 
     if (!banco_de_locacoes.is_open()) {
-        std::cout << "RESTE";
         throw ErroAbrirArquivo();
     }
 
