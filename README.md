@@ -117,3 +117,4 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
 </table>
 
 Divirta-se explorando o Cinerama! 🍿🎉
+

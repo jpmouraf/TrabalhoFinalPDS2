@@ -1,0 +1,134 @@
+\hypertarget{TesteLocadora_8cpp}{}\doxysection{src/\+Locadora/\+Teste\+Locadora.cpp File Reference}
+\label{TesteLocadora_8cpp}\index{src/Locadora/TesteLocadora.cpp@{src/Locadora/TesteLocadora.cpp}}
+{\ttfamily \#include \char`\"{}doctest.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Locadora/\+Locadora.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Clientes/\+Clientes.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Controle\+De\+Midia/\+Deposito.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Controle\+De\+Midia/\+Jogo.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Controle\+De\+Midia/\+Dvd.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../../include/\+Controle\+De\+Midia/\+Fita.\+hpp\char`\"{}}\newline
+Include dependency graph for Teste\+Locadora.\+cpp\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{TesteLocadora_8cpp_adf980eb1ed0df2191c56fd3d218c2819}{DOCTEST\+\_\+\+CONFIG\+\_\+\+IMPLEMENT}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_adff4b97895120296530ab2063f3c3f7c}{TEST\+\_\+\+CASE}} (\char`\"{}Teste de validar Cpf\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_aadfaf2eea56f2cc0bd1b9160915ab5fd}{TEST\+\_\+\+CASE}} (\char`\"{}Teste de deposito do get\+\_\+midia\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_a0ad3f1e7ff11164da557214af2b18039}{TEST\+\_\+\+CASE}} (\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classJogo}{Jogo}}\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_a92ceaa5dbd64b20ec4f72e18c6152383}{TEST\+\_\+\+CASE}} (\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classFita}{Fita}}\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_a4d6bd7c522d96bc3108ee2e985f3bf90}{TEST\+\_\+\+CASE}} (\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classLancamento}{Lancamento}}\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_a86d05a077183f5032e5c33a54ecd8900}{TEST\+\_\+\+CASE}} (\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classEstoque}{Estoque}}\char`\"{})
+\item 
+\mbox{\hyperlink{TesteLocadora_8cpp_a27f5eb645c1afe4dbcfe682750a8f421}{TEST\+\_\+\+CASE}} (\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classPromocao}{Promocao}}\char`\"{})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{TesteLocadora_8cpp_adf980eb1ed0df2191c56fd3d218c2819}\label{TesteLocadora_8cpp_adf980eb1ed0df2191c56fd3d218c2819}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!DOCTEST\_CONFIG\_IMPLEMENT@{DOCTEST\_CONFIG\_IMPLEMENT}}
+\index{DOCTEST\_CONFIG\_IMPLEMENT@{DOCTEST\_CONFIG\_IMPLEMENT}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{DOCTEST\_CONFIG\_IMPLEMENT}{DOCTEST\_CONFIG\_IMPLEMENT}}
+{\footnotesize\ttfamily \#define DOCTEST\+\_\+\+CONFIG\+\_\+\+IMPLEMENT}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{TesteLocadora_8cpp_aadfaf2eea56f2cc0bd1b9160915ab5fd}\label{TesteLocadora_8cpp_aadfaf2eea56f2cc0bd1b9160915ab5fd}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [1/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste de deposito do get\+\_\+midia\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste da função \mbox{\hyperlink{classDeposito}{Deposito}} get\+\_\+midia Criando um objeto \mbox{\hyperlink{classDeposito}{Deposito}} para teste
+
+Adicionando uma midia para teste
+
+Código de mídia existente
+
+Simulação de uma mídia existente
+
+cadastra a midia teste
+
+Obtém a mídia e verifica se não é nulo
+
+Verifica se a mídia retornada não é nula
+
+Código de mídia inexistente\mbox{\Hypertarget{TesteLocadora_8cpp_adff4b97895120296530ab2063f3c3f7c}\label{TesteLocadora_8cpp_adff4b97895120296530ab2063f3c3f7c}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [2/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste de validar Cpf\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste da função validar\+\_\+cpf Criando um objeto \mbox{\hyperlink{classControleCliente}{Controle\+Cliente}} para teste\mbox{\Hypertarget{TesteLocadora_8cpp_a86d05a077183f5032e5c33a54ecd8900}\label{TesteLocadora_8cpp_a86d05a077183f5032e5c33a54ecd8900}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [3/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classEstoque}{Estoque}}\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste para calcular locacao \mbox{\hyperlink{classEstoque}{Estoque}} Supondo 3 dias de locação para um \mbox{\hyperlink{classEstoque}{Estoque}}
+
+Verifica se o valor retornado para 3 dias de locação é 30
+
+Verifica se a excecao é lançada\mbox{\Hypertarget{TesteLocadora_8cpp_a92ceaa5dbd64b20ec4f72e18c6152383}\label{TesteLocadora_8cpp_a92ceaa5dbd64b20ec4f72e18c6152383}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [4/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classFita}{Fita}}\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste para calcular locacao da fita Supondo 1 dia de locação para uma fita não rebobinada
+
+Verifica se o valor retornado para uma fita não rebobinada é 5
+
+Supondo 1 dia de locação para uma fita rebobinada
+
+Verifica se o valor retornado para uma fita rebobinada é 7
+
+Verifica se a excecao é lançada\mbox{\Hypertarget{TesteLocadora_8cpp_a0ad3f1e7ff11164da557214af2b18039}\label{TesteLocadora_8cpp_a0ad3f1e7ff11164da557214af2b18039}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [5/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classJogo}{Jogo}}\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste para calcular locacao do jogo Testando o cálculo da locação com nível arranhado 0 (mínimo)
+
+Supondo 1 dia de locação
+
+Verifica se o valor retornado é maior ou igual ao valor mínimo esperado
+
+Testando o cálculo da locação com nível arranhado 9 (máximo)
+
+Supondo 1 dia de locação
+
+Verifica se o valor retornado é menor ou igual ao valor máximo esperado
+
+Verifica se a excecao é lançada\mbox{\Hypertarget{TesteLocadora_8cpp_a4d6bd7c522d96bc3108ee2e985f3bf90}\label{TesteLocadora_8cpp_a4d6bd7c522d96bc3108ee2e985f3bf90}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [6/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classLancamento}{Lancamento}}\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste para calcular locacao \mbox{\hyperlink{classLancamento}{Lancamento}} Supondo 1 dia de locação para um \mbox{\hyperlink{classLancamento}{Lancamento}}
+
+Verifica se o valor retornado para 1 dia de locação é 20
+
+Verifica se a excecao é lançada\mbox{\Hypertarget{TesteLocadora_8cpp_a27f5eb645c1afe4dbcfe682750a8f421}\label{TesteLocadora_8cpp_a27f5eb645c1afe4dbcfe682750a8f421}} 
+\index{TesteLocadora.cpp@{TesteLocadora.cpp}!TEST\_CASE@{TEST\_CASE}}
+\index{TEST\_CASE@{TEST\_CASE}!TesteLocadora.cpp@{TesteLocadora.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_CASE()}{TEST\_CASE()}\hspace{0.1cm}{\footnotesize\ttfamily [7/7]}}
+{\footnotesize\ttfamily TEST\+\_\+\+CASE (\begin{DoxyParamCaption}\item[{\char`\"{}Teste do método calcular\+\_\+locacao da classe \mbox{\hyperlink{classPromocao}{Promocao}}\char`\"{}}]{ }\end{DoxyParamCaption})}
+
+Teste para calcular locacao \mbox{\hyperlink{classPromocao}{Promocao}} Supondo 5 dias de locação para uma \mbox{\hyperlink{classPromocao}{Promocao}}
+
+Verifica se o valor retornado para 1 dia de locação é 10
+
+Verifica se a excecao é lançada

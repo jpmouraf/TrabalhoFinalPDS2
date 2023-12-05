@@ -1,0 +1,135 @@
+\hypertarget{classControleCliente}{}\doxysection{Controle\+Cliente Class Reference}
+\label{classControleCliente}\index{ControleCliente@{ControleCliente}}
+
+
+{\ttfamily \#include $<$Clientes.\+hpp$>$}
+
+
+
+Collaboration diagram for Controle\+Cliente\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classControleCliente_afcdf2fa1a5e57cc7fba553781e90bb42}{Controle\+Cliente}} ()
+\item 
+\mbox{\hyperlink{classControleCliente_ab0168f253af325b55da75820a978da73}{$\sim$\+Controle\+Cliente}} ()
+\item 
+void \mbox{\hyperlink{classControleCliente_a81b7892c8632fc4b653d1fe362aa2616}{listar\+\_\+nome}} ()
+\item 
+void \mbox{\hyperlink{classControleCliente_aaebc4822ead0bb0b394bfa899689c72c}{listar\+\_\+codigo}} ()
+\item 
+bool \mbox{\hyperlink{classControleCliente_ae3f12502091b1e7570bc43c35a3211db}{validar\+\_\+\+CPF}} (long long cpf)
+\item 
+bool \mbox{\hyperlink{classControleCliente_a2a9313728ea0ad3f48e927e921bebc87}{validar\+\_\+cliente}} (long long cpf)
+\item 
+void \mbox{\hyperlink{classControleCliente_aab25437fc4ff06dc706c175dfab210c0}{remover\+\_\+cliente}} (long long cpf)
+\item 
+void \mbox{\hyperlink{classControleCliente_ac006873183d64d22ef0d62a1a52a3ac7}{cadastrar\+\_\+cliente}} (long long cpf, std\+::string nome)
+\item 
+void \mbox{\hyperlink{classControleCliente_aaba9749a0d7e22989c3e13c0c38cbdfb}{midias\+\_\+mais\+\_\+alugadas}} ()
+\item 
+void \mbox{\hyperlink{classControleCliente_ad6331fd26b6ae63392c3b6ca28220382}{ler\+\_\+informacoes\+\_\+locacao}} (long long cpf)
+\item 
+void \mbox{\hyperlink{classControleCliente_ab7350409bbd39a73601177c3843f54bc}{escrever\+\_\+locacoes\+\_\+cliente}} (long long cpf, std\+::map$<$ int, \mbox{\hyperlink{structinfo__midia}{info\+\_\+midia}} $>$ locacoes)
+\item 
+void \mbox{\hyperlink{classControleCliente_ad7028d72c753f345295aa009cde0eafd}{limpar\+\_\+locacoes\+\_\+csv\+\_\+cliente}} (long long cpf)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structInformacoesLocacoes}{Informacoes\+Locacoes}} \mbox{\hyperlink{classControleCliente_a11c50b9eac2cb895d9d9e3ed6ea907ba}{informacoes\+\_\+locacoes}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classControleCliente_afcdf2fa1a5e57cc7fba553781e90bb42}\label{classControleCliente_afcdf2fa1a5e57cc7fba553781e90bb42}} 
+\index{ControleCliente@{ControleCliente}!ControleCliente@{ControleCliente}}
+\index{ControleCliente@{ControleCliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{ControleCliente()}{ControleCliente()}}
+{\footnotesize\ttfamily Controle\+Cliente\+::\+Controle\+Cliente (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classControleCliente_ab0168f253af325b55da75820a978da73}\label{classControleCliente_ab0168f253af325b55da75820a978da73}} 
+\index{ControleCliente@{ControleCliente}!````~ControleCliente@{$\sim$ControleCliente}}
+\index{````~ControleCliente@{$\sim$ControleCliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{$\sim$ControleCliente()}{~ControleCliente()}}
+{\footnotesize\ttfamily Controle\+Cliente\+::$\sim$\+Controle\+Cliente (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classControleCliente_ac006873183d64d22ef0d62a1a52a3ac7}\label{classControleCliente_ac006873183d64d22ef0d62a1a52a3ac7}} 
+\index{ControleCliente@{ControleCliente}!cadastrar\_cliente@{cadastrar\_cliente}}
+\index{cadastrar\_cliente@{cadastrar\_cliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{cadastrar\_cliente()}{cadastrar\_cliente()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::cadastrar\+\_\+cliente (\begin{DoxyParamCaption}\item[{long long}]{cpf,  }\item[{std\+::string}]{nome }\end{DoxyParamCaption})}
+
+Cadastra um novo cliente a partir do seu cpf e nome \mbox{\Hypertarget{classControleCliente_ab7350409bbd39a73601177c3843f54bc}\label{classControleCliente_ab7350409bbd39a73601177c3843f54bc}} 
+\index{ControleCliente@{ControleCliente}!escrever\_locacoes\_cliente@{escrever\_locacoes\_cliente}}
+\index{escrever\_locacoes\_cliente@{escrever\_locacoes\_cliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{escrever\_locacoes\_cliente()}{escrever\_locacoes\_cliente()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::escrever\+\_\+locacoes\+\_\+cliente (\begin{DoxyParamCaption}\item[{long long}]{cpf,  }\item[{std\+::map$<$ int, \mbox{\hyperlink{structinfo__midia}{info\+\_\+midia}} $>$}]{locacoes }\end{DoxyParamCaption})}
+
+Escreve as locacoes de um cliente e a armazena no map criado \mbox{\Hypertarget{classControleCliente_ad6331fd26b6ae63392c3b6ca28220382}\label{classControleCliente_ad6331fd26b6ae63392c3b6ca28220382}} 
+\index{ControleCliente@{ControleCliente}!ler\_informacoes\_locacao@{ler\_informacoes\_locacao}}
+\index{ler\_informacoes\_locacao@{ler\_informacoes\_locacao}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{ler\_informacoes\_locacao()}{ler\_informacoes\_locacao()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::ler\+\_\+informacoes\+\_\+locacao (\begin{DoxyParamCaption}\item[{long long}]{cpf }\end{DoxyParamCaption})}
+
+Obtem informacoes de locacao para um cliente. \mbox{\Hypertarget{classControleCliente_ad7028d72c753f345295aa009cde0eafd}\label{classControleCliente_ad7028d72c753f345295aa009cde0eafd}} 
+\index{ControleCliente@{ControleCliente}!limpar\_locacoes\_csv\_cliente@{limpar\_locacoes\_csv\_cliente}}
+\index{limpar\_locacoes\_csv\_cliente@{limpar\_locacoes\_csv\_cliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{limpar\_locacoes\_csv\_cliente()}{limpar\_locacoes\_csv\_cliente()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::limpar\+\_\+locacoes\+\_\+csv\+\_\+cliente (\begin{DoxyParamCaption}\item[{long long}]{cpf }\end{DoxyParamCaption})}
+
+Limpa as locações de um cliente. \mbox{\Hypertarget{classControleCliente_aaebc4822ead0bb0b394bfa899689c72c}\label{classControleCliente_aaebc4822ead0bb0b394bfa899689c72c}} 
+\index{ControleCliente@{ControleCliente}!listar\_codigo@{listar\_codigo}}
+\index{listar\_codigo@{listar\_codigo}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{listar\_codigo()}{listar\_codigo()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::listar\+\_\+codigo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Lista os clientes em ordem de cpf \mbox{\Hypertarget{classControleCliente_a81b7892c8632fc4b653d1fe362aa2616}\label{classControleCliente_a81b7892c8632fc4b653d1fe362aa2616}} 
+\index{ControleCliente@{ControleCliente}!listar\_nome@{listar\_nome}}
+\index{listar\_nome@{listar\_nome}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{listar\_nome()}{listar\_nome()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::listar\+\_\+nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Lista os clientes em ordem alfabetica \mbox{\Hypertarget{classControleCliente_aaba9749a0d7e22989c3e13c0c38cbdfb}\label{classControleCliente_aaba9749a0d7e22989c3e13c0c38cbdfb}} 
+\index{ControleCliente@{ControleCliente}!midias\_mais\_alugadas@{midias\_mais\_alugadas}}
+\index{midias\_mais\_alugadas@{midias\_mais\_alugadas}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{midias\_mais\_alugadas()}{midias\_mais\_alugadas()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::midias\+\_\+mais\+\_\+alugadas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Imprime um relatorio informando as 10 midias mais alugadas na nossa locadora. \mbox{\Hypertarget{classControleCliente_aab25437fc4ff06dc706c175dfab210c0}\label{classControleCliente_aab25437fc4ff06dc706c175dfab210c0}} 
+\index{ControleCliente@{ControleCliente}!remover\_cliente@{remover\_cliente}}
+\index{remover\_cliente@{remover\_cliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{remover\_cliente()}{remover\_cliente()}}
+{\footnotesize\ttfamily void Controle\+Cliente\+::remover\+\_\+cliente (\begin{DoxyParamCaption}\item[{long long}]{cpf }\end{DoxyParamCaption})}
+
+Remove um cliente cadastrado de acordo com o seu cpf \mbox{\Hypertarget{classControleCliente_a2a9313728ea0ad3f48e927e921bebc87}\label{classControleCliente_a2a9313728ea0ad3f48e927e921bebc87}} 
+\index{ControleCliente@{ControleCliente}!validar\_cliente@{validar\_cliente}}
+\index{validar\_cliente@{validar\_cliente}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{validar\_cliente()}{validar\_cliente()}}
+{\footnotesize\ttfamily bool Controle\+Cliente\+::validar\+\_\+cliente (\begin{DoxyParamCaption}\item[{long long}]{cpf }\end{DoxyParamCaption})}
+
+Aceita um cpf e retorna verdadeiro caso um cliente exista na base de dados com aquele cpf e falso caso contrario \mbox{\Hypertarget{classControleCliente_ae3f12502091b1e7570bc43c35a3211db}\label{classControleCliente_ae3f12502091b1e7570bc43c35a3211db}} 
+\index{ControleCliente@{ControleCliente}!validar\_CPF@{validar\_CPF}}
+\index{validar\_CPF@{validar\_CPF}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{validar\_CPF()}{validar\_CPF()}}
+{\footnotesize\ttfamily bool Controle\+Cliente\+::validar\+\_\+\+CPF (\begin{DoxyParamCaption}\item[{long long}]{cpf }\end{DoxyParamCaption})}
+
+Valida o cpf de acordo com a sua entrada. Verdadeiro se o CPF for valido, falso caso contrario. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classControleCliente_a11c50b9eac2cb895d9d9e3ed6ea907ba}\label{classControleCliente_a11c50b9eac2cb895d9d9e3ed6ea907ba}} 
+\index{ControleCliente@{ControleCliente}!informacoes\_locacoes@{informacoes\_locacoes}}
+\index{informacoes\_locacoes@{informacoes\_locacoes}!ControleCliente@{ControleCliente}}
+\doxysubsubsection{\texorpdfstring{informacoes\_locacoes}{informacoes\_locacoes}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structInformacoesLocacoes}{Informacoes\+Locacoes}} Controle\+Cliente\+::informacoes\+\_\+locacoes}
+
+Armazena informacoes de locacao para um cliente. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\+Clientes/\mbox{\hyperlink{Clientes_8hpp}{Clientes.\+hpp}}\item 
+src/\+Clientes/\mbox{\hyperlink{Clientes_8cpp}{Clientes.\+cpp}}\end{DoxyCompactItemize}
