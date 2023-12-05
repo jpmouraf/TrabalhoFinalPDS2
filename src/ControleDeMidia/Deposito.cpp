@@ -131,6 +131,10 @@ void Deposito::salvar_estoque(std::string nome_do_arquivo){
         else if (typeid(*midia.second) == typeid(Fita)) {
             estoque_saida << "F" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << "\n";
         }
+
+        else if (typeid(*midia.second) == typeid(Jogo)) {
+            estoque_saida << "J" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << "\n";
+        }
     }
     
     estoque_saida.close();
@@ -156,6 +160,10 @@ void Deposito::salvar_estoque(){
         
         else if (typeid(*midia.second) == typeid(Fita)) {
             estoque_saida << "F" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << " " << "\n";
+        }
+        
+        else if (typeid(*midia.second) == typeid(Jogo)) {
+            estoque_saida << "J" << " " << midia.second->getUnidadesDisponiveis() << " " << midia.first << " " << midia.second->getTitulo() << "\n";
         }
     }
     
