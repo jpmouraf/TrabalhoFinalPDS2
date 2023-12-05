@@ -93,7 +93,7 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
       <a href="https://github.com/DS3ttx">
         <img src="https://avatars.githubusercontent.com/u/92930966" width="100px;" alt="DS3ttx"/><br>
         <sub>
-          <b>ThaliPires</b>
+          <b>DS3ttx</b>
         </sub>
       </a>
     </td>
@@ -101,7 +101,7 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
       <a href="https://github.com/jpmouraf">
         <img src="https://avatars.githubusercontent.com/u/149010897" width="100px;" alt="jpmouraf"/><br>
         <sub>
-          <b>JoaoDiadorim</b>
+          <b>jpmouraf</b>
         </sub>
       </a>
     </td>
@@ -109,7 +109,7 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
       <a href="https://github.com/MassiveDiamondDrill">
         <img src="https://avatars.githubusercontent.com/u/140446172" width="100px;" alt="MassiveDiamondDrill"/><br>
         <sub>
-          <b>lehsc</b>
+          <b>MassiveDiamondDrill</b>
         </sub>
       </a>
     </td>
