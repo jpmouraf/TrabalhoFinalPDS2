@@ -107,9 +107,9 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
     </td>
     <td align="center">
       <a href="https://github.com/VictorGabrielAraujoBarbosa">
-        <img src="https://avatars.githubusercontent.com/u/140446172" width="100px;" alt="Victor"/><br>
+        <img src="https://avatars.githubusercontent.com/u/140446172" width="100px;" alt="VictorGabrielAraujoBarbosa"/><br>
         <sub>
-          <b>MassiveDiamondDrill</b>
+          <b>Victor</b>
         </sub>
       </a>
     </td>
