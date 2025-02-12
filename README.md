@@ -107,7 +107,7 @@ Lembre-se de que o sistema realiza automaticamente a leitura e salvamento de arq
     </td>
     <td align="center">
       <a href="https://github.com/MassiveDiamondDrill">
-        <img src="https://avatars.githubusercontent.com/u/140446172" width="100px;" alt="MassiveDiamondDrill"/><br>
+        <img src="https://avatars.githubusercontent.com/u/140446172" width="100px;" alt="Victor"/><br>
         <sub>
           <b>MassiveDiamondDrill</b>
         </sub>
